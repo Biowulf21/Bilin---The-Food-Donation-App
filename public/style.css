@@ -1,0 +1,200 @@
+.logo a {
+    font-size: 30px;
+    font-family: 'Fredoka One', cursive;
+}
+
+.navbar-nav a {
+    font-size: 15px;
+    font-family: 'Ubuntu', sans-serif;
+    color: #0C2E3D;
+}
+
+.btn-login {
+    border: 1.3px solid #0C2E3D;
+    background-color: #F8F7F1;
+    color: #0C2E3D;
+}
+
+.card-body img {
+    max-width: 50px;
+}
+
+#feature {
+    width: 190px;
+    height: 240px;
+    border-radius: 18px;
+    border: 1.3px solid #F77F00;
+    background-color: #F8F7F1;
+}
+
+#feature:hover{
+    width: 190px;
+    height: 240px;
+    border-radius: 18px;
+    border: 1.3px solid #0C2E3D;
+    background-color: #87B547;
+    color: #FDFDFD;
+}
+
+#feature img:last-child {
+    display: none;
+}
+
+#feature:hover img:last-child {
+    display: block;  
+}
+
+#feature:hover img:first-child {
+    display: none;  
+}
+
+.backtotop-img img {
+    padding-left: 8px;
+    height: 12px;
+}
+
+.pin-img img {
+    padding-right: 8px;
+    height: 23px;
+}
+
+.aside {
+    position: sticky;
+    top: 7em;
+}
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+
+.profile-card {
+    border-radius: 10px;
+    background: white;
+    border: 1.5px solid #C4C4C4;
+}
+
+.vertical-align {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+
+/* --- */
+.h1s {
+    font-size: 60px;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.h2s {
+    font-size: 40px;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.h3s {
+    font-size: 23px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.h4s {
+    font-family: 'Fredoka One', cursive;
+}
+
+.h5s {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.ps {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.as {
+    text-decoration: none;
+}
+
+.btns {
+    border-radius: 8px;
+    padding: 3px 8px;
+    cursor: pointer;
+}
+
+.btn-round {
+    border: 0px;
+    border-radius: 50px;
+    padding: 6px 12px;
+    background-color: #E5E7E7;
+    color: #5C5B5B;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-active {
+    background-color: #F77F00;
+    color: #FDFDFD;
+}
+
+
+
+/* colors */
+.bg-color1 {
+    background-color: #F8F7F1;
+}
+
+.bg-color2 {
+    background-color: #FDFDFD;
+}
+
+.bg-color3 {
+    background-color: #87B547;
+}
+
+.text-color1 {
+    color: #0C2E3D;
+}
+
+.text-color2 {
+    color: #FDFDFD;
+}
+
+.text-color3 {
+    color: #F77F00;
+}
+
+.text-color4 {
+    color: #87B547;
+}
+
+
+
+/* responsive */
+@media (max-width: 992px) {
+    .h1s {
+        font-size: 40px;     
+    }
+
+    .h2s {
+        font-size: 30px;
+    }
+
+    .ps {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .h1s {
+        font-size: 38px;     
+    }
+
+    .h2s {
+        font-size: 28px;
+    }
+}
