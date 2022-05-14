@@ -4,7 +4,7 @@
 export const loginEmail = document.getElementById('login_page_email_input');
 export const loginPassword = document.getElementById('login_page_password_input');
 export const loginBtn = document.getElementById('login-btn');
-export const signUpBtn = document.getElementById('login-page-forgot-password');
+export const forgotPassword = document.getElementById('login-page-forgot-password');
 
 
 //Donor Modal
