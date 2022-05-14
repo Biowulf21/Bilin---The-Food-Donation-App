@@ -4,17 +4,17 @@ import { getFirestore, doc, getDoc, getDocs, collection, onSnapshot } from "http
 
 
 const firebaseApp = initializeApp({
-    apiKey: "AIzaSyDJPYO9Qo6ORoLV4E9ThEaflElXYQqIpcQ",
-    authDomain: "bilin-346803.firebaseapp.com",
-    projectId: "bilin-346803",
-    storageBucket: "bilin-346803.appspot.com",
-    messagingSenderId: "120490219952",
-    appId: "1:120490219952:web:97099f3306886b175e1e75",
-    measurementId: "G-90MCYRQP2X"
+    apiKey: "AIzaSyAtgFAs4hvlpMQStzVnD3tRJ9N8jLB98b0",
+    authDomain: "bilin---the-food-donatio-a24c6.firebaseapp.com",
+    projectId: "bilin---the-food-donatio-a24c6",
+    storageBucket: "bilin---the-food-donatio-a24c6.appspot.com",
+    messagingSenderId: "105362764313",
+    appId: "1:105362764313:web:71739e5e422c213546f088",
+    measurementId: "G-YLCFCJDLG1"
 });
 
 const db = getFirestore(firebaseApp);
-const eventsRef = collection(db, 'events')
+const eventsRef = collection(db, 'Events')
 
 // will automatically scan for any added events and get its data
 function getAllEvents(db, eventsRef) {

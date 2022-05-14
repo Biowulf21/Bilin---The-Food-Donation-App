@@ -1,7 +1,7 @@
 //Login
 var modalWrap = null;
 const showLoginModal = () => {
-    if(modalWrap !== null){
+    if (modalWrap !== null) {
         modalWrap.remove();
     }
 
@@ -19,10 +19,10 @@ const showLoginModal = () => {
                                 <p class="py-3 text-color2" style="font-size: 15px;">Bilin is a platform that makes the donation process easier, allowing forward-thinking people and businesses to connect with non-profit organizations and community pantires</p>
                                 <div class="row">
                                     <div class="col-auto">
-                                        <button class="px-3 py-2 bg-color3 text-color2 rounded-pill" style="border: solid #FDFDFD; font-size: 15px;" data-bs-dismiss="modal" onclick='showSignupPartnerModal()'>Sign Up as Partner</button>
+                                        <button id='signup-as-partner' class="px-3 py-2 bg-color3 text-color2 rounded-pill" style="border: solid #FDFDFD; font-size: 15px;" data-bs-dismiss="modal" onclick='showSignupPartnerModal()'>Sign Up as Partner</button>
                                     </div>
                                     <div class="col-auto">
-                                        <button class="px-3 py-2 bg-color3 text-color2 rounded-pill" style="border: solid #FDFDFD; font-size: 15px;" data-bs-dismiss="modal" onclick='showSignupDonorModal()'>Sign Up as Donor</button>
+                                        <button id='signup-as-donor' class="px-3 py-2 bg-color3 text-color2 rounded-pill" style="border: solid #FDFDFD; font-size: 15px;" data-bs-dismiss="modal" onclick='showSignupDonorModal()'>Sign Up as Donor</button>
                                     </div>
                                 </div>
                             </div>
@@ -34,13 +34,13 @@ const showLoginModal = () => {
                                 <div class="py-3">
                                     <h3 style="color: #6A6A6A">Log In</h3>
                                     <div class="my-5 col">
-                                        <input type="email" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Email address">
-                                        <input type="password" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Password">
+                                        <input id ='donor_email_input' type="email" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Email address">
+                                        <input id='donor_password_input' type="password" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Password">
                                         <div class="pt-3 fill">
-                                            <button class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">LOG IN</button>
+                                            <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">LOG IN</button>
                                         </div>
                                     </div>
-                                    <a href="#" class="ps text-color4" style="font-weight: 500; text-decoration: none;">Forgot password?</a>
+                                    <a id='forgot-password' href="#" class="ps text-color4" style="font-weight: 500; text-decoration: none;">Forgot password?</a>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@ const showLoginModal = () => {
 //Sign Up as Partner
 var modalWrap = null;
 const showSignupPartnerModal = () => {
-    if(modalWrap !== null){
+    if (modalWrap !== null) {
         modalWrap.remove();
     }
 
@@ -91,33 +91,33 @@ const showSignupPartnerModal = () => {
                                 <h3 style="color: #6A6A6A">Sign Up as Partner</h3>
 
                                 <div class="mt-5 col">
-                                    <input type="text" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Organization name">
+                                    <input id='org-name' type="text" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Organization name">
                                     
                                     <div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="OrgType" id="orgrtypeRadio1" value="option1">
-                                            <label class="form-check-label" for="orgrtypeRadio1">Non-profit Org</label>
+                                            <input id='org-type-non-profit' class="form-check-input" type="radio" name="OrgType" id="orgrtypeRadio1" value="option1">
+                                            <label  class="form-check-label" for="orgrtypeRadio1">Non-profit Org</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="OrgType" id="orgtypeRadio2" value="option2">
+                                            <input id='org-type-business' class="form-check-input" type="radio" name="OrgType" id="orgtypeRadio2" value="option2">
                                             <label class="form-check-label" for="orgtypeRadio2">Business</label>
                                         </div>
                                     </div>
                                     
-                                    <input type="email" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Email address">
-                                    <input type="tel" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Contact number">
+                                    <input id='org-email' type="email" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Email address">
+                                    <input id='org-number' type="tel" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Contact number">
 
                                     <label class="pt-3">
-                                        <input type="checkbox">
+                                        <input id='org-agree-tos' type="checkbox">
                                         Agree to <a href="/src/terms_and_conditions.html">Terms & Conditions</a>
                                     </label>
                                 </div>
                                 
                                 <div class="py-4 fill">
-                                    <button class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">LOG IN</button>
+                                    <button id='partner-signup' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">SIGN UP</button>
                                 </div>
 
-                                <p>Already have an account? <a class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" onclick="showLoginModal()">Log in</a></p>
+                                <p>Already have an account? <a id='partner-have-account-login' class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" onclick="showLoginModal()">Log in</a></p>
                             </div>
                         </div>
 
@@ -137,7 +137,7 @@ const showSignupPartnerModal = () => {
 //Sign Up as Donor
 var modalWrap = null;
 const showSignupDonorModal = () => {
-    if(modalWrap !== null){
+    if (modalWrap !== null) {
         modalWrap.remove();
     }
 
@@ -162,14 +162,14 @@ const showSignupDonorModal = () => {
                                 <h3 style="color: #6A6A6A">Sign Up as Donor</h3>
 
                                 <div class="mt-5 col">
-                                    <input type="text" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Full name">                                
-                                    <input type="email" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Email address">
-                                    <input type="tel" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Contact number">
-                                    <input type="password" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Password">
-                                    <input type="password" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Confirm password">
+                                    <input id='donor-full-name' type="text" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Full name">                                
+                                    <input id='donor-email' type="email" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Email address">
+                                    <input id='donor-number' type="tel" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Contact number">
+                                    <input id='donor-password' type="password" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Password">
+                                    <input id='donor-confirm-password' type="password" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Confirm password">
 
                                     <label class="pt-3">
-                                        <input type="checkbox">
+                                        <input id='donor-agree-tos' type="checkbox">
                                         Agree to <a href="/src/terms_and_conditions.html">Terms & Conditions</a>
                                     </label>
                                 </div>
@@ -188,9 +188,9 @@ const showSignupDonorModal = () => {
         </div>
     `;
 
-document.body.append(modalWrap);
-var modal = new bootstrap.Modal(modalWrap.querySelector(`.modal`));
-modal.show();
+    document.body.append(modalWrap);
+    var modal = new bootstrap.Modal(modalWrap.querySelector(`.modal`));
+    modal.show();
 }
 
 
@@ -198,7 +198,7 @@ modal.show();
 //Donation form
 var modalWrap = null;
 const showDonateForm = () => {
-    if(modalWrap !== null){
+    if (modalWrap !== null) {
         modalWrap.remove();
     }
 
@@ -279,9 +279,9 @@ const showDonateForm = () => {
         </div>
     `;
 
-document.body.append(modalWrap);
-var modal = new bootstrap.Modal(modalWrap.querySelector(`.modal`));
-modal.show();
+    document.body.append(modalWrap);
+    var modal = new bootstrap.Modal(modalWrap.querySelector(`.modal`));
+    modal.show();
 }
 
 
@@ -289,7 +289,7 @@ modal.show();
 //Volunteer form
 var modalWrap = null;
 const showVolunteerForm = () => {
-    if(modalWrap !== null){
+    if (modalWrap !== null) {
         modalWrap.remove();
     }
 
@@ -362,7 +362,7 @@ const showVolunteerForm = () => {
         </div>
     `;
 
-document.body.append(modalWrap);
-var modal = new bootstrap.Modal(modalWrap.querySelector(`.modal`));
-modal.show();
+    document.body.append(modalWrap);
+    var modal = new bootstrap.Modal(modalWrap.querySelector(`.modal`));
+    modal.show();
 }
