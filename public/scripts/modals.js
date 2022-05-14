@@ -34,13 +34,13 @@ const showLoginModal = () => {
                                 <div class="py-3">
                                     <h3 style="color: #6A6A6A">Log In</h3>
                                     <div class="my-5 col">
-                                        <input id ='donor_email_input' type="email" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Email address">
-                                        <input id='donor_password_input' type="password" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Password">
+                                        <input id ='login_page_email_input' type="email" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Email address">
+                                        <input id='login_page_password_input' type="password" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Password">
                                         <div class="pt-3 fill">
                                             <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">LOG IN</button>
                                         </div>
                                     </div>
-                                    <a id='forgot-password' href="#" class="ps text-color4" style="font-weight: 500; text-decoration: none;">Forgot password?</a>
+                                    <a id='login-page-forgot-password' href="#" class="ps text-color4" style="font-weight: 500; text-decoration: none;">Forgot password?</a>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@ const showSignupPartnerModal = () => {
                                 </div>
                                 
                                 <div class="py-4 fill">
-                                    <button id='partner-signup' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">SIGN UP</button>
+                                    <button id='partner-signup-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">SIGN UP</button>
                                 </div>
 
                                 <p>Already have an account? <a id='partner-have-account-login' class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" onclick="showLoginModal()">Log in</a></p>
@@ -175,10 +175,10 @@ const showSignupDonorModal = () => {
                                 </div>
                                 
                                 <div class="py-4 fill">
-                                    <button class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">LOG IN</button>
+                                    <button id='donor-signup-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">SIGN UP</button>
                                 </div>
                                 
-                                <p>Already have an account? <a class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" onclick="showLoginModal()">Log in</a></p>
+                                <p>Already have an account? <a id='donor-has-account' class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" onclick="showLoginModal()">Log in</a></p>
                             </div>
                         </div>
 
