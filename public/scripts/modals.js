@@ -37,7 +37,7 @@ const showLoginModal = () => {
                                         <input id ='login_page_email_input' type="email" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Email address">
                                         <input id='login_page_password_input' type="password" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Password">
                                         <div class="pt-3 fill">
-                                            <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">LOG IN</button>
+                                            <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" onclick=''>LOG IN</button>
                                         </div>
                                     </div>
                                     <a id='login-page-forgot-password' href="#" class="ps text-color4" style="font-weight: 500; text-decoration: none;">Forgot password?</a>
@@ -114,7 +114,7 @@ const showSignupPartnerModal = () => {
                                 </div>
                                 
                                 <div class="py-4 fill">
-                                    <button id='partner-signup-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">SIGN UP</button>
+                                    <button id='partner-signup-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" onclick=''>SIGN UP</button>
                                 </div>
 
                                 <p>Already have an account? <a id='partner-have-account-login' class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" onclick="showLoginModal()">Log in</a></p>
@@ -175,7 +175,7 @@ const showSignupDonorModal = () => {
                                 </div>
                                 
                                 <div class="py-4 fill">
-                                    <button id='donor-signup-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">SIGN UP</button>
+                                    <button id='donor-signup-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" onclick=''>SIGN UP</button>
                                 </div>
                                 
                                 <p>Already have an account? <a id='donor-has-account' class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" onclick="showLoginModal()">Log in</a></p>
@@ -272,7 +272,7 @@ const showDonateForm = () => {
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btns bg-color3 text-color2">SUBMIT</button>
+                        <button type="button" class="btns bg-color3 text-color2" onclick=''>SUBMIT</button>
                     </div>
                 </div>
             </div>
