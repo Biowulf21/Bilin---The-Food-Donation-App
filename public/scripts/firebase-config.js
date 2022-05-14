@@ -1,4 +1,4 @@
-export const CONFIG = initializeApp({
+export const fb = initializeApp({
     apiKey: "AIzaSyAtgFAs4hvlpMQStzVnD3tRJ9N8jLB98b0",
     authDomain: "bilin---the-food-donatio-a24c6.firebaseapp.com",
     projectId: "bilin---the-food-donatio-a24c6",

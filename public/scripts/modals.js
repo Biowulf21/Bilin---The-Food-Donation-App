@@ -1,3 +1,5 @@
+
+
 //Login
 var modalWrap = null;
 const showLoginModal = () => {
@@ -37,7 +39,21 @@ const showLoginModal = () => {
                                         <input id ='login_page_email_input' type="email" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Email address">
                                         <input id='login_page_password_input' type="password" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Password">
                                         <div class="pt-3 fill">
-                                            <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">LOG IN</button>
+                                            <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" href="#" onClick="function test(){
+                                                
+                                                console.log('hi');
+                                              
+                                             } test(); return false;">LOGIN</button>
+                                             
+                                        </body>
+                                        <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" href="#" onClick="function test(){
+                                               const emailInputField = document.getElementById('login_page_email_input') ;
+                                            const passwordInputField = document.getElementById('login_page_password_input') ;
+                                            console.log(emailInputField.value);
+                                            console.log(passwordInputField.value);
+                                            
+                                          
+                                         } test(); return false;">Test</button>
                                         </div>
                                     </div>
                                     <a id='login-page-forgot-password' href="#" class="ps text-color4" style="font-weight: 500; text-decoration: none;">Forgot password?</a>
