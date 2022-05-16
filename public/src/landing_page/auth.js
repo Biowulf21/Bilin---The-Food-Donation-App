@@ -59,6 +59,9 @@ async function createUserWithEmaillPass() {
     }
 }
 
+// const loginBTN = document.getElementById()
+
+
 loginWithEmailPassword();
 createUserWithEmaillPass();
 

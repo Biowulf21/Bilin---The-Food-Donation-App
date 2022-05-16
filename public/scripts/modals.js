@@ -9,9 +9,9 @@ const showLoginModal = () => {
 
     modalWrap = document.createElement('div');
     modalWrap.innerHTML = `
-        <div class="modal fade">
+        <div id='modal-login' class="modal fade">
             <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+                <div  class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
                     <div class="d-flex">
 
                         <div class="p-5 ps bg-color3" style="width: 55%; display: table;">
