@@ -1,6 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
-
 const firebaseconfig = {
     apiKey: "AIzaSyAtgFAs4hvlpMQStzVnD3tRJ9N8jLB98b0",
     authDomain: "bilin---the-food-donatio-a24c6.firebaseapp.com",
@@ -12,23 +11,18 @@ const firebaseconfig = {
 };
 
 
-console.log('here');
 
 
-// const emulator = connectAuthEmulator(auth, 'http://localhost:9000');
 const BtnLogin = document.getElementById('login-btn');
 const emaillogin = document.getElementById('login_page_email_input');
 const passwordlogin = document.getElementById('login_page_password_input')
+BtnLogin.addEventListener('click', loginWithEmailPassword);
 
 
 
 async function loginWithEmailPassword() {
-    const email2 = document.getElementById('login_page_email_input');
-    console.log('here2');
-    console.log(email2);
-    const email = 'testemail2@email.com';
-    const password = 'testpass2';
-    // passwordlogin.value;
+    const email = emaillogin.value;
+    const password = passwordlogin.value;
 
     try {
         const heheapp = initializeApp(firebaseconfig);
@@ -60,10 +54,10 @@ async function createUserWithEmaillPass() {
 }
 
 // const loginBTN = document.getElementById()
+var loginBtn = document.getElementById('login-btn');
 
-
-loginWithEmailPassword();
-createUserWithEmaillPass();
+// loginWithEmailPassword();
+// createUserWithEmaillPass();
 
 
 
