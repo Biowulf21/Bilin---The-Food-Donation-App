@@ -25,7 +25,7 @@ function getAllEvents(db, eventsRef) {
         snapshot.docs.forEach((doc) => {
             events.push({ ...doc.data(), id: doc.id });
         })
-        console.log(events);
+        // console.log(events);
     })
 }
 getAllEvents(db, eventsRef);
@@ -69,7 +69,7 @@ function displayAllEvents(db, eventsRef) {
             html_str += '</div>';
             html_str += '</div>';
 
-            console.log(snapshot.docs[ctr].data().name);
+            // console.log(snapshot.docs[ctr].data().name);
 
 
             // stop until the 4th entry (0,1,2,3)

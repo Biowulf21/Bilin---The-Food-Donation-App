@@ -17,6 +17,7 @@
     <link rel="icon" type="image/x-icon" href="./images/favicon.png">
     <title>Bilin</title>
     <script type="module" src="../script_get_involved.js"></script>
+    <script type="module" src="./auth.js"></script>
 </head>
 
 <body>
@@ -83,15 +84,6 @@
 
     <!-- Modals -->
     <!-- Login -->
-    <script>
-        var modalWrap = null;
-        const showLoginModal = () => {
-            if (modalWrap !== null) {
-                modalWrap.remove();
-            }
-
-            modalWrap = document.createElement('div');
-            modalWrap.innerHTML = `
                 <div id='modal-login' class="modal fade">
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div  class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
@@ -104,10 +96,10 @@
                                         <p class="py-3 text-color2" style="font-size: 15px;">Bilin is a platform that makes the donation process easier, allowing forward-thinking people and businesses to connect with non-profit organizations and community pantires</p>
                                         <div class="row">
                                             <div class="col-auto">
-                                                <button id='signup-as-partner' class="px-3 py-2 bg-color3 text-color2 rounded-pill" style="border: solid #FDFDFD; font-size: 15px;" data-bs-dismiss="modal" onclick='showSignupPartnerModal()'>Sign Up as Partner</button>
+                                                <button id='signup-as-partner' class="px-3 py-2 bg-color3 text-color2 rounded-pill" style="border: solid #FDFDFD; font-size: 15px;" data-bs-dismiss="modal"  data-bs-target="#modal-partner" data-bs-toggle="modal">Sign Up as Partner</button>
                                             </div>
                                             <div class="col-auto">
-                                                <button id='signup-as-donor' class="px-3 py-2 bg-color3 text-color2 rounded-pill" style="border: solid #FDFDFD; font-size: 15px;" data-bs-dismiss="modal" onclick='showSignupDonorModal()'>Sign Up as Donor</button>
+                                                <button id='signup-as-donor' class="px-3 py-2 bg-color3 text-color2 rounded-pill" style="border: solid #FDFDFD; font-size: 15px;" data-bs-dismiss="modal"  data-bs-target="#modal-donor" data-bs-toggle="modal">Sign Up as Donor</button>
                                             </div>
                                         </div>
                                     </div>
@@ -122,22 +114,7 @@
                                                 <input id ='login_page_email_input' type="email" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Email address">
                                                 <input id='login_page_password_input' type="password" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Password">
                                                 <div class="pt-3 fill">
-                                                    <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" href="#" onClick="function test(){
-                                                        
-                                                        console.log('hi');
-                                                    
-                                                    } test(); return false;">LOGIN</button>
-                                                    
-                                                </body>
-                                                <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" href="#" onClick="function test(){
-                                                    const emailInputField = document.getElementById('login_page_email_input') ;
-                                                    const passwordInputField = document.getElementById('login_page_password_input') ;
-                                                    console.log(emailInputField.value);
-                                                    console.log(passwordInputField.value);
-                                                    
-                                                
-                                                } test(); return false;">Test</button>
-                                                    <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" onclick=''>LOG IN</button>
+                                                    <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" >LOG IN</button>
                                                 </div>
                                             </div>
                                             <a id='login-page-forgot-password' href="#" class="ps text-color4" style="font-weight: 500; text-decoration: none;">Forgot password?</a>
@@ -149,26 +126,11 @@
                         </div>
                     </div>
                 </div>
-            `;
 
-            document.body.append(modalWrap);
-            var modal = new bootstrap.Modal(modalWrap.querySelector('.modal'));
-            modal.show();
-        }
-    </script>
 
 
     <!-- Sign Up as Partner -->
-    <script>
-        var modalWrap = null;
-        const showSignupPartnerModal = () => {
-            if (modalWrap !== null) {
-                modalWrap.remove();
-            }
-
-            modalWrap = document.createElement('div');
-            modalWrap.innerHTML = `
-                <div class="modal fade">
+                <div id="modal-partner" class="modal fade">
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
                             <div class="d-flex">
@@ -218,7 +180,7 @@
                                             <button id='partner-signup-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" onclick=''>SIGN UP</button>
                                         </div>
 
-                                        <p>Already have an account? <a id='partner-have-account-login' class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" onclick="showLoginModal()">Log in</a></p>
+                                        <p>Already have an account? <a id='partner-have-account-login' class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" data-bs-target="#modal-login" data-bs-toggle="modal">Log in</a></p>
                                     </div>
                                 </div>
 
@@ -226,26 +188,10 @@
                         </div>
                     </div>
                 </div>
-            `;
-
-            document.body.append(modalWrap);
-            var modal = new bootstrap.Modal(modalWrap.querySelector('.modal'));
-            modal.show();
-        }
-    </script>
 
 
     <!-- Sign Up as Donor -->
-    <script>
-        var modalWrap = null;
-        const showSignupDonorModal = () => {
-            if (modalWrap !== null) {
-                modalWrap.remove();
-            }
-
-            modalWrap = document.createElement('div');
-            modalWrap.innerHTML = `
-                <div class="modal fade">
+                <div id="modal-donor" class="modal fade">
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
                             <div class="d-flex">
@@ -277,10 +223,10 @@
                                         </div>
                                         
                                         <div class="py-4 fill">
-                                            <button id='donor-signup-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" onclick=''>SIGN UP</button>
+                                            <button id='donor-sign-up-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">SIGN UP</button>
                                         </div>
                                         
-                                        <p>Already have an account? <a id='donor-has-account' class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" onclick="showLoginModal()">Log in</a></p>
+                                        <p>Already have an account? <a id='donor-has-account' class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" data-bs-target="#modal-login" data-bs-toggle="modal"">Log in</a></p>
                                     </div>
                                 </div>
 
@@ -288,24 +234,8 @@
                         </div>
                     </div>
                 </div>
-            `;
-
-            document.body.append(modalWrap);
-            var modal = new bootstrap.Modal(modalWrap.querySelector(`.modal`));
-            modal.show();
-        }
-    </script>
 
     <!-- Event details -->
-    <script>
-        var modalWrap = null;
-        const showEventDetails = () => {
-        if(modalWrap !== null){
-            modalWrap.remove();
-        }
-
-        modalWrap = document.createElement('div');
-        modalWrap.innerHTML = `
             <div class="modal fade" tabindex="-1">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
@@ -323,24 +253,8 @@
                 </div>
             </div>
             </div>
-        `;
-
-        document.body.append(modalWrap);
-        var modal = new bootstrap.Modal(modalWrap.querySelector(`.modal`));
-        modal.show();
-        }
-    </script>
 
     <!-- Donation form -->
-    <script>
-        var modalWrap = null;
-        const showDonateForm = () => {
-        if(modalWrap !== null){
-            modalWrap.remove();
-        }
-
-        modalWrap = document.createElement('div');
-        modalWrap.innerHTML = `
             <div class="modal fade" tabindex="-1">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
@@ -414,24 +328,8 @@
                 </div>
             </div>
             </div>
-        `;
-
-        document.body.append(modalWrap);
-        var modal = new bootstrap.Modal(modalWrap.querySelector(`.modal`));
-        modal.show();
-        }
-    </script>
     
     <!-- Volunteer form -->
-    <script>
-        var modalWrap = null;
-        const showVolunteerForm = () => {
-        if(modalWrap !== null){
-            modalWrap.remove();
-        }
-
-        modalWrap = document.createElement('div');
-        modalWrap.innerHTML = `
             <div class="modal fade" tabindex="-1">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
@@ -444,11 +342,11 @@
                     <div class="row">
                         <div class="col">
                             <p style="font-weight: bold">First name</p>
-                            <input type="text" id="input" placeholder="First name">
+                            <input type="text" id="input_first_name" placeholder="First name">
                         </div>
                         <div class="col">
                             <p style="font-weight: bold">Last name</p>
-                            <input type="text" id="input" placeholder="Last name">
+                            <input type="text" id="input_last_name" placeholder="Last name">
                         </div>
                     </div>
                     <div class="row">
@@ -497,13 +395,6 @@
                 </div>
             </div>
             </div>
-        `;
-
-        document.body.append(modalWrap);
-        var modal = new bootstrap.Modal(modalWrap.querySelector(`.modal`));
-        modal.show();
-        }
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
