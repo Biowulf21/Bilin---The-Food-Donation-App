@@ -21,8 +21,8 @@ fetch('/../src/landing_page/footer.html')
     })
 
 
-    
-//Footer
+
+//Get involved modals
 fetch('/../src/landing_page/modals.html')
 .then(res => res.text())
 .then(text => {
