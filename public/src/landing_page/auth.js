@@ -1,5 +1,5 @@
 import { initializeApp  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
 
@@ -30,11 +30,12 @@ async function loginWithEmailPassword() {
     const password = passwordlogin.value;
 
     try {
+        if (!auth.currentUser === null) return;
         const userCredentials = await signInWithEmailAndPassword(auth, email, password);
         console.log('User Logged in');
         // console.log(userCredentials.user);
     } catch (err) {
-        console.log(err);
+        alert(err.message);
     }
 
 }
@@ -104,7 +105,23 @@ async function createOrgWithEmaillPass() {
 const orgSignUpBtn = document.getElementById('partner-signup-btn');
 orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
 
+function resetEmail(){
+    const emailInput = document.getElementById('forgot-password-email');
+    const email = emailInput.value;
+    if (email === null){
+        throw new Error('Email Field is Empty');
+    }
+    sendPasswordResetEmail(auth, email)
+    .then(() => {
+      alert('Password reset email sent!');
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+}
 
+const forgotPasswordLink = document.getElementById('send-reset-email-btn');
+forgotPasswordLink.addEventListener('click', resetEmail)
 
 
 // const loginBTN = document.getElementById()
