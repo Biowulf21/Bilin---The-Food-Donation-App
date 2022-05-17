@@ -1,5 +1,5 @@
 import { initializeApp  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 import { getFirestore, collection, addDoc,} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
 
@@ -26,13 +26,22 @@ BtnLogin.addEventListener('click', loginWithEmailPassword);
 
 // Login
 async function loginWithEmailPassword() {
+    try {
     const email = emaillogin.value;
     const password = passwordlogin.value;
+    onAuthStateChanged(auth, async (user)=> {
+        try{
+        if (!user){
+            const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+            console.log('User Logged in');
+        } else {
+            throw new Error('Already Logged in');
+        }
+    } catch (err){
+        alert(err.message);
+    }
+    });
 
-    try {
-        if (!auth.currentUser === null) return;
-        const userCredentials = await signInWithEmailAndPassword(auth, email, password);
-        console.log('User Logged in');
         // console.log(userCredentials.user);
     } catch (err) {
         alert(err.message);
