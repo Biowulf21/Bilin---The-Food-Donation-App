@@ -1,6 +1,6 @@
 import { initializeApp  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
-import { getFirestore, collection, addDoc,} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
+import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
 
 const firebaseConfig = {
@@ -37,9 +37,7 @@ async function loginWithEmailPassword() {
     } catch (err) {
         alert(err.message);
     }
-    $(function (){
-        $('#modal-login').modal('toggle');
-    });
+
 }
 
 
@@ -77,9 +75,6 @@ async function createDonorWithEmaillPass() {
             'code': err.code
         }));
     }
-    $(function (){
-        $('#modal-donor').modal('toggle');
-    });
 }
 
 const orgName = document.getElementById('org-name');
@@ -100,22 +95,12 @@ async function createOrgWithEmaillPass() {
                 accountType: 'organization'
             })
             console.log('User document created');
-            //adds a subcollection of Events under the organization user
-           const orgEventsCollection = addDoc(
-               collection(db, 'Users', docRef.id , 'Events'), {
-            eventName: 'test'
-           });
-            console.log('Added Events Collection');
     } catch (err) {
         console.log(({
             'message': err.message,
             'code': err.code
         }));
     }
-
-    $(function (){
-        $('#modal-partner').modal('toggle');
-    })
 }
 const orgSignUpBtn = document.getElementById('partner-signup-btn');
 orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
