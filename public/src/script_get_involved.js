@@ -37,7 +37,7 @@ getAllEvents(db, eventsRef);
 //          2. insert image properly
 //          3. pagination
 
-function displayAllEvents(db, eventsRef) {
+async function displayAllEvents(db, eventsRef) {
     const unsub = onSnapshot(eventsRef, (snapshot) => {
 
         var html_str = "";
@@ -45,7 +45,7 @@ function displayAllEvents(db, eventsRef) {
         for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
 
             html_str += '<div class=\"card\" style=\"width: 16rem;\" id=\"event-entry\">';
-            html_str += '<svg class=\"bd-placeholder-img card-img-top\" width=\"10 0%\" height=\"180\"';
+            html_str += '<svg class=\"bd-placeholder-img card-img-top\" width=\"100%\" height=\"180\"';
             html_str += 'xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Placeholder: Image cap\"';
             html_str += 'preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\">';
 
@@ -64,7 +64,7 @@ function displayAllEvents(db, eventsRef) {
             html_str += '<h6 class=\"card-subtitle mb-2 text-muted\">' + dateString + ', ' + timeString + ' </h6>';
             html_str += '<h5 class=\"card-title\">' + snapshot.docs[ctr].data().name + '</h5>';
             html_str += '<p class=\"card-text\">' + snapshot.docs[ctr].data().address1 + '<br>' + snapshot.docs[ctr].data().address2 + '</p>';
-            html_str += '<button class=\"btns as bg-color3 text-color2\" onclick=\"showEventDetails()\">VIEW';
+            html_str += '<button id=\"show-event-btn"\ class=\"btns as bg-color3 text-color2 \ data-bs-dismiss=\"modal"\  data-bs-target=\"#event-modals"\ data-bs-toggle=\"modal"\>VIEW';
             html_str += 'DETAILS</button>';
             html_str += '</div>';
             html_str += '</div>';
@@ -81,3 +81,26 @@ function displayAllEvents(db, eventsRef) {
     })
 }
 displayAllEvents(db, eventsRef);
+
+// $('#show-event-btn').on('click', function(){
+//     console.log('hey');
+//     $('#modal-event').show();
+// })
+
+setTimeout(function(){
+
+    // const viewDetailsBtn = document.getElementById('show-event-btn');
+    // viewDetailsBtn.addEventListener('click', showDetails);
+    showDetails();
+
+}, 1000); 
+
+function showDetails(){
+    console.log('hey');
+   const variable =  $('#modal-event')
+   console.log(variable)
+    console.log('hello');
+}
+
+
+
