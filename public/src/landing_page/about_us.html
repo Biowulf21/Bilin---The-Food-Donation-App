@@ -39,12 +39,45 @@
     </section>
 
     <!-- Modals -->
+    <!-- Forgot Password -->
+    <div id='forgot-password' class="modal fade">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div  class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+                <div class="d-flex">
+                    
+                    <div class="p-5 ps bg-color3" style="width: 55%; display: table;">
+                        <div class="vertical-align">
+                            <h3 class="text-color2" style="font-weight: bold;">Password Reset</h3>
+                            <hr class="rounded" style="width: 20%; height: 4px; color: white;">
+                            <p class="py-3 text-color2" style="font-size: 15px;">Enter an email on the input field</p>
+                            <div class="row">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-color2 text-center" style="width: 45%;">
+                        <button type="button" class="m-4 btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+                        <div class="p-5">
+                                <div class="my-5 col">
+                                    <input id ='forgot-password-email' type="email" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Email address">
+                                    <div class="pt-3 fill">
+                                        <button id='send-reset-email-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" >Reset Password</button>
+                                    </div>
+                                </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Login -->
     <div id='modal-login' class="modal fade">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div  class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
                 <div class="d-flex">
-
+                    
                     <div class="p-5 ps bg-color3" style="width: 55%; display: table;">
                         <div class="vertical-align">
                             <h3 class="text-color2" style="font-weight: bold;">Welcome to Bilin</h3>
@@ -73,7 +106,8 @@
                                         <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" >LOG IN</button>
                                     </div>
                                 </div>
-                                <a id='login-page-forgot-password' href="#" class="ps text-color4" style="font-weight: 500; text-decoration: none;">Forgot password?</a>
+                                <a id='login-page-forgot-password' href="#" class="ps text-color4" style="font-weight: 500; text-decoration: none;" data-bs-target="#forgot-password" data-bs-toggle="modal">Forgot password?</a>
+                                
                             </div>
                         </div>
                     </div>
@@ -82,6 +116,7 @@
             </div>
         </div>
     </div>
+
 
 
 
