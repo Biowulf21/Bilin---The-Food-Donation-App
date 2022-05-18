@@ -1,6 +1,6 @@
 import { initializeApp  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
-import { getFirestore, collection, addDoc,} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
+import { getFirestore, collection, addDoc, setDoc, doc} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
 
 const firebaseConfig = {
@@ -98,16 +98,18 @@ async function createOrgWithEmaillPass() {
     try {
         console.log('creatingUser')
         const email = orgEmail.value;
-            const password = 'testpass';
+            const password =  orgEmail.value;
             const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
-            console.log('User Created');    
-            const docRef = await addDoc(usersRef, {
+            console.log('User Created'); 
+            const user = auth.currentUser.uid
+            // create a user document that has the same UID as their authentication
+            const docRef = await setDoc(doc(db, "Users", user), {
                 id: auth.currentUser.uid,
                 name: orgName.value,
                 email: orgEmail.value,
                 number: orgNum.value,
                 accountType: 'organization'
-            })
+              });
             console.log('User document created');
             //adds a subcollection of Events under the organization user
            const orgEventsCollection = addDoc(
