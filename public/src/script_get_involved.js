@@ -64,7 +64,7 @@ async function displayAllEvents(db, eventsRef) {
             html_str += '<h6 class=\"card-subtitle mb-2 text-muted\">' + dateString + ', ' + timeString + ' </h6>';
             html_str += '<h5 class=\"card-title\">' + snapshot.docs[ctr].data().name + '</h5>';
             html_str += '<p class=\"card-text\">' + snapshot.docs[ctr].data().address1 + '<br>' + snapshot.docs[ctr].data().address2 + '</p>';
-            html_str += '<button id=\"show-event-btn"\ class=\"btns as bg-color3 text-color2 \ data-bs-dismiss=\"modal"\  data-bs-target=\"#event-modals"\ data-bs-toggle=\"modal"\>VIEW';
+            html_str += '<button id=\"show-event-btn"\ class=\"btns as bg-color3 text-color2 \ data-bs-dismiss=\"modal"\  data-bs-target=\"#event-modal"\ data-bs-toggle=\"modal"\>VIEW';
             html_str += 'DETAILS</button>';
             html_str += '</div>';
             html_str += '</div>';
@@ -87,20 +87,20 @@ displayAllEvents(db, eventsRef);
 //     $('#modal-event').show();
 // })
 
-setTimeout(function(){
+// setTimeout(function(){
 
-    // const viewDetailsBtn = document.getElementById('show-event-btn');
-    // viewDetailsBtn.addEventListener('click', showDetails);
-    showDetails();
+//     // const viewDetailsBtn = document.getElementById('show-event-btn');
+//     // viewDetailsBtn.addEventListener('click', showDetails);
+//     showDetails();
 
-}, 1000); 
+// }, 1000); 
 
-function showDetails(){
-    console.log('hey');
-   const variable =  $('#modal-event')
-   console.log(variable)
-    console.log('hello');
-}
+// function showDetails(){
+//     console.log('hey');
+//    const variable =  $('#event-modal').show()
+//    console.log(variable)
+//     console.log('hello');
+// }
 
 
 

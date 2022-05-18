@@ -1,5 +1,5 @@
 <!-- Event details -->
-<div class="modal fade" tabindex="-1">
+<div id="event-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
         <div class="modal-header">
@@ -10,15 +10,15 @@
             <p>Modal body text goes here.</p>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btns bg-color3 text-color2" onclick='showDonateForm()'>DONATE</button>
-            <button type="button" class="btns bg-color3 text-color2" onclick='showVolunteerForm()'>VOLUNTEER</button>
+            <button type="button" class="btns bg-color3 text-color2" data-bs-dismiss="modal"  data-bs-target="#donation-modal" data-bs-toggle="modal">DONATE</button>
+            <button type="button" class="btns bg-color3 text-color2" data-bs-dismiss="modal"  data-bs-target="#volunteer-modal" data-bs-toggle="modal">VOLUNTEER</button>
         </div>
         </div>
     </div>
     </div>
 
 <!-- Donation form -->
-<div class="modal fade" tabindex="-1">
+<div id="donation-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
         <div class="modal-header">
@@ -93,7 +93,7 @@
 </div>
 
 <!-- Volunteer form -->
-<div class="modal fade" tabindex="-1">
+<div id="volunteer-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
         <div class="modal-header">
