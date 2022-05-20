@@ -14,7 +14,13 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.png">
     <title>Bilin</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="module" src="../script_get_involved.js"></script>
+    <script src="../../scripts/events.js"></script>
+    <script type="module" src="./auth.js"></script>
+    <script type="module" src="../../src/admin/pages/admin.js" ></script>
 </head>
 
 <body>
@@ -26,13 +32,24 @@
     <!-- Google Maps -->
     <div id="googleMap" style="width:100%; height:68vh;"></div>
     <script>
-        function myMap() {
-            var mapProp = {
-                center: new google.maps.LatLng(8.454236, 124.631897),
-                zoom: 15,
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-        }
+       function myMap() {
+let location = navigator.geolocation;
+if (navigator.geolocation) {
+    location.getCurrentPosition(function success(position) {
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        var mapProp = {
+            center: new google.maps.LatLng(lat, long),
+            zoom: 15,
+            mapTypeId: 'hybrid',
+            clickableIcons: false
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+    })
+};
+
+}
     </script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZm4A62u1UahYWE9WomHs9yzQG8N-QrfY&callback=myMap"></script>
@@ -49,106 +66,50 @@
     </section>
 
     <!-- Discover -->
-    <section class="px-5 pb-5 bg-color2">
+    <section class="px-5 pb-3 bg-color2">
         <div class="container">
             <div>
                 <h3 class="h3s"><b>Discover</b></h3>
             </div>
             <div class="d-flex justify-content-between">
-                <div class="d-flex">
-                    <button class="btn-round btn-active mx-1">Upcoming Events</button>
-                    <button class="btn-round mx-1">Organizations</button>
-                    <button class="btn-round mx-1">Community Pantries</button>
-                    <button class="btn-round mx-1">Bookmarked</button>
+                <div class="mb-2">
+                    <button class="mb-2 btn rounded-pill mx-1" style="padding: 6px 12px; background-color: #F77F00; color: #FDFDFD; font-weight: 500; cursor: pointer;">Upcoming Events</button>
+                    <button class="mb-2 btn rounded-pill mx-1" style="padding: 6px 12px; background-color: #E5E7E7; color: #5C5B5B; font-weight: 500; cursor: pointer;">Organizations</button>
+                    <button class="mb-2 btn rounded-pill mx-1" style="padding: 6px 12px; background-color: #E5E7E7; color: #5C5B5B; font-weight: 500; cursor: pointer;">Community Pantries</button>
+                    <button class="mb-2 btn rounded-pill mx-1" style="padding: 6px 12px; background-color: #E5E7E7; color: #5C5B5B; font-weight: 500; cursor: pointer;">Bookmarked</button>
                 </div>
-                <div class="d-flex">
+                <div class="d-none d-flex">
                     <img src="/images/filter.svg">
                     <button class="btns text-color2 mx-2" style="border: 0px; background-color: #F77F00;">+ Create new
                         event</button>
                 </div>
             </div>
             <div class="pt-4">
-                <div class="d-flex justify-content-between">
-                    <div class="card" style="width: 16rem;">
-                        <!-- <img src="..." class="card-img-top"> -->
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="180"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#868e96"></rect>
-                            <text x="43%" y="50%" fill="#dee2e6" dy=".3em">Image</text>
-                        </svg>
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-muted">Date, Time</h6>
-                            <h5 class="card-title">Event name</h5>
-                            <p class="card-text">Address line 1<br>Address line 2</p>
-                            <button class="btns as bg-color3 text-color2" onclick="showEventDetails()">VIEW
-                                DETAILS</button>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 16rem;">
-                        <!-- <img src="..." class="card-img-top"> -->
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="180"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#868e96"></rect>
-                            <text x="43%" y="50%" fill="#dee2e6" dy=".3em">Image</text>
-                        </svg>
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-muted">Date, Time</h6>
-                            <h5 class="card-title">Event name</h5>
-                            <p class="card-text">Address line 1<br>Address line 2</p>
-                            <button class="btns as bg-color3 text-color2" onclick="showEventDetails()">VIEW
-                                DETAILS</button>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 16rem;">
-                        <!-- <img src="..." class="card-img-top"> -->
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="180"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#868e96"></rect>
-                            <text x="43%" y="50%" fill="#dee2e6" dy=".3em">Image</text>
-                        </svg>
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-muted">Date, Time</h6>
-                            <h5 class="card-title">Event name</h5>
-                            <p class="card-text">Address line 1<br>Address line 2</p>
-                            <button class="btns as bg-color3 text-color2" onclick="showEventDetails()">VIEW
-                                DETAILS</button>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 16rem;">
-                        <!-- <img src="..." class="card-img-top"> -->
-                        <svg class="bd-placeholder-img card-img-top" width="10 0%" height="180"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#868e96"></rect>
-                            <text x="43%" y="50%" fill="#dee2e6" dy=".3em">Image</text>
-                        </svg>
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-muted">Date, Time</h6>
-                            <h5 class="card-title">Event name</h5>
-                            <p class="card-text">Address line 1<br>Address line 2</p>
-                            <button class="btns as bg-color3 text-color2" onclick="showEventDetails()">VIEW
-                                DETAILS</button>
-                        </div>
-                    </div>
+                <div class="d-flex justify-content-between" id="events-container">
+                    
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="p-5 bg-color2">
+        <div class="pb-5 container text-center">
+            <p class="pb-3">Feeding programs will be hosted by our partnered organizations on May 23, 2022.<br>We are encouraging everyone to participate by donating food and/or volunteering in the events.
+            </p>
         </div>
     </section>
 
     <!-- Footer -->
     <script id="replace_with_footer" src="/scripts/reusable-components.js"></script>
 
+
+    <!-- Modals -->
+    <script id="replace_with_modals" src="/scripts/reusable-components.js"></script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <script src="/scripts/modals.js"></script>
 </body>
 
 </html>
