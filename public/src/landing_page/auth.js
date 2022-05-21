@@ -170,10 +170,14 @@ var loginBtn = document.getElementById('login-btn');
 async function createUser(){
     const email = 'email@email21.com';
     const password = 'testpass';
-    createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password) 
+}
 
+async function donate(){
+    const bookmarks = addDoc(
+        collection(db, 'Users', docRef.id , 'Bookmarks'), {
+    });
 
-    
 }
 
 async function signOutUser(){
