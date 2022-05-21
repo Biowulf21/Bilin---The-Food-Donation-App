@@ -1,5 +1,5 @@
 import { initializeApp  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, setDoc, doc} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
 
@@ -80,6 +80,19 @@ async function createDonorWithEmaillPass() {
                 accountType: 'donor'
             })
             console.log('User document created');
+
+            const bookmarks = addDoc(
+                collection(db, 'Users', docRef.id , 'Bookmarks'), {
+            });
+
+            console.log('bookmarks created');
+
+            const donations = addDoc(
+                collection(db, 'Users', docRef.id , 'Donations'), {
+            });
+            console.log('donations collection created');
+
+            
     } catch (err) {
         console.log(({
             'message': err.message,
@@ -114,7 +127,6 @@ async function createOrgWithEmaillPass() {
             //adds a subcollection of Events under the organization user
            const orgEventsCollection = addDoc(
                collection(db, 'Users', docRef.id , 'Events'), {
-            eventName: 'test'
            });
             console.log('Added Events Collection');
     } catch (err) {
@@ -155,6 +167,27 @@ var loginBtn = document.getElementById('login-btn');
 
 
 // loginWithEmailPassword();
+async function createUser(){
+    const email = 'email@email21.com';
+    const password = 'testpass';
+    createUserWithEmailAndPassword(auth, email, password)
+
+
+    
+}
+
+async function signOutUser(){
+    try{
+        const signedOut =await signOut(auth)
+        console.log('logged out');
+    } catch(error){
+        console.log(error.message);
+        console.log('in signoutuser')
+    }
+}
+// signOutUser()
+    
+    // createUser();
 
 
 
