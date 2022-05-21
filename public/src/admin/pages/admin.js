@@ -1,6 +1,6 @@
 import { initializeApp  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, Timestamp, serverTimestamp, setDoc, doc } from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
+import { getFirestore, collection, addDoc, Timestamp, serverTimestamp, setDoc, doc, getDocs , connectFirestoreEmulator} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAtgFAs4hvlpMQStzVnD3tRJ9N8jLB98b0",
@@ -15,6 +15,7 @@ initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 const eventsRef  = collection(db, 'Events');
+// connectFirestoreEmulator(db, 'localhost', 8080);
 
 const createEvent = async (user) => {
 
@@ -115,6 +116,24 @@ async function signOutUser(){
         console.log(error.message);
         console.log('in signoutuser')
     }
+}
+
+async function getAllEvents(){
+    const uid = auth.currentUser.uid;
+    const query = query(collection(db, "Users", uid));
+    const querySnapshot = await getDocs(query);
+    querySnapshot.forEach(doc => {
+        console.log(doc.id);
+    });
+}
+
+async function getAllDonations(eventID){
+    const uid = auth.currentUser.uid;
+    const query = query(collection(db, "Users", uid, eventID));
+    const querySnapshot = await getDocs(query);
+    querySnapshot.forEach(doc => {
+        console.log(doc.id);
+    });
 }
 
     // loginWithEmailPassword('notail2111@gmail.com', 'testpass')
