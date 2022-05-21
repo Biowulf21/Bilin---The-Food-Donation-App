@@ -65,6 +65,7 @@ async function displayAllEvents(db, eventsRef) {
 
             html_str += '<h6 class=\"card-subtitle mb-2 text-muted\">' + dateString + ', ' + timeString + ' </h6>';
             html_str += '<h5 class=\"card-title\">' + snapshot.docs[ctr].data().name + '</h5>';
+            //TODO: diri sir di ko kabalo pa hidden
             html_str += '<input id=\"hidden-input"\ type=\"hidden"  data-bs-dismiss=\"modal"\  data-bs-target=\"#event-modal"\ data-bs-toggle=\"modal"\>' + snapshot.docs[ctr].id;
             html_str += '<p class=\"card-text\">' + snapshot.docs[ctr].data().address1 + '<br>' + snapshot.docs[ctr].data().address2 + '</p>';
             html_str += '<button id=\"show-event-btn"\ class=\"btns as bg-color3 text-color2 \ data-bs-dismiss=\"modal"\  data-bs-target=\"#event-modal"\ data-bs-toggle=\"modal"\>VIEW';
