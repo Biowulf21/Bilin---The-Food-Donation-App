@@ -149,6 +149,28 @@ background: rgba(0,0,0,0.5);
     color: #FDFDFD;
 }
 
+.nav-pills > li > button.active {
+    background-color: #F77F00 !important;
+    color: #FDFDFD !important;
+    font-weight: 500 !important;
+}
+
+.nav-pills > li > button:hover {
+    background-color: #F77F00 !important;
+    color: #FDFDFD !important;
+    font-weight: 500 !important;
+}
+
+.nav-link-color {
+color: #ffffff;
+}
+
+.pill-link {
+    background-color: #E5E7E7 !important;
+    color: #5C5B5B !important;
+    font-weight: 500 !important;
+}
+  
 
 
 /* colors */

@@ -1,5 +1,5 @@
 //Nav bar
-fetch('/../src/landing_page/nav.html')
+fetch('/../assets/reusable-components/nav.html')
     .then(res => res.text())
     .then(text => {
         let oldelem = document.querySelector("script#replace_with_navbar");
@@ -11,7 +11,7 @@ fetch('/../src/landing_page/nav.html')
 
 
 //Footer
-fetch('/../src/landing_page/footer.html')
+fetch('/../assets/reusable-components/footer.html')
     .then(res => res.text())
     .then(text => {
         let oldelem = document.querySelector("script#replace_with_footer");
@@ -23,10 +23,22 @@ fetch('/../src/landing_page/footer.html')
 
 
 //Get involved modals
-fetch('/../src/landing_page/modals.html')
+fetch('/../assets/reusable-components/modals.html')
 .then(res => res.text())
 .then(text => {
     let oldelem = document.querySelector("script#replace_with_modals");
+    let newelem = document.createElement("div");
+    newelem.innerHTML = text;
+    oldelem.parentNode.replaceChild(newelem, oldelem);
+})
+
+
+
+//Dashboard - sidenav
+fetch('/../src/admin/pages/sidenav.html')
+.then(res => res.text())
+.then(text => {
+    let oldelem = document.querySelector("script#replace_with_sidenav");
     let newelem = document.createElement("div");
     newelem.innerHTML = text;
     oldelem.parentNode.replaceChild(newelem, oldelem);
