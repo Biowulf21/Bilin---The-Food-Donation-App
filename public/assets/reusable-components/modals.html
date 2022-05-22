@@ -1,34 +1,92 @@
-<!-- Event details -->
-<div id="event-modal" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Event name</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-            <form>
-            <button type="button" class="btns bg-color3 text-color2" data-bs-dismiss="modal"  data-bs-target="#donation-modal" data-bs-toggle="modal">DONATE</button>
-            <button type="button" class="btns bg-color3 text-color2" data-bs-dismiss="modal"  data-bs-target="#volunteer-modal" data-bs-toggle="modal" onclick="getIDValue()">VOLUNTEER</button>
-            <input id="event_details_hidden_input" type="hidden">
-            <script type="text/javascript">
-
-                
-                function getIDValue(){
-                    const val = $('#event_details_hidden_input').value;
-                    console.log();
-                };
-                getIDValue();
-
-            </script>
-        </form>
-        </div>
+<!-- Event details --> 
+<div id="event-modal" class="modal fade">
+    <div id="event-modal" class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+            <div class="position-relative">
+                <div class="float-left">
+                    <div class="fill" style="max-height: 230px;">
+                        <!-- JAMES dynamic: event photo -->
+                        <img src="https://via.placeholder.com/820x312" style="display: block; margin-left: auto; margin-right: auto;">
+                    </div>
+                    <div class="position-absolute cursor-pointer" style="top: 0px; right: 0px">
+                        <button type="button" class="m-4 btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="m-3">
+                <!-- JAMES dynamic: event title -->
+                <h4 class="ps text-color1" style="font-weight: bolder;">Event title</h4>
+                <!-- JAMES dynamic: org name -->
+                <p class="ps text-color5 mb-0">Organized by <a href="../../src/profile_page.html" class="ps text-color4" style="font-weight: 600;">Organization name</a></p>
+            </div>
+            <div class="modal-body pt-0" style="overflow-y: auto; max-height: 350px;">
+                <div>
+                    <div class="table-responsive p-0">
+                        <table class="table table-borderless align-items-center mb-0">
+                            <tr>
+                                <td class="text-center text-sm">
+                                    <h5><i class="bi bi-calendar3 text-color4"></i></h5>
+                                </td>
+                                <td class="align-middle">
+                                    <!-- JAMES dynamic: event date, time, duration -->
+                                    <span class="ps text-color1" style="font-weight: 600;">March 21, 2022 from 3:00 PM until 4:30PM</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center text-sm">
+                                    <h5><i class="bi bi-geo-alt-fill text-color4"></i></h5>
+                                </td>
+                                <td class="align-middle pb-0 ">
+                                    <!-- JAMES dynamic: location -->
+                                    <span class="ps text-color1" style="font-weight: 600;">Xavier University - Ateneo de Cagayan</span>
+                                    <!-- JAMES dynamic: event address -->
+                                    <p class="ps mb-0 text-color6">73 Corrales Ave, Cagayan de Oro, 9000 Misamis Oriental</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center text-sm">
+                                    <h5><i class="bi bi-people-fill text-color4"></i></h5>
+                                </td>
+                                <td class="align-middle">
+                                    <!-- JAMES dynamic: # of donations and volunteers -->
+                                    <span class="ps text-color1" style="font-weight: 600;">850 donated • 150 volunteered</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center text-sm">
+                                    <h5><i class="bi bi-info-circle-fill text-color4"></i></h5>
+                                </td>
+                                <td class="align-middle">
+                                    <!-- JAMES dynamic: event about -->
+                                    <span class="ps text-color1" style="font-weight: 600;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt augue at lacus ultrices consequat. In non nunc sit amet nisi venenatis faucibus eget sed nibh.</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center text-sm">
+                                    <h5><i class="bi bi-box2-heart-fill text-color4"></i></h5>
+                                </td>
+                                <td class="align-middle">
+                                    <p class="ps text-color1 mb-0" style="font-weight: 600;">What you can donate:</p>
+                                    <!-- JAMES dynamic: what food you can donate -->
+                                    <ul>
+                                        <li class="ps text-color1">Whole fruits and vegetable</li>
+                                        <li class="ps text-color1">Breads and pastries without filling</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="smodal-footer">
+                <div class="d-flex">
+                    <button type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#donation-modal" data-bs-dismiss="modal" data-bs-toggle="modal">DONATE</button>
+                    <button type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#volunteer-modal" data-bs-dismiss="modal" data-bs-toggle="modal">VOLUNTEER</button>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
+</div>
 
 <!-- Donation form -->
 <div id="donation-modal" class="modal fade" tabindex="-1">
@@ -111,61 +169,61 @@
 <div id="volunteer-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" style="font-weight: bolder;">Volunteer for this event</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <p style="font-weight: bold;">CONTACT INFORMATION</p>
-            <div class="row">
-                <div class="col">
-                    <p style="font-weight: bold">First name</p>
-                    <input type="text" id="input_first_name" placeholder="First name">
-                </div>
-                <div class="col">
-                    <p style="font-weight: bold">Last name</p>
-                    <input type="text" id="input_last_name" placeholder="Last name">
-                </div>
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-weight: bolder;">Volunteer for this event</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="row">
-                <div class="col-2">
-                    <p style="font-weight: bold;">Title</p>
-                    <select id="select">
-                        <option value="">Mr.</option>
-                        <option value="">Mrs.</option>
-                        <option value="">Ms.</option>
-                    </select>                        
+            <div class="modal-body">
+                <p style="font-weight: bold;">CONTACT INFORMATION</p>
+                <div class="row">
+                    <div class="col">
+                        <p style="font-weight: bold">First name</p>
+                        <input type="text" id="input_first_name" placeholder="First name">
+                    </div>
+                    <div class="col">
+                        <p style="font-weight: bold">Last name</p>
+                        <input type="text" id="input_last_name" placeholder="Last name">
+                    </div>
                 </div>
-                <div class="col">
-                    <p style="font-weight: bold;">Occupation</p>
-                    <select id="select">
-                        <option value="">Choose</option>
-                        <option value="">Full-time employee</option>
-                        <option value="">Part-time employee</option>
-                        <option value="">Student</option>
-                        <option value="">Retired</option>
-                        <option value="">Unemployed</option>
-                    </select>    
+                <div class="row">
+                    <div class="col-2">
+                        <p style="font-weight: bold;">Title</p>
+                        <select id="select">
+                            <option value="">Mr.</option>
+                            <option value="">Mrs.</option>
+                            <option value="">Ms.</option>
+                        </select>                        
+                    </div>
+                    <div class="col">
+                        <p style="font-weight: bold;">Occupation</p>
+                        <select id="select">
+                            <option value="">Choose</option>
+                            <option value="">Full-time employee</option>
+                            <option value="">Part-time employee</option>
+                            <option value="">Student</option>
+                            <option value="">Retired</option>
+                            <option value="">Unemployed</option>
+                        </select>    
+                    </div>
+                    <div class="col">
+                        <p style="font-weight: bold;">Date of birth</p>
+                        <input type="date">
+                    </div>
                 </div>
-                <div class="col">
-                    <p style="font-weight: bold;">Date of birth</p>
-                    <input type="date">
+                <div class="row">
+                    <div class="col">
+                        <p style="font-weight: bold;">Contact number</p>
+                        <input type="tel" placeholder="Contact number">
+                    </div>
+                    <div class="col">
+                        <p style="font-weight: bold;">Email address</p>
+                        <input type="email" placeholder="Email address">
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <p style="font-weight: bold;">Contact number</p>
-                    <input type="tel" placeholder="Contact number">
+                <div>
+                    <p style="font-weight: bold;">Home address</p>
+                    <textarea rows="3" placeholder="Home address"></textarea>
                 </div>
-                <div class="col">
-                    <p style="font-weight: bold;">Email address</p>
-                    <input type="email" placeholder="Email address">
-                </div>
-            </div>
-            <div>
-                <p style="font-weight: bold;">Home address</p>
-                <textarea rows="3" placeholder="Home address"></textarea>
-            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btns bg-color3 text-color2">SUBMIT</button>
