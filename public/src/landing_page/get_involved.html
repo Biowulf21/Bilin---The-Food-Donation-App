@@ -54,6 +54,10 @@ if (navigator.geolocation) {
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZm4A62u1UahYWE9WomHs9yzQG8N-QrfY&callback=myMap"></script>
 
 
+    <button data-bs-target="#event-modal" data-bs-toggle="modal">Event</button>
+    <button data-bs-target="#donation-modal" data-bs-toggle="modal">Donate1</button>
+    <button data-bs-target="#donation-modal2" data-bs-toggle="modal">Donate2</button>
+    <button data-bs-target="#volunteer-modal" data-bs-toggle="modal">Volunteer</button>
         
     <!-- Pinned Event -->
     <section class="p-5 bg-color2">
@@ -92,113 +96,297 @@ if (navigator.geolocation) {
                   </li>
             </ul>
 
-            <!-- Donation form -->
-<div id="donation-modal" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" style="font-weight: bolder;">Donate food for this event</h5>
-            <input id="donation-hidden" type="hidden">
-            <button id="donation-close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div>
-                <p style="font-weight: bold;">WHEN WOULD YOU LIKE TO DELIVER YOUR DONATION?</p>
-                <div class="row">
-                    <div class="col">
-                        <p style="font-weight: bold;">Date</p>
-                        <input id="donation-date" type="date">
+<!-- Event details --> 
+<div id="event-modal" class="modal fade">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+            <div class="position-relative">
+                <div class="float-left">
+                    <div class="fill" style="max-height: 230px;">
+                        <!-- JAMES dynamic: event photo -->
+                        <img src="https://via.placeholder.com/820x312" style="display: block; margin-left: auto; margin-right: auto;">
                     </div>
-                    <div class="col">
-                        <p style="font-weight: bold;">Time</p>
-                        <input id="donation-time"  type="time">
+                    <div class="position-absolute cursor-pointer" style="top: 0px; right: 0px">
+                        <button type="button" class="m-4 btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
                     </div>
                 </div>
             </div>
-            <div>
-                <p style="font-weight: bold;">FOOD DONATION DETAILS</p>
+            <div class="m-3">
+                <!-- JAMES dynamic: event title -->
+                <h4 class="ps text-color1" style="font-weight: bolder;">Event title</h4>
+                <!-- JAMES dynamic: org name -->
+                <p class="ps text-color5 mb-0">Organized by <a href="../../src/profile_page.html" class="ps text-color4" style="font-weight: 600;">Organization name</a></p>
+            </div>
+            <div class="modal-body pt-0" style="overflow-y: auto; max-height: 350px;">
                 <div>
-                    <p style="font-weight: bold;">Food to donate:</p>
-                    <textarea id="donation-description" rows="3"  placeholder="Add description"></textarea>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <p style="font-weight: bold;">Number of people donation will serve</p>
-                    <input id="donation-serve" type="number" class="col-2" placeholder="0">
-                </div>
-                <div class="d-flex justify-content-between">
-                    <p style="font-weight: bold;">Food is individually portioned and packaged</p>
-                    <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Yes</label>
-                    <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">No</label>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <p style="font-weight: bold;">Food Expiry Date</p>
-                        <input id="expiry" type="date">
+                    <div class="table-responsive p-0">
+                        <table class="table table-borderless align-items-center mb-0">
+                            <tr>
+                                <td class="text-center text-sm">
+                                    <h5><i class="bi bi-calendar3 text-color4"></i></h5>
+                                </td>
+                                <td class="align-middle">
+                                    <!-- JAMES dynamic: event date, time, duration -->
+                                    <span class="ps text-color1" style="font-weight: 600;">March 21, 2022 from 3:00 PM until 4:30PM</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center text-sm">
+                                    <h5><i class="bi bi-geo-alt-fill text-color4"></i></h5>
+                                </td>
+                                <td class="align-middle pb-0 ">
+                                    <!-- JAMES dynamic: location -->
+                                    <span class="ps text-color1" style="font-weight: 600;">Xavier University - Ateneo de Cagayan</span>
+                                    <!-- JAMES dynamic: event address -->
+                                    <p class="ps mb-0 text-color6">73 Corrales Ave, Cagayan de Oro, 9000 Misamis Oriental</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center text-sm">
+                                    <h5><i class="bi bi-people-fill text-color4"></i></h5>
+                                </td>
+                                <td class="align-middle">
+                                    <!-- JAMES dynamic: # of donations and volunteers -->
+                                    <span class="ps text-color1" style="font-weight: 600;">850 donated • 150 volunteered</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center text-sm">
+                                    <h5><i class="bi bi-info-circle-fill text-color4"></i></h5>
+                                </td>
+                                <td class="align-middle">
+                                    <!-- JAMES dynamic: event about -->
+                                    <span class="ps text-color1" style="font-weight: 600;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt augue at lacus ultrices consequat. In non nunc sit amet nisi venenatis faucibus eget sed nibh.</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center text-sm">
+                                    <h5><i class="bi bi-box2-heart-fill text-color4"></i></h5>
+                                </td>
+                                <td class="align-middle">
+                                    <p class="ps text-color1 mb-0" style="font-weight: 600;">What you can donate:</p>
+                                    <!-- JAMES dynamic: what food you can donate -->
+                                    <ul>
+                                        <li class="ps text-color1">Whole fruits and vegetable</li>
+                                        <li class="ps text-color1">Breads and pastries without filling</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    <div>
-                        <p style="font-weight: bold;">Food Freshness</p>
-                        <input type="range" id="range" min="0" max="5">
-                    </div>
-                </div>
-                <div>
-                    <p style="font-weight: bold;">REASON FOR DONATION</p>
-                    <div class="row d-flex justify-content-between">
-                        <div class="col">
-                            <label><input id="near-expiry" type="checkbox" value="1">Close to expiration</label>
-                            <label><input id="rejected" type="checkbox" value="2">Rejected by Customer</label>
-                            <label><input id="promotion" type="checkbox" value="3">Promotion/Marketing</label>
-                        </div>
-                        <div class="col">
-                            <label><input id="excess-inventory" type="checkbox" value="4">Excess Inventory</label>
-                            <label><input id="labelling-error" type="checkbox" value="5">Labeling Error/Change</label>
-                            <label><input id="damaged" type="checkbox" value="6">Damaged</label>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <p style="font-weight: bold;">UPLOAD PHOTOS</p>
-                    <input type="file" class="form-control" id="inputGroupFile01">
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button id="donation-btn" type="button" class="btns bg-color3 text-color2">SUBMIT</button>
-            <script type="module" src="donor.js">
-            </script>
-        </div>
+            <div class="smodal-footer">
+                <div class="d-flex">
+                    <button type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#donation-modal" data-bs-dismiss="modal" data-bs-toggle="modal">DONATE</button>
+                    <button type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#volunteer-modal" data-bs-dismiss="modal" data-bs-toggle="modal">VOLUNTEER</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+
+
+<!-- Donation form -->
+<div id="donation-modal" class="modal fade">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-weight: bolder;">Donate food for this event</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+            </div>
+            <div class="modal-body" style="overflow-y: auto; max-height: 600px;">
+                <p class="text-start text-uppercase mb-2" style="font-weight: 500;">Deliver your food donation</p>
+                <div class="row mb-2">
+                    <div class="col">
+                        <p class="mb-1">Full name</p>
+                        <input id="donate_full-name" type="text" class="rounded form-control" placeholder="Full name">
+                    </div>
+                    <div class="col">
+                        <p class="mb-1">Contact number</p>
+                        <input id="donate_contact" type="text" class="rounded form-control" placeholder="09XX XXX XXXX">
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="mb-1">When would you like to deliver your food donation?</p>
+                    <div class="col">
+                        <input id="donate_deliver-date" class="form-control" type="date">
+                    </div>
+                    <div class="col">
+                        <input id="donate_deliver-time" class="form-control" type="time">
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="text-start text-uppercase mt-4 mb-2" style="font-weight: 500;">Food donation details</p>
+                    <div class="col">
+                        <p class="mb-1">Food to donate:</p>
+                        <textarea id="donate_description" rows="3" class="form-control"  placeholder="Please list the food items you will donate"></textarea>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-5">
+                        <p class="mb-1 mt-2">Number of people donation will serve:</p>
+                        <input id="donate_serve" type="number" class="form-control" placeholder="0">
+                    </div>
+                    <div class="col">
+                        <p class="mb-1 mt-2">Food is individually portioned or packaged?</p>
+                        <label><input type="radio" name="optionsRadios" id="donate_radio1" value="option1"> Yes</label>
+                        <label class="mx-3"><input type="radio" name="optionsRadios" id="donate_radio2" value="option2"> No</label>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <p class="mb-1">Expiry date</p>
+                        <textarea id="donate_expiry" rows="3" class="form-control"  placeholder="Please enter the expiration dates of the food items"></textarea>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <p class="mb-1">Food freshness</p>
+                        <textarea id="donate_freshness" rows="3" class="form-control"  placeholder="Please describe the food freshness"></textarea>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <p class="mb-1">Reason/s for donating</p>
+                    <div class="col">
+                        <label><input id="donate_reason1" type="checkbox" value="1"> Close to expiration</label>
+                        <label><input id="donate_reason2" type="checkbox" value="2"> Rejected by Customer</label>
+                        <label><input id="donate_reason3" type="checkbox" value="3"> Promotion/Marketing</label>
+                    </div>
+                    <div class="col">
+                        <label><input id="donate_reason4" type="checkbox" value="4"> Excess Inventory</label>
+                        <label><input id="donate_reason5" type="checkbox" value="5"> Labeling Error/Change</label>
+                        <label><input id="donate_reason6" type="checkbox" value="6"> Damaged</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="text-start text-uppercase mt-4 mb-2" style="font-weight: 500;">Upload photos</p>
+                    <div class="col">
+                        <input type="file" class="form-control" id="donate_upload">
+                    </div>
+                </div>
+            </div>            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#event-modal">Cancel</button>
+                <button id="donate_submit" type="button" class="btn bg-color3 text-color2">Submit Form</button>
+                <script type="module" src="donor.js"></script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Volunteer form -->
+<div id="volunteer-modal" class="modal fade">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-weight: bolder;">Volunteer for this event</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+            </div>
+            <div class="modal-body" style="overflow-y: auto; max-height: 600px;">
+                <p class="text-start text-uppercase mb-2" style="font-weight: 500;">Contact information</p>
+                <div class="row mb-2">
+                    <div class="col">
+                        <p class="mb-1">Full name</p>
+                        <input id="volunteer_name" type="text" class="rounded form-control" placeholder="Full name">
+                    </div>
+                    <div class="col">
+                        <p class="mb-1">Contact number</p>
+                        <input id="volunteer_contact" type="text" class="rounded form-control" placeholder="09XX XXX XXXX">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <p class="mb-2">Title</p>
+                        <select id="volunteer_title" class="form-control">
+                            <option value="">Mr.</option>
+                            <option value="">Mrs.</option>
+                            <option value="">Ms.</option>
+                        </select>                        
+                    </div>
+                    <div class="col">
+                        <p class="mb-2">Occupation</p>
+                        <select id="volunteer_occupation" class="form-control">
+                            <option>Choose</option>
+                            <option value="1">Full-time employee</option>
+                            <option value="2">Part-time employee</option>
+                            <option value="3">Student</option>
+                            <option value="4">Retired</option>
+                            <option value="5">Unemployed</option>
+                        </select>    
+                    </div>
+                    <div class="col">
+                        <p class="mb-2">Date of birth</p>
+                        <input id="volunteer_bday" type="date" class="form-control">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <p class="mb-2">Email address</p>
+                        <input id="volunteer_email" type="email" class="form-control" placeholder="email@example.con">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <p class="mb-1">Home address</p>
+                        <textarea id="volunteer_home" rows="3" class="form-control"  placeholder="Please enter your complete home address"></textarea>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col">
+                        <p class="text-start text-uppercase mb-2" style="font-weight: 500;">Reason for volunteering</p>
+                        <textarea id="volunteer_reason" rows="3" class="form-control"  placeholder="What is your reason for volunteering?"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="text-start text-uppercase mt-4 mb-2" style="font-weight: 500;">Upload parent's consent / waiver form</p>
+                    <div class="col">
+                        <input id="volunteer_upload" type="file" class="form-control">
+                    </div>
+                </div>
+            </div>            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#event-modal">Cancel</button>
+                <button id="volunteer_submit" type="button" class="btn bg-color3 text-color2">Submit Form</button>
+                <script type="module" src="volunteer.js"></script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
             
-            <!-- JAMES insert tab content/cards here -->
-            <div class="tab-content py-5" id="pills-tabContent">
-                <div   class="tab-pane fade show active" id="pills-events" role="tabpanel" aria-labelledby="pills-events-tab">
-                    <div id="events-tab" class="container text-center">
-                        <p>Events will be added on May 23, 2022.</p>
-                    </div>
+        <!-- JAMES insert tab content/cards here -->
+        <div class="tab-content py-5" id="pills-tabContent">
+            <div   class="tab-pane fade show active" id="pills-events" role="tabpanel" aria-labelledby="pills-events-tab">
+                <div id="events-tab" class="container text-center">
+                    <p>Events will be added on May 23, 2022.</p>
                 </div>
-                <div class="tab-pane fade" id="pills-orgs" role="tabpanel" aria-labelledby="pills-orgs-tab">
-                    <div class="container text-center">
-                        <p>Organizations will be added on May 23, 2022.
-                        </p>
-                    </div>
+            </div>
+            <div class="tab-pane fade" id="pills-orgs" role="tabpanel" aria-labelledby="pills-orgs-tab">
+                <div class="container text-center">
+                    <p>Organizations will be added on May 23, 2022.
+                    </p>
                 </div>
-                <div class="tab-pane fade" id="pills-cps" role="tabpanel" aria-labelledby="pills-cps-tab">
-                    <div class="container text-center">
-                        <p>There are no community pantries added yet.
-                        </p>
-                    </div>
+            </div>
+            <div class="tab-pane fade" id="pills-cps" role="tabpanel" aria-labelledby="pills-cps-tab">
+                <div class="container text-center">
+                    <p>There are no community pantries added yet.
+                    </p>
                 </div>
-                <div class="tab-pane fade" id="pills-bookmarked" role="tabpanel" aria-labelledby="pills-bookmarked-tab">
-                    <div class="container text-center">
-                        <p>Looks like you haven't bookmarked anything yet.
-                        </p>
-                    </div>
+            </div>
+            <div class="tab-pane fade" id="pills-bookmarked" role="tabpanel" aria-labelledby="pills-bookmarked-tab">
+                <div class="container text-center">
+                    <p>Looks like you haven't bookmarked anything yet.
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <script id="replace_with_footer" src="/scripts/reusable-components.js"></script>

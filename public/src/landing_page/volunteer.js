@@ -51,32 +51,25 @@ const eventsRef  = collection(db, 'Events');
 
 
                     ]
-                    const fname = document.getElementById('donate_full-name');
-                    const contact = document.getElementById('donate_contact');
-                    const date = document.getElementById('donate_deliver-date')
-                    const time = document.getElementById('donate_deliver-time');
-                    const description = document.getElementById('donate_description');
-                    const serve = document.getElementById('donate_serve');
-                    // const packagedYes = document.getElementById('donate_radio1');
-                    // const packagedNo = document.getElementById('donate_radio2');
-                    const expiryDate = document.getElementById('donate_expiry');
-                    const freshness = document.getElementById('donate_freshness');
-                    const nearExpiry = document.getElementById('donate_reason1');
-                    const rejected = document.getElementById('donate_reason2');
-                    const promotion = document.getElementById('donate_reason3');
-                    const excess = document.getElementById('donate_reason4');
-                    const error = document.getElementById('donate_reason5');
-                    const damaged = document.getElementById('donate_reason6');
-                    const upload = document.getElementById('donate_upload');
-                    const submitBtn = document.getElementById('donate_submit');
+                    const fname = document.getElementById('volunteer_full-name');
+                    const contact = document.getElementById('volunteer_contact');
+                    // const date = document.getElementById('volunteer_title')
+                    // const time = document.getElementById('volunteer_occupation');
+                    const bday = document.getElementById('volunteer_bday');
+                    const email = document.getElementById('volunteer_email');
+                    const home = document.getElementById('volunteer_home');
+                    const reason = document.getElementById('volunteer_reason');
+                    const upload = document.getElementById('volunteer_upload');
 
-                    console.log(hidden.value);
+                
+
                     console.log(fname.value);
                     console.log(contact.value);
-                    console.log(date.value);
-                    console.log(time.value);
-                    console.log(description.value);
-                    console.log(serve.value);
+                    console.log(bday.value);
+                    console.log(email.value);
+                    console.log(home.value);
+                    console.log(reason.value);
+                    console.log(upload.value);
                     // console.log(packagedYes.value);
                     // console.log(packagedNo.value);
                     console.log(expiryDate.value);

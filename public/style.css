@@ -182,39 +182,39 @@ color: #ffffff;
 
 /* colors */
 .bg-color1 {
-    background-color: #F8F7F1;
+    background-color: #F8F7F1 !important;
 }
 
 .bg-color2 {
-    background-color: #FDFDFD;
+    background-color: #FDFDFD !important;
 }
 
 .bg-color3 {
-    background-color: #87B547;
+    background-color: #87B547 !important;
 }
 
 .text-color1 {
-    color: #0C2E3D;
+    color: #0C2E3D !important;
 }
 
 .text-color2 {
-    color: #FDFDFD;
+    color: #FDFDFD !important;
 }
 
 .text-color3 {
-    color: #F77F00;
+    color: #F77F00 !important;
 }
 
 .text-color4 {
-    color: #87B547;
+    color: #87B547 !important;
 }
 
 .text-color5 {
-    color: #C4C4C4;
+    color: #C4C4C4 !important;
 }
 
 .text-color6 {
-    color: #696969;
+    color: #696969 !important;
 }
 
 

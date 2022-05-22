@@ -1,6 +1,6 @@
 <!-- Event details --> 
 <div id="event-modal" class="modal fade">
-    <div  class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div id="event-modal" class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
             <div class="position-relative">
                 <div class="float-left">
@@ -19,7 +19,7 @@
                 <!-- JAMES dynamic: org name -->
                 <p class="ps text-color5 mb-0">Organized by <a href="../../src/profile_page.html" class="ps text-color4" style="font-weight: 600;">Organization name</a></p>
             </div>
-            <div class="modal-body" style="overflow-y: auto; max-height: 350px;">
+            <div class="modal-body pt-0" style="overflow-y: auto; max-height: 350px;">
                 <div>
                     <div class="table-responsive p-0">
                         <table class="table table-borderless align-items-center mb-0">
@@ -123,8 +123,8 @@
                 </div>
                 <div class="d-flex justify-content-between">
                     <p style="font-weight: bold;">Food is individually portioned and packaged</p>
-                    <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Yes</label>
-                    <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">No</label>
+                    <label><input type="radio" name="optionsRadios" id="donate_radio1" value="option1">Yes</label>
+                    <label><input type="radio" name="optionsRadios" id="donate_radio2" value="option2">No</label>
                 </div>
                 <div class="d-flex justify-content-between">
                     <div>
@@ -147,18 +147,18 @@
                         <div class="col">
                             <label><input type="checkbox" value="">Excess Inventory</label>
                             <label><input type="checkbox" value="">Labeling Error/Change</label>
-                            <label><input type="checkbox" value="">Damaged</label>
+                            <label><input type="checkbox" value="">donate_reason6</label>
                         </div>
                     </div>
                 </div>
                 <div>
                     <p style="font-weight: bold;">UPLOAD PHOTOS</p>
-                    <input type="file" class="form-control" id="inputGroupFile01">
+                    <input type="file" class="form-control" id="donate_upload">
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-            <button id="donation-btn" type="button" class="btns bg-color3 text-color2">SUBMIT</button>
+            <button id="donate_submit" type="button" class="btns bg-color3 text-color2">SUBMIT</button>
 
         </div>
         </div>
@@ -178,7 +178,7 @@
                 <div class="row">
                     <div class="col">
                         <p style="font-weight: bold">First name</p>
-                        <input type="text" id="input_first_name" placeholder="First name">
+                        <input type="text" id="volunteer_name" placeholder="First name">
                     </div>
                     <div class="col">
                         <p style="font-weight: bold">Last name</p>
