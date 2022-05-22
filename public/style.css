@@ -170,6 +170,13 @@ color: #ffffff;
     color: #5C5B5B !important;
     font-weight: 500 !important;
 }
+
+.smodal-footer {
+    padding: 0.75rem;
+    border-top: 1px solid #dee2e6;
+    border-bottom-right-radius: calc(0.3rem - 1px);
+    border-bottom-left-radius: calc(0.3rem - 1px);
+}
   
 
 
@@ -201,6 +208,16 @@ color: #ffffff;
 .text-color4 {
     color: #87B547;
 }
+
+.text-color5 {
+    color: #C4C4C4;
+}
+
+.text-color6 {
+    color: #696969;
+}
+
+
 
 
 
