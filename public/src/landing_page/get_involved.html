@@ -19,6 +19,7 @@
     <script src="../../scripts/events.js"></script>
     <script type="module" src="./auth.js"></script>
     <!-- <script type="module" src="../../src/admin/pages/admin.js" ></script> -->
+   
 </head>
 
 <body class="bg-color2">
@@ -64,6 +65,27 @@ if (navigator.geolocation) {
             </div>
         </div>
     </section>
+
+    <div id="event-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Event name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <form>
+                <button type="button" class="btns bg-color3 text-color2" data-bs-dismiss="modal"  data-bs-target="#donation-modal" data-bs-toggle="modal">DONATE</button>
+                <button type="button" class="btns bg-color3 text-color2" data-bs-dismiss="modal"  data-bs-target="#volunteer-modal" data-bs-toggle="modal" onclick="">VOLUNTEER</button>
+                <input id="event_details_hidden_input" type="hidden">
+            </form>
+            </div>
+            </div>
+        </div>
+        </div>
 
     <!-- Discover -->
     <section class="mx-5 mb-5 bg-color2">
@@ -127,6 +149,19 @@ if (navigator.geolocation) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+        <script type="text/javascript">
+
+            const hidden = document.getElementById
+            $(document).ready ( function () {
+    $(document).on ("click", "#show-event-btn", function () {
+        console.log($('#hidden-input').val());
+    });
+});
+            // $('#show-event-btn').on('click', function(){
+            //     console.log($('#hidden_input').val())
+            // })
+    
+        </script>
 </body>
 
 </html>

@@ -32,6 +32,7 @@
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
+  <script type="module" src="./admin.js"></script>
 </head>
 
 <body class="g-sidenav-show" style="background-color: #F8F7F1;">
@@ -210,7 +211,7 @@
         <div class="col-12">
           <div class="mb-3 d-flex justify-content-between">
             <h6 class="font-weight-bolder mb-0" style="margin-left: 10px;">List of Events</h6>
-            <button class="rounded border-0 text-sm font-weight-bold py-1 px-2" style="background-color: #F77F00; color: #FDFDFD;">+ Add new event</button>
+            <button id="add-event-btn" class="rounded border-0 text-sm font-weight-bold py-1 px-2" style="background-color: #F77F00; color: #FDFDFD;">+ Add new event</button>
           </div>
           <div class="card mb-4">
             <div class="card-header pb-0 d-flex justify-content-between">
@@ -613,7 +614,7 @@
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/chartjs.min.js"></script>
-  <script>
+  <!-- <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
     new Chart(ctx, {
@@ -782,7 +783,7 @@
         },
       },
     });
-  </script>
+  </script> -->
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

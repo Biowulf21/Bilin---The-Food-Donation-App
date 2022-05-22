@@ -10,8 +10,21 @@
             <p>Modal body text goes here.</p>
         </div>
         <div class="modal-footer">
+            <form>
             <button type="button" class="btns bg-color3 text-color2" data-bs-dismiss="modal"  data-bs-target="#donation-modal" data-bs-toggle="modal">DONATE</button>
-            <button type="button" class="btns bg-color3 text-color2" data-bs-dismiss="modal"  data-bs-target="#volunteer-modal" data-bs-toggle="modal">VOLUNTEER</button>
+            <button type="button" class="btns bg-color3 text-color2" data-bs-dismiss="modal"  data-bs-target="#volunteer-modal" data-bs-toggle="modal" onclick="getIDValue()">VOLUNTEER</button>
+            <input id="event_details_hidden_input" type="hidden">
+            <script type="text/javascript">
+
+                
+                function getIDValue(){
+                    const val = $('#event_details_hidden_input').value;
+                    console.log();
+                };
+                getIDValue();
+
+            </script>
+        </form>
         </div>
         </div>
     </div>

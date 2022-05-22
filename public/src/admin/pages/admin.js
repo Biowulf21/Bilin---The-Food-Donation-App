@@ -15,7 +15,9 @@ initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 const eventsRef  = collection(db, 'Events');
-// connectFirestoreEmulator(db, 'localhost', 8080);
+connectFirestoreEmulator(db, 'localhost', 8080);
+
+
 
 const createEvent = async (user) => {
 
@@ -40,7 +42,7 @@ const createEvent = async (user) => {
             imageURL: ''
             }
 
-            console.log(eventInfo);
+            // console.log(eventInfo);
             // create an event document
             const docRef = await addDoc(eventsRef, {
                 ...eventInfo
@@ -78,6 +80,9 @@ const createEvent = async (user) => {
     }
     });
 }
+
+const createEventBtn = document.getElementById('add-event-btn');
+createEventBtn.addEventListener('click', createEvent);
 
 // Login
 async function loginWithEmailPassword(email, password) {
