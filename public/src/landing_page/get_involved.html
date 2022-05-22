@@ -54,7 +54,6 @@ if (navigator.geolocation) {
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZm4A62u1UahYWE9WomHs9yzQG8N-QrfY&callback=myMap"></script>
 
 
-    <button data-bs-target="#event-modal" data-bs-toggle="modal">VIEW DETAILS</button>
         
     <!-- Pinned Event -->
     <section class="p-5 bg-color2">
@@ -69,26 +68,7 @@ if (navigator.geolocation) {
         </div>
     </section>
 
-    <div id="event-modal" class="modal fade" tabindex="-1">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Event name</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-                <form>
-                <button type="button" class="btns bg-color3 text-color2" data-bs-dismiss="modal"  data-bs-target="#donation-modal" data-bs-toggle="modal">DONATE</button>
-                <button type="button" class="btns bg-color3 text-color2" data-bs-dismiss="modal"  data-bs-target="#volunteer-modal" data-bs-toggle="modal" onclick="">VOLUNTEER</button>
-                <input id="event_details_hidden_input" type="hidden">
-            </form>
-            </div>
-            </div>
-        </div>
-        </div>
+    
 
     <!-- Discover -->
     <section class="mx-5 mb-5 bg-color2">
@@ -127,11 +107,11 @@ if (navigator.geolocation) {
                 <div class="row">
                     <div class="col">
                         <p style="font-weight: bold;">Date</p>
-                        <input type="date">
+                        <input id="donation-date" type="date">
                     </div>
                     <div class="col">
                         <p style="font-weight: bold;">Time</p>
-                        <input type="time">
+                        <input id="donation-time"  type="time">
                     </div>
                 </div>
             </div>
@@ -139,11 +119,11 @@ if (navigator.geolocation) {
                 <p style="font-weight: bold;">FOOD DONATION DETAILS</p>
                 <div>
                     <p style="font-weight: bold;">Food to donate:</p>
-                    <textarea rows="3"  placeholder="Add description"></textarea>
+                    <textarea id="donation-description" rows="3"  placeholder="Add description"></textarea>
                 </div>
                 <div class="d-flex justify-content-between">
                     <p style="font-weight: bold;">Number of people donation will serve</p>
-                    <input type="number" class="col-2" placeholder="0">
+                    <input id="donation-serve" type="number" class="col-2" placeholder="0">
                 </div>
                 <div class="d-flex justify-content-between">
                     <p style="font-weight: bold;">Food is individually portioned and packaged</p>
@@ -153,7 +133,7 @@ if (navigator.geolocation) {
                 <div class="d-flex justify-content-between">
                     <div>
                         <p style="font-weight: bold;">Food Expiry Date</p>
-                        <input type="date">
+                        <input id="expiry" type="date">
                     </div>
                     <div>
                         <p style="font-weight: bold;">Food Freshness</p>
@@ -164,14 +144,14 @@ if (navigator.geolocation) {
                     <p style="font-weight: bold;">REASON FOR DONATION</p>
                     <div class="row d-flex justify-content-between">
                         <div class="col">
-                            <label><input type="checkbox" value="">Close to expiration</label>
-                            <label><input type="checkbox" value="">Rejected by Customer</label>
-                            <label><input type="checkbox" value="">Promotion/Marketing</label>
+                            <label><input id="near-expiry" type="checkbox" value="1">Close to expiration</label>
+                            <label><input id="rejected" type="checkbox" value="2">Rejected by Customer</label>
+                            <label><input id="promotion" type="checkbox" value="3">Promotion/Marketing</label>
                         </div>
                         <div class="col">
-                            <label><input type="checkbox" value="">Excess Inventory</label>
-                            <label><input type="checkbox" value="">Labeling Error/Change</label>
-                            <label><input type="checkbox" value="">Damaged</label>
+                            <label><input id="excess-inventory" type="checkbox" value="4">Excess Inventory</label>
+                            <label><input id="labelling-error" type="checkbox" value="5">Labeling Error/Change</label>
+                            <label><input id="damaged" type="checkbox" value="6">Damaged</label>
                         </div>
                     </div>
                 </div>
@@ -183,21 +163,7 @@ if (navigator.geolocation) {
         </div>
         <div class="modal-footer">
             <button id="donation-btn" type="button" class="btns bg-color3 text-color2">SUBMIT</button>
-            <script type="text/javascript">
-
-                const submitBtn = document.getElementById('donation-btn');
-                submitBtn.addEventListener('click', test);
-                const hidden = document.getElementById("donation-hidden");
-                
-                function test(){
-                    console.log(hidden);
-                }
-
-    // $('#donation-modal').on('shown', function(){
-    //     $('#donation-btn').on('click', function(){
-    //         console.log('oten dako');
-    //     })
-    // })
+            <script type="module" src="donor.js">
             </script>
         </div>
         </div>
