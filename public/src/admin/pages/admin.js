@@ -21,58 +21,11 @@ connectFirestoreEmulator(db, 'localhost', 8080);
 
 const createEvent = async (user) => {
 
+    
     //TODO: check if the user logged in is an organization account and if it's not, throw an error
     onAuthStateChanged(auth, async (user)=> {
         try{
-        if (!user){
-            console.log('You are not Logged in');
-            throw new Error('You are not logged in');
-        } else {
-            // add current admin user's ID to event
-            const userID = auth.currentUser.uid;
-            const eventInfo = {
-                orgID: userID,
-                name: 'Bilin Launch2',
-                volunteerNumber: 0,
-                date: Timestamp.fromDate(new Date("December 10, 1815")),
-                lat: 41.40338,
-                long: 2.17403,
-                address1: 'Block 1 Lot 14',
-            address2: 'Southview Homes, Cagayan de Oro City',
-            imageURL: ''
-            }
-
-            // console.log(eventInfo);
-            // create an event document
-            const docRef = await addDoc(eventsRef, {
-                ...eventInfo
-            })
-            // create a reference to document above on the user/Events/ collection
-            const eventByUser = await addDoc(
-                collection(db, 'Users', userID, 'Events'), {
-                    ...eventInfo
-            });
-
-            console.log('created event in Events collection');
-
-            // add a volunteers subcollection for under Users/user/Events/event/volunteers
-            const eventVolunteers = await addDoc(
-                collection(db, 'Users', userID, 'Events', eventByUser.id, 'Volunteers' ), {
-                
-            });
-            console.log('volunteers collection created');
-            
-
-
-            const eventDonations = await addDoc(
-                collection(db, 'Users', userID, 'Events', eventByUser.id, 'Donations' ), {
-                
-            });
-
-            console.log('donations collection created');
-
-              
-        }
+            throw new Error('Only one event can be made at this time');
     } catch (err){
         alert(err.message);
         console.log('in create event')

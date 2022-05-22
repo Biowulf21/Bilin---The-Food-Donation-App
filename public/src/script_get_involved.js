@@ -75,6 +75,10 @@ async function displayAllEvents(db, eventsRef) {
             html_str += `</div>`;
             html_str += `</div>`;
 
+            var s = document.createElement('script');
+            s.type = "text/javascrip";
+            s.src = "./btn.js";
+            $("#show-event-btn").append(s);
 
             // console.log(snapshot.docs[ctr].data().name);
 
@@ -82,7 +86,7 @@ async function displayAllEvents(db, eventsRef) {
             // stop until the 4th entry (0,1,2,3)
             if (ctr == 3) break;
         }
-        document.getElementById('pills-tabContent').innerHTML = html_str;
+        document.getElementById('events-tab').innerHTML = html_str;
     })
 }
 displayAllEvents(db, eventsRef);

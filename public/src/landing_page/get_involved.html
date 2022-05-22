@@ -108,11 +108,104 @@ if (navigator.geolocation) {
                     <button class="nav-link pill-link rounded-pill mx-1" id="pills-bookmarked-tab" data-bs-toggle="pill" data-bs-target="#pills-bookmarked" type="button" role="tab" aria-controls="pills-bookmarked" aria-selected="false">Bookmarked</button>
                   </li>
             </ul>
+
+            <!-- Donation form -->
+<div id="donation-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" style="font-weight: bolder;">Donate food for this event</h5>
+            <input id="donation-hidden" type="hidden">
+            <button id="donation-close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div>
+                <p style="font-weight: bold;">WHEN WOULD YOU LIKE TO DELIVER YOUR DONATION?</p>
+                <div class="row">
+                    <div class="col">
+                        <p style="font-weight: bold;">Date</p>
+                        <input type="date">
+                    </div>
+                    <div class="col">
+                        <p style="font-weight: bold;">Time</p>
+                        <input type="time">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p style="font-weight: bold;">FOOD DONATION DETAILS</p>
+                <div>
+                    <p style="font-weight: bold;">Food to donate:</p>
+                    <textarea rows="3"  placeholder="Add description"></textarea>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p style="font-weight: bold;">Number of people donation will serve</p>
+                    <input type="number" class="col-2" placeholder="0">
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p style="font-weight: bold;">Food is individually portioned and packaged</p>
+                    <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Yes</label>
+                    <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">No</label>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <p style="font-weight: bold;">Food Expiry Date</p>
+                        <input type="date">
+                    </div>
+                    <div>
+                        <p style="font-weight: bold;">Food Freshness</p>
+                        <input type="range" id="range" min="0" max="5">
+                    </div>
+                </div>
+                <div>
+                    <p style="font-weight: bold;">REASON FOR DONATION</p>
+                    <div class="row d-flex justify-content-between">
+                        <div class="col">
+                            <label><input type="checkbox" value="">Close to expiration</label>
+                            <label><input type="checkbox" value="">Rejected by Customer</label>
+                            <label><input type="checkbox" value="">Promotion/Marketing</label>
+                        </div>
+                        <div class="col">
+                            <label><input type="checkbox" value="">Excess Inventory</label>
+                            <label><input type="checkbox" value="">Labeling Error/Change</label>
+                            <label><input type="checkbox" value="">Damaged</label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p style="font-weight: bold;">UPLOAD PHOTOS</p>
+                    <input type="file" class="form-control" id="inputGroupFile01">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="donation-btn" type="button" class="btns bg-color3 text-color2">SUBMIT</button>
+            <script type="text/javascript">
+
+                const submitBtn = document.getElementById('donation-btn');
+                submitBtn.addEventListener('click', test);
+                const hidden = document.getElementById("donation-hidden");
+                
+                function test(){
+                    console.log(hidden);
+                }
+
+    // $('#donation-modal').on('shown', function(){
+    //     $('#donation-btn').on('click', function(){
+    //         console.log('oten dako');
+    //     })
+    // })
+            </script>
+        </div>
+        </div>
+    </div>
+</div>
+
             
             <!-- JAMES insert tab content/cards here -->
             <div class="tab-content py-5" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-events" role="tabpanel" aria-labelledby="pills-events-tab">
-                    <div class="container text-center">
+                <div   class="tab-pane fade show active" id="pills-events" role="tabpanel" aria-labelledby="pills-events-tab">
+                    <div id="events-tab" class="container text-center">
                         <p>Events will be added on May 23, 2022.</p>
                     </div>
                 </div>
@@ -151,10 +244,12 @@ if (navigator.geolocation) {
         crossorigin="anonymous"></script>
         <script type="text/javascript">
 
-            const hidden = document.getElementById
             $(document).ready ( function () {
     $(document).on ("click", "#show-event-btn", function () {
-        console.log($('#hidden-input').val());
+        console.log('oten1');
+        $('#donation-hidden').val($('#hidden-input').val())
+        console.log($('#donation-hidden').val())
+        
     });
 });
             // $('#show-event-btn').on('click', function(){
