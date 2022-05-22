@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getFirestore, doc, getDoc, getDocs, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, getDocs, collection, onSnapshot, connectFirestoreEmulator } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 // import { getAuth } from "firebase/auth";
 
 
@@ -16,6 +16,8 @@ const firebaseApp = initializeApp({
 const db = getFirestore(firebaseApp);
 const eventsRef = collection(db, 'Events')
 
+connectFirestoreEmulator(db, 'localhost', 8080);
+
 let events = [];
 
 // will automatically scan for any added events and get its data
@@ -25,7 +27,7 @@ function getAllEvents(db, eventsRef) {
         snapshot.docs.forEach((doc) => {
             events.push({ ...doc.data(), id: doc.id });
         })
-        // console.log(events);
+        // return events
     })
 }
 getAllEvents(db, eventsRef);
@@ -63,11 +65,16 @@ async function displayAllEvents(db, eventsRef) {
 
             html_str += '<h6 class=\"card-subtitle mb-2 text-muted\">' + dateString + ', ' + timeString + ' </h6>';
             html_str += '<h5 class=\"card-title\">' + snapshot.docs[ctr].data().name + '</h5>';
+            //TODO: diri sir di ko kabalo pa hidden
+            html_str += '<input id=\"hidden-input"\ type=\"hidden"  data-bs-dismiss=\"modal"\  data-bs-target=\"#event-modal"\ data-bs-toggle=\"modal"\>' + snapshot.docs[ctr].id;
             html_str += '<p class=\"card-text\">' + snapshot.docs[ctr].data().address1 + '<br>' + snapshot.docs[ctr].data().address2 + '</p>';
             html_str += '<button id=\"show-event-btn"\ class=\"btns as bg-color3 text-color2 \ data-bs-dismiss=\"modal"\  data-bs-target=\"#event-modal"\ data-bs-toggle=\"modal"\>VIEW';
             html_str += 'DETAILS</button>';
             html_str += '</div>';
             html_str += '</div>';
+
+            console.log(snapshot.docs[ctr].data());
+
 
             // console.log(snapshot.docs[ctr].data().name);
 

@@ -1,6 +1,6 @@
 import { initializeApp  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, Timestamp, serverTimestamp, setDoc, doc } from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
+import { getFirestore, collection, addDoc, Timestamp, serverTimestamp, setDoc, doc, getDocs , connectFirestoreEmulator} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAtgFAs4hvlpMQStzVnD3tRJ9N8jLB98b0",
@@ -15,6 +15,7 @@ initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 const eventsRef  = collection(db, 'Events');
+// connectFirestoreEmulator(db, 'localhost', 8080);
 
 const createEvent = async (user) => {
 
@@ -38,39 +39,35 @@ const createEvent = async (user) => {
             address2: 'Southview Homes, Cagayan de Oro City',
             imageURL: ''
             }
+
+            console.log(eventInfo);
             // create an event document
             const docRef = await addDoc(eventsRef, {
                 ...eventInfo
             })
             // create a reference to document above on the user/Events/ collection
-            const eventByUser = await (
+            const eventByUser = await addDoc(
                 collection(db, 'Users', userID, 'Events'), {
                     ...eventInfo
-                //     eventID:eventInfo.id,
-                //     name:eventInfo.name,
-                //     volunteerNumber:eventInfo.volunteerNumber,
-                //     date:eventInfo.date,
-                //     lat:eventInfo.lat,
-                //     long:eventInfo.long,
-                //     address1:eventInfo.address1,
-                //     address2:eventInfo.address2,
-                //  imageURL:eventInfo.imageURL
             });
+
+            console.log('created event in Events collection');
 
             // add a volunteers subcollection for under Users/user/Events/event/volunteers
             const eventVolunteers = await addDoc(
-                collection(db, 'Users', userID, 'Events',  ), {
-                name: "test"
-                //     eventID:eventInfo.id,
-                //     name:eventInfo.name,
-                //     volunteerNumber:eventInfo.volunteerNumber,
-                //     date:eventInfo.date,
-                //     lat:eventInfo.lat,
-                //     long:eventInfo.long,
-                //     address1:eventInfo.address1,
-                //     address2:eventInfo.address2,
-                //  imageURL:eventInfo.imageURL
+                collection(db, 'Users', userID, 'Events', eventByUser.id, 'Volunteers' ), {
+                
             });
+            console.log('volunteers collection created');
+            
+
+
+            const eventDonations = await addDoc(
+                collection(db, 'Users', userID, 'Events', eventByUser.id, 'Donations' ), {
+                
+            });
+
+            console.log('donations collection created');
 
               
         }
@@ -115,6 +112,24 @@ async function signOutUser(){
         console.log(error.message);
         console.log('in signoutuser')
     }
+}
+
+async function getAllEvents(){
+    const uid = auth.currentUser.uid;
+    const query = query(collection(db, "Users", uid));
+    const querySnapshot = await getDocs(query);
+    querySnapshot.forEach(doc => {
+        console.log(doc.id);
+    });
+}
+
+async function getAllDonations(eventID){
+    const uid = auth.currentUser.uid;
+    const query = query(collection(db, "Users", uid, eventID));
+    const querySnapshot = await getDocs(query);
+    querySnapshot.forEach(doc => {
+        console.log(doc.id);
+    });
 }
 
     // loginWithEmailPassword('notail2111@gmail.com', 'testpass')

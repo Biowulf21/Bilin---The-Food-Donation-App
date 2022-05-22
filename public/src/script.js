@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getFirestore, doc, getDoc, getDocs, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, getDocs, collection, onSnapshot, connectFirestoreEmulator } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 // import { getAuth } from "firebase/auth";
 
 
@@ -15,6 +15,7 @@ const firebaseApp = initializeApp({
 
 const db = getFirestore(firebaseApp);
 const eventsRef = collection(db, 'Events')
+connectFirestoreEmulator(db, 'localhost', 8080);
 
 // will automatically scan for any added events and get its data
 function getAllEvents(db, eventsRef) {
