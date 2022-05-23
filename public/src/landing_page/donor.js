@@ -1,6 +1,6 @@
 import { initializeApp  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, Timestamp, serverTimestamp, setDoc, doc, getDocs , connectFirestoreEmulator} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
+import { getFirestore, collection, addDoc, Timestamp, serverTimestamp, setDoc, doc, getDocs , getDoc} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAtgFAs4hvlpMQStzVnD3tRJ9N8jLB98b0",
@@ -17,77 +17,46 @@ const db = getFirestore();
 const eventsRef  = collection(db, 'Events');
 
 
-
-
                 //items
-                const fname = document.getElementById('donate_full-name');
-                const contact = document.getElementById('donate_contact');
-                const date = document.getElementById('donate_deliver-date')
-                const time = document.getElementById('donate_deliver-time');
-                const description = document.getElementById('donate_description');
-                const serve = document.getElementById('donate_serve');
-                // const packagedYes = document.getElementById('donate_radio1');
-                // const packagedNo = document.getElementById('donate_radio2');
-                const expiryDate = document.getElementById('donate_expiry');
-                const freshness = document.getElementById('donate_freshness');
-                const nearExpiry = document.getElementById('donate_reason1');
-                const rejected = document.getElementById('donate_reason2');
-                const promotion = document.getElementById('donate_reason3');
-                const excess = document.getElementById('donate_reason4');
-                const error = document.getElementById('donate_reason5');
-                const damaged = document.getElementById('donate_reason6');
-                const upload = document.getElementById('donate_upload');
-                const submitBtn = document.getElementById('donate_submit');
-
-               
+                const time = document.getElementById('donation-time');
+                const description = document.getElementById('donation-description');
+                const submitBtn = document.getElementById('donation-btn');
+                const serve = document.getElementById('donation-serve');
+                // const packagedYes = document.getElementById('option1');
+                // const packagedNo = document.getElementById('option2');
+                const expiryDate = document.getElementById('expiry');
+                const nearExpiry = document.getElementById('near-expiry');
+                const rejected = document.getElementById('rejected');
+                const promotion = document.getElementById('promotion');
+                const excess = document.getElementById('excess-inventory');
+                const labelerror = document.getElementById('labelling-error');
+                const damaged = document.getElementById('damaged');
+               const date = document.getElementById('donation-date')
                // Event listeners
                 submitBtn.addEventListener('click', donate);
-                const hidden = document.getElementById("donation-hidden");
+                const docID = document.getElementById("donation-hidden");
                 
                async function donate(){
 
-                    data = [
+                    data = {
                         pickupDate: date.value,
+                        pickupTime: time.value,
+                        donationDesc:description.value,
+                        peopleServe: serve.value,
+                        expiry: expiryDate.value,
+                        isnearExpiry: nearExpiry.value,
+                        isrjected: rejected.value,
+                        ispromotion: promotion.value,
+                        isexcess: excess.value,
+                        iserror: labelerror.value,
+                        isdamaged: damaged.value
+                    }
+
+                    const orgID = getDoc(
+                        collection(db, "Events", docID)
+                    )
 
 
-                    ]
-                    const fname = document.getElementById('donate_full-name');
-                    const contact = document.getElementById('donate_contact');
-                    const date = document.getElementById('donate_deliver-date')
-                    const time = document.getElementById('donate_deliver-time');
-                    const description = document.getElementById('donate_description');
-                    const serve = document.getElementById('donate_serve');
-                    // const packagedYes = document.getElementById('donate_radio1');
-                    // const packagedNo = document.getElementById('donate_radio2');
-                    const expiryDate = document.getElementById('donate_expiry');
-                    const freshness = document.getElementById('donate_freshness');
-                    const nearExpiry = document.getElementById('donate_reason1');
-                    const rejected = document.getElementById('donate_reason2');
-                    const promotion = document.getElementById('donate_reason3');
-                    const excess = document.getElementById('donate_reason4');
-                    const error = document.getElementById('donate_reason5');
-                    const damaged = document.getElementById('donate_reason6');
-                    const upload = document.getElementById('donate_upload');
-                    const submitBtn = document.getElementById('donate_submit');
-
-                    console.log(hidden.value);
-                    console.log(fname.value);
-                    console.log(contact.value);
-                    console.log(date.value);
-                    console.log(time.value);
-                    console.log(description.value);
-                    console.log(serve.value);
-                    // console.log(packagedYes.value);
-                    // console.log(packagedNo.value);
-                    console.log(expiryDate.value);
-                    console.log(freshness.value);
-                    console.log(nearExpiry.value);
-                    console.log(rejected.value);
-                    console.log(promotion.value);
-                    console.log(excess.value);
-                    console.log(error.value);
-                    console.log(damaged.value);
-                    console.log(upload.value);
 
                         const bookmarks = addDoc(
                             collection(db, 'Users', docRef.id , 'Bookmarks'), {
@@ -99,7 +68,7 @@ const eventsRef  = collection(db, 'Events');
             
 
     // $('#donation-modal').on('shown', function(){
-    //     $('#donate_submit').on('click', function(){
+    //     $('#donation-btn').on('click', function(){
     //         console.log('oten dako');
     //     })
     // })
