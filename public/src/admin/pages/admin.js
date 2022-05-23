@@ -21,11 +21,80 @@ connectFirestoreEmulator(db, 'localhost', 8080);
 
 const createEvent = async (user) => {
 
-    
     //TODO: check if the user logged in is an organization account and if it's not, throw an error
     onAuthStateChanged(auth, async (user)=> {
         try{
-            throw new Error('Only one event can be made at this time');
+        if (!user){
+            console.log('You are not Logged in');
+            throw new Error('You are not logged in');
+        } else {
+            // add current admin user's ID to event
+            const userID = auth.currentUser.uid;
+            const eventInfo = {
+                orgID: userID,
+                name: 'Bilin Launch2',
+                volunteerNumber: 0,
+                date: Timestamp.fromDate(new Date("December 10, 1815")),
+                lat: 41.40338,
+                long: 2.17403,
+                address1: 'Block 1 Lot 14',
+            address2: 'Southview Homes, Cagayan de Oro City',
+            imageURL: ''
+            }
+            // create an event document
+            const docRef = await addDoc(eventsRef, {
+                ...eventInfo
+            })
+
+            console.log(docRef.id)
+            // create a reference to document above on the user/Events/ collection
+            const eventByUser = await setDoc(
+                doc(db, 'Users', userID, 'Events', docRef.id), {
+                    ...eventInfo
+                //     eventID:eventInfo.id,
+                //     name:eventInfo.name,
+                //     volunteerNumber:eventInfo.volunteerNumber,
+                //     date:eventInfo.date,
+                //     lat:eventInfo.lat,
+                //     long:eventInfo.long,
+                //     address1:eventInfo.address1,
+                //     address2:eventInfo.address2,
+                //  imageURL:eventInfo.imageURL
+            });
+
+            console.log(docRef.id);
+
+            // add a volunteers subcollection for under Users/user/Events/event/volunteers
+            const eventVolunteers = await addDoc(
+                collection(db, 'Users', userID, 'Events', docRef.id, 'Volunteers' ), {
+                name: "test"
+                //     eventID:eventInfo.id,
+                //     name:eventInfo.name,
+                //     volunteerNumber:eventInfo.volunteerNumber,
+                //     date:eventInfo.date,
+                //     lat:eventInfo.lat,
+                //     long:eventInfo.long,
+                //     address1:eventInfo.address1,
+                //     address2:eventInfo.address2,
+                //  imageURL:eventInfo.imageURL
+            });
+
+            const eventDonations = await addDoc(
+                collection(db, 'Users', userID, 'Events', docRef.id, 'Donations' ), {
+                name: "test"
+                //     eventID:eventInfo.id,
+                //     name:eventInfo.name,
+                //     volunteerNumber:eventInfo.volunteerNumber,
+                //     date:eventInfo.date,
+                //     lat:eventInfo.lat,
+                //     long:eventInfo.long,
+                //     address1:eventInfo.address1,
+                //     address2:eventInfo.address2,
+                //  imageURL:eventInfo.imageURL
+            });
+
+
+        }
     } catch (err){
         alert(err.message);
         console.log('in create event')

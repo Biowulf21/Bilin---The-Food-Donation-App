@@ -20,7 +20,7 @@ const eventsRef  = collection(db, 'Events');
                 //items
                 const time = document.getElementById('donation-time');
                 const description = document.getElementById('donation-description');
-                const submitBtn = document.getElementById('donation-btn');
+                const submitBtn = document.getElementById('donation-submit');
                 const serve = document.getElementById('donation-serve');
                 // const packagedYes = document.getElementById('option1');
                 // const packagedNo = document.getElementById('option2');
@@ -52,18 +52,24 @@ const eventsRef  = collection(db, 'Events');
                         isdamaged: damaged.value
                     }
 
-                    const orgID = getDoc(
+                    //get specific event on events collection
+                    const docRef = getDoc(
                         collection(db, "Events", docID)
                     )
+                    
+                    //get value for orgID
+                    const orgID = docRef['orgID'];
+                    console.log(orgID)
 
-
-
-                        const bookmarks = addDoc(
-                            collection(db, 'Users', docRef.id , 'Bookmarks'), {
-                        
+                    //add donation to org's event under the donation sub collection
+                        const donation = setDoc(
+                            doc(db, 'Users', orgID , 'Events', docID, "Donations", auth.currentUser.uid), {
+                ...data
 
                 }
-                        )
+                        );
+
+                        console.log('created Donation');
             }
             
 
