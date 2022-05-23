@@ -19,6 +19,7 @@
     <script src="../../scripts/events.js"></script>
     <script type="module" src="./auth.js"></script>
     <!-- <script type="module" src="../../src/admin/pages/admin.js" ></script> -->
+    <script type="module" src="donor.js"></script>
    
 </head>
 
@@ -107,6 +108,7 @@ if (navigator.geolocation) {
                         <img src="https://via.placeholder.com/820x312" style="display: block; margin-left: auto; margin-right: auto;">
                     </div>
                     <div class="position-absolute cursor-pointer" style="top: 0px; right: 0px">
+                        <input id="donation-hidden" type="hidden">
                         <button type="button" class="m-4 btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
                     </div>
                 </div>
@@ -178,8 +180,8 @@ if (navigator.geolocation) {
             </div>
             <div class="smodal-footer">
                 <div class="d-flex">
-                    <button type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#donation-modal" data-bs-dismiss="modal" data-bs-toggle="modal">DONATE</button>
-                    <button type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#volunteer-modal" data-bs-dismiss="modal" data-bs-toggle="modal">VOLUNTEER</button>
+                    <button id="donate-btn" type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#donation-modal" data-bs-dismiss="modal" data-bs-toggle="modal">DONATE</button>
+                    <button id="volunteer-btn" type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#volunteer-modal" data-bs-dismiss="modal" data-bs-toggle="modal">VOLUNTEER</button>
                 </div>
             </div>
         </div>
@@ -193,6 +195,7 @@ if (navigator.geolocation) {
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
             <div class="modal-header">
+                <input id="donation-hidden" type="hidden">
                 <h5 class="modal-title" style="font-weight: bolder;">Donate food for this event</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
             </div>
@@ -270,7 +273,6 @@ if (navigator.geolocation) {
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#event-modal">Cancel</button>
                 <button id="donate_submit" type="button" class="btn bg-color3 text-color2">Submit Form</button>
-                <script type="module" src="donor.js"></script>
             </div>
         </div>
     </div>
@@ -405,7 +407,6 @@ if (navigator.geolocation) {
     $(document).on ("click", "#show-event-btn", function () {
         console.log('oten1');
         $('#donation-hidden').val($('#hidden-input').val())
-        console.log($('#donation-hidden').val())
         
     });
 });

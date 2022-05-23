@@ -16,65 +16,89 @@ const auth = getAuth();
 const db = getFirestore();
 const eventsRef  = collection(db, 'Events');
 
+   
 
-                //items
-                const time = document.getElementById('donation-time');
-                const description = document.getElementById('donation-description');
-                const submitBtn = document.getElementById('donation-submit');
-                const serve = document.getElementById('donation-serve');
-                // const packagedYes = document.getElementById('option1');
-                // const packagedNo = document.getElementById('option2');
-                const expiryDate = document.getElementById('expiry');
-                const nearExpiry = document.getElementById('near-expiry');
-                const rejected = document.getElementById('rejected');
-                const promotion = document.getElementById('promotion');
-                const excess = document.getElementById('excess-inventory');
-                const labelerror = document.getElementById('labelling-error');
-                const damaged = document.getElementById('damaged');
-               const date = document.getElementById('donation-date')
-               // Event listeners
-                submitBtn.addEventListener('click', donate);
-                const docID = document.getElementById("donation-hidden");
-                
-               async function donate(){
+// $(document).ready(function(){
+$('#event-modal').on('shown.bs.modal', function(){
+    const submitBtn = document.getElementById('donate_submit');
+    
+    submitBtn.addEventListener('click', async ()=>  {
+        try{
 
-                    data = {
-                        pickupDate: date.value,
-                        pickupTime: time.value,
-                        donationDesc:description.value,
-                        peopleServe: serve.value,
-                        expiry: expiryDate.value,
-                        isnearExpiry: nearExpiry.value,
-                        isrjected: rejected.value,
-                        ispromotion: promotion.value,
-                        isexcess: excess.value,
-                        iserror: labelerror.value,
-                        isdamaged: damaged.value
-                    }
-
-                    //get specific event on events collection
-                    const docRef = getDoc(
-                        collection(db, "Events", docID)
-                    )
-                    
-                    //get value for orgID
-                    const orgID = docRef['orgID'];
-                    console.log(orgID)
-
-                    //add donation to org's event under the donation sub collection
-                        const donation = setDoc(
-                            doc(db, 'Users', orgID , 'Events', docID, "Donations", auth.currentUser.uid), {
-                ...data
-
-                }
-                        );
-
-                        console.log('created Donation');
+        onAuthStateChanged(auth, async (user)=> {
+            if (!auth){
+                throw new Error('You cannot donate if you are not logged in.');
             }
-            
+        })
 
-    // $('#donation-modal').on('shown', function(){
-    //     $('#donation-btn').on('click', function(){
-    //         console.log('oten dako');
-    //     })
+               
+       const date = document.getElementById('donate_deliver-date')
+       const time = document.getElementById('donate_deliver-time');
+       const description = document.getElementById('donate_description');
+       const serve = document.getElementById('donate_serve');
+       // const packagedYes = document.getElementById('option1');
+       // const packagedNo = document.getElementById('option2');
+       const expiryDate = document.getElementById('donate_expiry');
+       const freshness = document.getElementById('donate_freshness');
+       const nearExpiry = document.getElementById('donate_reason1');
+       const rejected = document.getElementById('donate_reason2');
+       const promotion = document.getElementById('donate_reason3');
+       const excess = document.getElementById('donate_reason4');
+       const labelerror = document.getElementById('donate_reason5');
+       const damaged = document.getElementById('donate_reason6');
+       const donateHidden = document.getElementById('donation-hidden');
+
+    //    console.log(date.value);
+
+      const  data = {
+        pickupDate: date.value,
+        pickupTime: time.value,
+        donationDesc:description.value,
+        peopleServe: serve.value,
+        expiry: expiryDate.value,
+        freshnessLvl: freshness.value,
+        isnearExpiry: nearExpiry.value,
+        isrjected: rejected.value,
+        ispromotion: promotion.value,
+        isexcess: excess.value,
+        iserror: labelerror.value,
+        isdamaged: damaged.value
+    }
+
+    console.log(data);
+    console.log(donateHidden.value);
+
+    //get Organizations id from Events collection
+    const orgRef = await getDoc(
+        doc(db, 'Events', donateHidden.value)
+    )
+    const orgID = orgRef.data().orgID;
+    console.log(orgID);
+        
+    //add donor's ID to specific event's donations
+    const docRef = await setDoc(
+        doc(db, "Users", orgID, 'Events', donateHidden.value, 'Donations', auth.currentUser.uid),{
+            ...data
+        }
+        )
+
+        console.log('donation added');
+        alert('Donation sucessful!');
+
+} catch (error){
+    alert(error.message)
+}
+
+    });
+
+    })
+
+    $('#donation-modal').on('shown.bs.modal', function (){
+        const docID = document.getElementById("donation-hidden");
+        $('#donation-hidden').val(docID.value)
+        console.log(docID.value);
+    })
+
     // })
+            
+   

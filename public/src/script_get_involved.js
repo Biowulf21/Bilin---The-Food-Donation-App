@@ -75,11 +75,6 @@ async function displayAllEvents(db, eventsRef) {
             html_str += `</div>`;
             html_str += `</div>`;
 
-            var s = document.createElement('script');
-            s.type = "text/javascrip";
-            s.src = "./btn.js";
-            $("#show-event-btn").append(s);
-
             // console.log(snapshot.docs[ctr].data().name);
 
 
