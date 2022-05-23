@@ -211,7 +211,7 @@
         <div class="col-12">
           <div class="mb-3 d-flex justify-content-between">
             <h6 class="font-weight-bolder mb-0" style="margin-left: 10px;">List of Events</h6>
-            <button id="add-event-btn" class="rounded border-0 text-sm font-weight-bold py-1 px-2" style="background-color: #F77F00; color: #FDFDFD;">+ Add new event</button>
+            <button id="add-event-btn" class="rounded border-0 text-sm font-weight-bold py-1 px-2" style="background-color: #F77F00; color: #FDFDFD;" data-bs-toggle="modal" data-bs-target="#create-modal">+ Add new event</button>
           </div>
           <div class="card mb-4">
             <div class="card-header pb-0 d-flex justify-content-between">
@@ -784,6 +784,84 @@
       },
     });
   </script> -->
+
+  <!-- Create event form -->
+  <div id="create-modal" class="modal fade">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-weight: bolder;">Create New Event</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+            </div>
+            <div class="modal-body" style="overflow-y: auto; max-height: 600px;">
+              <div class="row mb-2">
+                <div class="col">
+                  <p class="mb-1">Title</p>
+                  <input id="event_title" type="text" class="rounded form-control" placeholder="Event Title">
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                    <p class="mb-1">Event start</p>
+                    <input id="event_start" type="datetime-local" class="rounded form-control">
+                </div>
+                <div class="col">
+                    <p class="mb-1">Event end</p>
+                    <input id="event_end" type="datetime-local" class="rounded form-control">
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col">
+                    <p class="mb-2">About</p>
+                    <input id="event_about" type="text" class="form-control" placeholder="Describe the event">
+                </div>
+            </div>
+            <div class="row mt-2">
+              <p class="mb-1">What kind of food will you accept?</p>
+              <div class="col d-flex flex-column">
+                  <label><input id="event_accept1" type="checkbox" value="1"> Whole fruits and vegetable</label>
+                  <label><input id="event_accept2" type="checkbox" value="2"> Fresh or frozen meat</label>
+                  <label><input id="event_accept3" type="checkbox" value="3"> Fresh or frozen seafood</label>
+                  <label><input id="event_accept4" type="checkbox" value="4"> Processed, prepackaged meat</label>
+                  <label><input id="event_accept5" type="checkbox" value="5"> Ready-to-eat cooked meals</label>
+              </div>
+              <div class="col d-flex flex-column">
+                  <label><input id="event_accept6" type="checkbox" value="6"> Breads and pastries without perishable fillings</label>
+                  <label><input id="event_accept7" type="checkbox" value="7"> Canned foods</label>
+                  <label><input id="event_accept8" type="checkbox" value="8"> Instant foods</label>
+                  <label><input id="event_accept9" type="checkbox" value="9"> Prepackaged dry goods</label>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <p class="mb-1">Other</p>
+              <input id="event_accept-other" type="text" class="form-control" placeholder="Please specify the type of food you will accept">            
+            </div>
+            <div class="col">
+              <p class="mb-1 mt-2">Number of volunteers needed:</p>
+              <input id="event_volunteer" type="number" class="form-control" placeholder="0">
+            </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <p class="mb-2">Location</p>
+                        <input id="event_location" type="text" class="form-control" placeholder="Enter complete address">
+                    </div>
+                </div>
+                <div class="row">
+                  <p class="text-start text-uppercase mt-4 mb-2" style="font-weight: 500;">Upload event photo</p>
+                  <div class="col">
+                      <input id="event_upload" type="file" class="form-control">
+                  </div>
+              </div>
+            </div>            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#event-modal">Cancel</button>
+                <button id="volunteer_submit" type="button" class="btn bg-color3 text-color2">Submit Form</button>
+                <script type="module" src="volunteer.js"></script>
+            </div>
+        </div>
+    </div>
+  </div>
+
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
