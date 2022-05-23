@@ -109,6 +109,7 @@ const orgEmail = document.getElementById('org-email');
 const orgNum = document.getElementById('org-number');
 async function createOrgWithEmaillPass() {
     try {
+        throw new Error("Cannot create admin account at this time.")
         console.log('creatingUser')
         const email = orgEmail.value;
             const password =  orgEmail.value;
