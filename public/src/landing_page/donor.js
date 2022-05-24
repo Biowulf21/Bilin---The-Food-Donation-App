@@ -28,7 +28,7 @@ $('#event-modal').on('shown.bs.modal', function(){
 
 
     volunteerBTn.addEventListener('click', async ()=> {
-        // try{
+        try{
             onAuthStateChanged(auth, (user)=> {
                 if (!auth){
                     throw new Error('You cannot volunteer if you are not logged in');
@@ -71,9 +71,9 @@ $('#event-modal').on('shown.bs.modal', function(){
         
                 console.log('Volunteer successful!');
                 alert('Volunteer successful!');
-        // }catch (error ){
-        //     alert(error.message)
-        // }
+        }catch (error ){
+            alert(error.message)
+        }
 
     })
     

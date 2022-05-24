@@ -63,15 +63,7 @@ const createEvent = async (user) => {
             const eventByUser = await setDoc(
                 doc(db, 'Users', userID, 'Events', docRef.id), {
                     ...eventInfo
-                //     eventID:eventInfo.id,
-                //     name:eventInfo.name,
-                //     volunteerNumber:eventInfo.volunteerNumber,
-                //     date:eventInfo.date,
-                //     lat:eventInfo.lat,
-                //     long:eventInfo.long,
-                //     address1:eventInfo.address1,
-                //     address2:eventInfo.address2,
-                //  imageURL:eventInfo.imageURL
+
             });
 
             console.log(docRef.id);
