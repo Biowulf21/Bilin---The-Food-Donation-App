@@ -22,6 +22,11 @@ $('#event-modal').on('shown.bs.modal', function(){
     const donateBtn = document.getElementById('donate_submit');
     const volunteerBTn = document.getElementById('volunteer_submit')
 
+    $('#donation-hidden').val($('#hidden-input').val())
+    $('#volunteer-hidden').val($('#hidden-input').val())
+
+
+
     volunteerBTn.addEventListener('click', async ()=> {
         // try{
             onAuthStateChanged(auth, (user)=> {
@@ -53,8 +58,7 @@ $('#event-modal').on('shown.bs.modal', function(){
         
             //get Organizations id from Events collection
             const orgRef = await getDoc(
-                doc(db, 'Events', volunteerHidden.value)
-            )
+                doc(db, 'Events', volunteerHidden.value))
             const orgID = orgRef.data().orgID;
             console.log(orgID);
                 
@@ -93,12 +97,12 @@ $('#event-modal').on('shown.bs.modal', function(){
        // const packagedNo = document.getElementById('option2');
        const expiryDate = document.getElementById('donate_expiry');
        const freshness = document.getElementById('donate_freshness');
-       const nearExpiry = document.getElementById('donate_reason1');
-       const rejected = document.getElementById('donate_reason2');
-       const promotion = document.getElementById('donate_reason3');
-       const excess = document.getElementById('donate_reason4');
-       const labelerror = document.getElementById('donate_reason5');
-       const damaged = document.getElementById('donate_reason6');
+       const nearExpiry = $('#donate_reason1').is(':checked');
+       const rejected = $('#donate_reason2').is(':checked');
+       const promotion = $('#donate_reason3').is(':checked');
+       const excess = $('#donate_reason4').is(':checked');
+       const labelerror = $('#donate_reason5').is(':checked');
+       const damaged = $('#donate_reason6').is(':checked');
        const donateHidden = document.getElementById('donation-hidden');
 
     //    console.log(date.value);
@@ -110,12 +114,12 @@ $('#event-modal').on('shown.bs.modal', function(){
         peopleServe: serve.value,
         expiry: expiryDate.value,
         freshnessLvl: freshness.value,
-        isnearExpiry: nearExpiry.value,
-        isrjected: rejected.value,
-        ispromotion: promotion.value,
-        isexcess: excess.value,
-        iserror: labelerror.value,
-        isdamaged: damaged.value
+        isnearExpiry: nearExpiry,
+        isrjected: rejected,
+        ispromotion: promotion,
+        isexcess: excess,
+        iserror: labelerror,
+        isdamaged: damaged
     }
 
     console.log(data);
