@@ -56,16 +56,22 @@ async function displayAllEvents(db, eventsRef) {
 
             html_str += `
 
-                <div class="card" style="width: 16rem;" id="event-entry">
-                    <img src="`+ snapshot.docs[ctr].data().imageURL+`" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">` + dateString + ', ' + timeString + `</h6>
-                        <h5 class="card-title">` + snapshot.docs[ctr].data().name + `</h5>
-                        <input value=` + snapshot.docs[ctr].id +` id="hidden-input" type="hidden"   data-bs-dismiss="modal"  data-bs-target="#event-modal" data-bs-toggle="modal">
-                        <p class="card-text">` + snapshot.docs[ctr].data().address1 + `<br>` + snapshot.docs[ctr].data().address2 + `</p>
-                        <button id="show-event-btn" class="btns as bg-color3 text-color2"  data-bs-target="#event-modal" data-bs-toggle="modal" onclick=""> VIEW DETAILS</button>
+                    <div class="card bg-color1" style="width: 20rem;" id="event-entry">
+                        <div class="fill" style="max-height: 200px;">
+                            <img src="`+ snapshot.docs[ctr].data().imageURL+`" style="display: block; margin-left: auto; margin-right: auto;">
+                        </div>
+                        <div class="card-body text-start">
+                            <h6 class="card-subtitle mb-2 text-muted">` + dateString + ', ' + timeString + `</h6>
+                            <h5 class="card-title">` + snapshot.docs[ctr].data().name + `</h5>
+                            <input value=` + snapshot.docs[ctr].id +` id="hidden-input" type="hidden"   data-bs-dismiss="modal"  data-bs-target="#event-modal" data-bs-toggle="modal">
+                            <p class="card-text">` + snapshot.docs[ctr].data().address1 + `<br>` + snapshot.docs[ctr].data().address2 + `</p>
+                            <div class="container">
+                                <div class="row">
+                                    <button id="show-event-btn" class="btn bg-color3 text-color2"  data-bs-target="#event-modal" data-bs-toggle="modal" onclick=""> VIEW DETAILS</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
                 
                 `;
 
