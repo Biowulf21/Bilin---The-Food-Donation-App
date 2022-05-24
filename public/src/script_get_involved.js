@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getFirestore, doc, getDoc, getDocs, collection, onSnapshot, connectFirestoreEmulator } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
-// import { getAuth } from "firebase/auth";
+import { getStorage, ref, connectStorageEmulator } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-storage.js";
+
 
 
 const firebaseApp = initializeApp({
@@ -15,7 +16,8 @@ const firebaseApp = initializeApp({
 
 const db = getFirestore(firebaseApp);
 const eventsRef = collection(db, 'Events')
-
+const storage = getStorage(firebaseApp);
+connectStorageEmulator(storage, "localhost", 9199);
 connectFirestoreEmulator(db, 'localhost', 8080);
 
 let events = [];
@@ -60,7 +62,8 @@ async function displayAllEvents(db, eventsRef) {
 
             html_str += ''
 
-            html_str += `<h6 class="card-subtitle mb-2 text-muted">` + dateString + ', ' + timeString + `</h6>`;
+            html_str += `<h6 class="card-subtitle mb-2 text-muted">` + dateString +  `</h6>`;
+            html_str += `<h6 class="card-subtitle mb-2 text-muted">` + snapshot.docs[ctr].data().time+  `</h6>`;
             html_str += `<h5 class="card-title">` + snapshot.docs[ctr].data().name + `</h5>`;
             //TODO: diri sir di ko kabalo pa hidden
             html_str += `<input value=` + snapshot.docs[ctr].id +` id="hidden-input" type="hidden"   data-bs-dismiss="modal"  data-bs-target="#event-modal" data-bs-toggle="modal">`;

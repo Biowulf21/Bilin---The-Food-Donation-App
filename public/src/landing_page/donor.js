@@ -1,7 +1,7 @@
 import { initializeApp  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, Timestamp, serverTimestamp, setDoc, doc, getDocs , getDoc} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
-
+import { getStorage, ref, connectStorageEmulator, uploadBytes} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-storage.js";
 const firebaseConfig = {
     apiKey: "AIzaSyAtgFAs4hvlpMQStzVnD3tRJ9N8jLB98b0",
     authDomain: "bilin---the-food-donatio-a24c6.firebaseapp.com",
@@ -15,13 +15,21 @@ initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 const eventsRef  = collection(db, 'Events');
+const storage = getStorage();
 
    
 
 $('#event-modal').on('shown.bs.modal', function(){
     const donateBtn = document.getElementById('donate_submit');
     const volunteerBTn = document.getElementById('volunteer_submit')
+    const eventID = document.getElementById('donation-hidden');
 
+    // const foo  = await getDoc(
+    //     doc(db, 'Events', eventID.value));
+
+    //     const orgUID = foo.data().orgID;
+
+    // $('org-profile-link').attr('href', _href, +'hehe')
     $('#donation-hidden').val($('#hidden-input').val())
     $('#volunteer-hidden').val($('#hidden-input').val())
 
@@ -43,6 +51,17 @@ $('#event-modal').on('shown.bs.modal', function(){
             const addr = document.getElementById('volunteer_home');
             const whyVolunteer = document.getElementById('volunteer_reason');
             const volunteerHidden = document.getElementById('volunteer-hidden');
+            // const waiver = document.getElementById('volunteer_upload');
+
+            // if (waiver.value !== null){
+
+            //     const storageRef =  ref(storage, 'waivers/'+waiver.value);
+            //     const waiveRef = uploadBytes(storageRef, waiver.value).then((snapshot) => {
+            //         console.log('uploaded file');
+            //     })
+
+            
+
 
             const data = {
                 volTitle: title.value,
@@ -50,10 +69,11 @@ $('#event-modal').on('shown.bs.modal', function(){
                 bday: dob.value,
                 email: mail.value,
                 address: addr.value,
-                reason: whyVolunteer.value
+                reason: whyVolunteer.value,
+                // waiver: waiveRef
             }
 
-            console.log(data);
+            console.log(storageRef.value);
             console.log(volunteerHidden.value);
         
             //get Organizations id from Events collection
@@ -71,7 +91,8 @@ $('#event-modal').on('shown.bs.modal', function(){
         
                 console.log('Volunteer successful!');
                 alert('Volunteer successful!');
-        }catch (error ){
+        // }
+    }catch (error ){
             alert(error.message)
         }
 

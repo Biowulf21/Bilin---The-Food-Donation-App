@@ -11,9 +11,10 @@ const firebaseConfig = {
     appId: "1:105362764313:web:71739e5e422c213546f088",
     measurementId: "G-YLCFCJDLG1"
 };
-initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
+const storage = getStorage(firebaseApp);
 const eventsRef  = collection(db, 'Events');
 connectFirestoreEmulator(db, 'localhost', 8080);
 
@@ -42,7 +43,7 @@ const createEvent = async (user) => {
                 Siegred Paigalan
                 09177103545`,
                 volunteerNumber: 0,
-                date: Timestamp.fromDate(new Date("May 29, 2022")),
+                date: Timestamp.fromDate(new Date("May 29, 2022, 09:00:00")),
                 time:  '09:00:00',
                 lat: 41.40338,
                 long: 2.17403,
