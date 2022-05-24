@@ -48,34 +48,32 @@ async function displayAllEvents(db, eventsRef) {
 
         for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
 
-
-            html_str += `<div class="card" style="width: 16rem;" id="event-entry">`;
-            html_str += `<img src="`+ snapshot.docs[ctr].data().imageURL+`" class="card-img-top" alt="..."> `
-            html_str += `<div class="card-body">`;
             const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-           
 
             var date = new Date(snapshot.docs[ctr].data().date.seconds * 1000);
             var dateString = date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear();
             var timeString = date.getHours() + ":" + date.getMinutes();
 
-            html_str += ''
+            html_str += `
 
-            html_str += `<h6 class="card-subtitle mb-2 text-muted">` + dateString +  `</h6>`;
-            html_str += `<h6 class="card-subtitle mb-2 text-muted">` + snapshot.docs[ctr].data().time+  `</h6>`;
-            html_str += `<h5 class="card-title">` + snapshot.docs[ctr].data().name + `</h5>`;
-            //TODO: diri sir di ko kabalo pa hidden
-            html_str += `<input value=` + snapshot.docs[ctr].id +` id="hidden-input" type="hidden"   data-bs-dismiss="modal"  data-bs-target="#event-modal" data-bs-toggle="modal">`;
-            html_str += `<p class="card-text">` + snapshot.docs[ctr].data().address1 + `<br>` + snapshot.docs[ctr].data().address2 + `</p>`;
-            html_str += `<button id="show-event-btn" class="btns as bg-color3 text-color2"  data-bs-target="#event-modal" data-bs-toggle="modal" onclick=""> VIEW DETAILS</button>`;
-            html_str += `</div>`;
-            html_str += `</div>`;
+                <div class="card" style="width: 16rem;" id="event-entry">
+                    <img src="`+ snapshot.docs[ctr].data().imageURL+`" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">` + dateString + ', ' + timeString + `</h6>
+                        <h5 class="card-title">` + snapshot.docs[ctr].data().name + `</h5>
+                        <input value=` + snapshot.docs[ctr].id +` id="hidden-input" type="hidden"   data-bs-dismiss="modal"  data-bs-target="#event-modal" data-bs-toggle="modal">
+                        <p class="card-text">` + snapshot.docs[ctr].data().address1 + `<br>` + snapshot.docs[ctr].data().address2 + `</p>
+                        <button id="show-event-btn" class="btns as bg-color3 text-color2"  data-bs-target="#event-modal" data-bs-toggle="modal" onclick=""> VIEW DETAILS</button>
+                    </div>
+                </div>
+                
+                `;
 
             
             // stop until the 4th entry (0,1,2,3)
             if (ctr == 3) break;
             $('#event-picture').attr('src', snapshot.docs[ctr].data().imageURL);
+            console.log(snapshot.docs[ctr].data().imageURL);
         }
         document.getElementById('events-tab').innerHTML = html_str;
     })
