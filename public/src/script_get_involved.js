@@ -48,13 +48,7 @@ async function displayAllEvents(db, eventsRef) {
 
 
             html_str += `<div class="card" style="width: 16rem;" id="event-entry">`;
-            html_str += `<svg class="bd-placeholder-img card-img-top" width="100%" height="180"`;
-            html_str += `xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"`;
-            html_str += `preserveAspectRatio="xMidYMid slice" focusable="false">`;
-            html_str += `<title>Placeholder</title>`;
-            html_str += `<rect width="100%" height="100%" fill="#868e96"></rect>`;
-            html_str += `<text x="43%" y="50%" fill="#dee2e6" dy=".3em">Image</text>`;
-            html_str += `</svg>`;
+            html_str += `<img src="`+ snapshot.docs[ctr].data().imageURL+`" class="card-img-top" alt="..."> `
             html_str += `<div class="card-body">`;
             const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -75,11 +69,10 @@ async function displayAllEvents(db, eventsRef) {
             html_str += `</div>`;
             html_str += `</div>`;
 
-            // console.log(snapshot.docs[ctr].data().name);
-
-
+            
             // stop until the 4th entry (0,1,2,3)
             if (ctr == 3) break;
+            $('#event-picture').attr('src', snapshot.docs[ctr].data().imageURL);
         }
         document.getElementById('events-tab').innerHTML = html_str;
     })
