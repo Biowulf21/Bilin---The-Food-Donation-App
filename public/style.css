@@ -15,7 +15,7 @@
     color: #0C2E3D;
 }
 
-.cards-body img {
+.card-body img {
     max-width: 50px;
 }
 
@@ -386,3 +386,7 @@ color: #ffffff;
 .mt-n5 {
     margin-top: -3rem !important;
 }
+
+.align-middle {
+    vertical-align: middle !important;
+  }
