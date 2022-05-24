@@ -164,6 +164,110 @@ async function getAllDonations(eventID){
     // createEvent();
 
 
+//BREADCRUMBS
+//event.html
+async function displayEventBreadcrumbs(db, eventsRef) {
+    const unsub = onSnapshot(eventsRef, (snapshot) => {
+
+        //JAMES di pa ni ga display hehe
+
+        var html_str = "";
+
+        for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
+
+            html_str +=`
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Dashboard</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="dash_events.html">Events</a></li>
+                    `+
+                    //JAMES dynamic: event title
+                    `
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">` + snapshot.docs[ctr].data().name + `</li>
+                </ol>
+                `+
+                //JAMES dynamic: event title
+                `
+                <h6 class="font-weight-bolder mb-0">` + snapshot.docs[ctr].data().name + `</h6>
+            </nav>
+
+            `;
+
+            if (ctr == 3) break;
+        }
+        document.getElementById('breadcrumb_event').innerHTML = html_str;
+    })
+}
+displayEventBreadcrumbs(db, eventsRef);
+
+
+
+//donations.html
+async function displayDonorBreadcrumbs(db, eventsRef) {
+    const unsub = onSnapshot(eventsRef, (snapshot) => {
+
+        //JAMES di pa ni ga display hehe
+
+        var html_str = "";
+
+        for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
+
+            html_str +=`
+            <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+              <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Dashboard</a></li>
+              <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="dash_events.html">Events</a></li>
+              <li class="breadcrumb-item text-sm text-dark active" aria-current="page">` + //JAMES event title
+              +`</li>
+            </ol>
+            <h6 class="font-weight-bolder mb-0">` + //JAMES event title
+             + ` <i class="bi bi-chevron-right"></i> Donations</h6>
+          </nav>
+
+            `;
+
+            if (ctr == 3) break;
+        }
+        document.getElementById('breadcrumb_donor').innerHTML = html_str;
+    })
+}
+displayDonorBreadcrumbs(db, eventsRef);
+
+
+
+//volunteer.html
+async function displayVolunteerBreadcrumbs(db, eventsRef) {
+    const unsub = onSnapshot(eventsRef, (snapshot) => {
+
+        //JAMES di pa ni ga display hehe
+
+        var html_str = "";
+
+        for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
+
+            html_str +=`
+            <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+              <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Dashboard</a></li>
+              <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="dash_events.html">Events</a></li>
+              <li class="breadcrumb-item text-sm text-dark active" aria-current="page">` + //JAMES event title 
+              +`</li>
+            </ol>
+            <h6 class="font-weight-bolder mb-0">` + //JAMES event title 
+            +` <i class="bi bi-chevron-right"></i> Volunteers</h6>
+          </nav>
+
+            `;
+
+            if (ctr == 3) break;
+        }
+        document.getElementById('breadcrumb_volunteer').innerHTML = html_str;
+    })
+}
+displayVolunteerBreadcrumbs(db, eventsRef);
+
+
+
 //DASHBOARD EVENTS
 // Open events
 async function displayOpenEvents(db, eventsRef) {
@@ -191,7 +295,7 @@ async function displayOpenEvents(db, eventsRef) {
                         <div class="d-flex flex-column justify-content-center">
                         <!-- JAMES dynamic: event title -->
                         <a href="event.html"><h6 class="mb-0 text-sm">` + snapshot.docs[ctr].data().name + `</h6></a>
-                        
+                        <input id="event-id" type="hidden">
                         </div>
                     </div>
                     </td>
@@ -325,28 +429,98 @@ displayPastEvents(db, eventsRef);
 
 
 //EVENTS
-//Navbar Breadcrumb
-async function displayNavBreadcrumbs(db, eventsRef) {
+//Donor info
+async function displayDonorInfo(db, eventsRef) {
     const unsub = onSnapshot(eventsRef, (snapshot) => {
+
+        //JAMES di pa ni ga display hehe
 
         var html_str = "";
 
-        html_str +=`
+        for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
 
-                <div>
-                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                        <li class="breadcrumb-item text-sm" class="opacity-5 text-dark">Dashboard</li>
-                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="dash_events.html">Events</a></li>
-                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">` + snapshot.docs[ctr].data().name + `</li>
-                    </ol>
-                    <h6 class="font-weight-bolder mb-0">` + snapshot.docs[ctr].data().name `</h6>
-                </div>                
+            html_str +=`
+                <div class="numbers text-center">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Pending</p>
+                    <h5 class="font-weight-bolder mb-0">
+                    `+
+                    //James dynamic: # of pending donations
+                    +`
+                    </h5>
+                </div>
+                <div class="numbers text-center">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Accepted</p>
+                    <h5 class="font-weight-bolder mb-0">
+                    `+
+                    //James dynamic: # of accepted donations
+                    +`
+                    </h5>
+                </div>
+                <div class="numbers text-center">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Received</p>
+                    <h5 class="font-weight-bolder mb-0">
+                    `+
+                    //James dynamic: # of received donations
+                    +`
+                    </h5>
+                </div>
+
             `;
-            
-        document.getElementById('admin_breadcrumb').innerHTML = html_str;
+
+            if (ctr == 3) break;
+        }
+        document.getElementById('event_donorinfo').innerHTML = html_str;
     })
 }
-displayNavBreadcrumbs(db, eventsRef);
+displayDonorInfo(db, eventsRef);
+
+
+
+//Volunteer info
+async function displayVolunteerInfo(db, eventsRef) {
+    const unsub = onSnapshot(eventsRef, (snapshot) => {
+
+        //JAMES di pa ni ga display hehe
+
+        var html_str = "";
+
+        for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
+
+            html_str +=`
+                <div class="numbers text-center">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Pending</p>
+                    <h5 class="font-weight-bolder mb-0">
+                    `+
+                    //James dynamic: # of pending donors
+                    +`
+                    </h5>
+                </div>
+                <div class="numbers text-center">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Accepted</p>
+                    <h5 class="font-weight-bolder mb-0">
+                    `+
+                    //James dynamic: # of accepted donors
+                    +`
+                    </h5>
+                </div>
+                <div class="numbers text-center">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Received</p>
+                    <h5 class="font-weight-bolder mb-0">
+                    `+
+                    //James dynamic: # of rejected donors
+                    +`
+                    </h5>
+                </div>
+
+            `;
+
+            if (ctr == 3) break;
+        }
+        document.getElementById('event_volunteerinfo').innerHTML = html_str;
+    })
+}
+displayVolunteerInfo(db, eventsRef);
+
 
 
 //DONATIONS
@@ -374,14 +548,16 @@ async function displayPendingDonors(db, eventsRef) {
                     <td>
                     <div class="d-flex px-2 py-1">
                         <div class="d-flex flex-column justify-content-center">
-                    `+//JAMES dynamic: donor name
+                    `+
+                    //JAMES dynamic: donor name
                     `
                         <h6 class="mb-0 text-sm">Donor name</h6>
                         </div>
                     </div>
                     </td>
                     <td class="align-middle text-center">
-                    `+//JAMES dynamic: donor contact number
+                    `+
+                    //JAMES dynamic: donor contact number
                     `
                     <span class="text-secondary text-xs font-weight-bold">0917 XXX XXXX</span>
                     </td>
@@ -392,18 +568,21 @@ async function displayPendingDonors(db, eventsRef) {
                     </span>
                     </td>
                     <td class="d-flex justify-content-center">
-                    `+//JAMES function: view donation form details; open modal?
+                    `+
+                    //JAMES function: view donation form details; open modal?
                     `
                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs">
                         <h5><i class="bi bi-eye-fill"></i></h5>
                     </a>
                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs mx-3">
-                        `+//<!-- JAMES function: accept donation; send email to donor -->
+                        `+
+                        //JAMES function: accept donation; send email to donor
                         `
                         <h5><i class="bi bi-check-circle text-success"></i></h5>
                     </a>
                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs" style="font-size: larger;">
-                        `+//JAMES function: reject donation; open modal (modal nasad hehe) input reason of rejection; send email
+                        `
+                        +//JAMES function: reject donation; open modal (modal nasad hehe) input reason of rejection; send email
                         `
                         <h5><i class="bi bi-x-circle text-danger"></i></h5>
                     </a>
@@ -446,22 +625,20 @@ async function displayAcceptedDonors(db, eventsRef) {
 
                 `<tr>
                     <td class="align-middle text-center text-sm">
-                    <!-- JAMES event status -->
-                    <span class="badge badge-sm bg-gradient-secondary">Pending</span>
+                    <span class="badge badge-sm bg-gradient-success">` + //JAMES donor status
+                    + `</span>
                     </td>
                     <td>
                     <div class="d-flex px-2 py-1">
                         <div class="d-flex flex-column justify-content-center">
-                    `+//JAMES dynamic: donor name
-                    `
-                        <h6 class="mb-0 text-sm">Donor name</h6>
+                        <h6 class="mb-0 text-sm">` + //JAMES donor name
+                        + `</h6>
                         </div>
                     </div>
                     </td>
                     <td class="align-middle text-center">
-                    `+//JAMES dynamic: donor contact number
-                    `
-                    <span class="text-secondary text-xs font-weight-bold">0917 XXX XXXX</span>
+                    <span class="text-secondary text-xs font-weight-bold">` + //JAMES donor contact number
+                    + `</span>
                     </td>
                     <td class="align-middle text-center">
                     <span>
@@ -469,21 +646,14 @@ async function displayAcceptedDonors(db, eventsRef) {
                         <p class="text-secondary text-xs font-weight-bold mb-0">` + timeString + `</p>
                     </span>
                     </td>
-                    <td class="d-flex justify-content-center">
-                    `+//JAMES function: view donation form details; open modal?
-                    `
+                    <td class="d-flex justify-content-center align-items-center">
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs text-info mx-3">
+                        Mark as Received `+ //JAMES function: mark donation as received; transfer data from Accepted to Received
+                        `
+                    </a>
                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs">
-                        <h5><i class="bi bi-eye-fill"></i></h5>
-                    </a>
-                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs mx-3">
-                        `+//<!-- JAMES function: accept donation; send email to donor -->
+                        <h5><i class="bi bi-eye-fill"></i></h5> `+ //JAMES function: view donor donation form
                         `
-                        <h5><i class="bi bi-check-circle text-success"></i></h5>
-                    </a>
-                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" style="font-size: larger;">
-                        `+//JAMES function: reject donation; open modal (modal nasad hehe) input reason of rejection; send email
-                        `
-                        <h5><i class="bi bi-x-circle text-danger"></i></h5>
                     </a>
                     </td>
                 </tr>
@@ -500,7 +670,332 @@ async function displayAcceptedDonors(db, eventsRef) {
             // stop until the 4th entry (0,1,2,3)
             if (ctr == 3) break;
         }
-        document.getElementById('donor_pending').innerHTML = html_str;
+        document.getElementById('donor_accepted').innerHTML = html_str;
     })
 }
-displayPendingDonors(db, eventsRef);
+displayAcceptedDonors(db, eventsRef);
+
+
+
+// Received donors
+async function displayReceivedDonors(db, eventsRef) {
+    const unsub = onSnapshot(eventsRef, (snapshot) => {
+
+        var html_str = "";
+
+        for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
+
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            var date = new Date(snapshot.docs[ctr].data().date.seconds * 1000);
+            var dateString = date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear();
+            var timeString = date.getHours() + ":" + date.getMinutes();
+
+            html_str += 
+
+                `<tr>
+                    <td class="align-middle text-center text-sm">
+                    <span class="badge badge-sm bg-gradient-info">` + //JAMES donor status
+                    + `</span>
+                    </td>
+                    <td>
+                    <div class="d-flex px-2 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">` + //JAMES donor name
+                        + `</h6>
+                        </div>
+                    </div>
+                    </td>
+                    <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">` + //JAMES donor contact number
+                     + `</span>
+                    </td>
+                    <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">` + dateString + `</span>
+                    </td>
+                    <td class="text-center align-middle">
+                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs">
+                        <h5><i class="bi bi-eye-fill"></i></h5>`+//JAMES function: view donor donation form -->
+                        `
+                    </a>
+                    </td>
+                </tr>
+            `;
+
+            // var s = document.createElement('script');
+            // s.type = "text/javascrip";
+            // s.src = "./btn.js";
+            // $("#show-event-btn").append(s);
+
+            // console.log(snapshot.docs[ctr].data().name);
+
+
+            // stop until the 4th entry (0,1,2,3)
+            if (ctr == 3) break;
+        }
+        document.getElementById('donor_received').innerHTML = html_str;
+    })
+}
+displayReceivedDonors(db, eventsRef);
+
+
+
+//Rejected donors
+async function displayRejectedDonors(db, eventsRef) {
+    const unsub = onSnapshot(eventsRef, (snapshot) => {
+
+        var html_str = "";
+
+        for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
+
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            var date = new Date(snapshot.docs[ctr].data().date.seconds * 1000);
+            var dateString = date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear();
+            var timeString = date.getHours() + ":" + date.getMinutes();
+
+            html_str += 
+
+                `<tr>
+                    <td class="align-middle text-center text-sm">
+                    <!-- JAMES event status -->
+                    <span class="badge badge-sm bg-gradient-danger">Rejected</span>
+                    </td>
+                    <td>
+                    <div class="d-flex px-2 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">` + //JAMES donor name 
+                        + `</h6>
+                        </div>
+                    </div>
+                    </td>
+                    <td class="align-middle text-center">
+                    <!-- JAMES dynamic: contact number -->
+                    <span class="text-secondary text-xs font-weight-bold">` + //JAMES donor contact number 
+                    + `</span>
+                    </td>
+                    <td class="align-middle text-center">
+                    <span>
+                        <!-- JAMES dynamic: 'deliver by' date and time -->
+                        <p class="text-secondary text-xs font-weight-bold mb-0">` + dateString + `</p>
+                        <p class="text-secondary text-xs font-weight-bold mb-0">` + timeString + `</p>
+                    </span>
+                    </td>
+                    <td class="d-flex justify-content-center">
+                    
+                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs-3 mx-3">
+                        <h5><i class="bi bi-eye-fill"></i></h5>`+//<!-- JAMES function: view donor donation form -->
+                        `
+                    </a>
+                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs">
+                        <h5><i class="bi bi-trash-fill"></i></h5>`+//<!-- JAMES function: delete rejected donation -->
+                        `
+                    </a>
+                    </td>
+                </tr>
+            `;
+
+            // var s = document.createElement('script');
+            // s.type = "text/javascrip";
+            // s.src = "./btn.js";
+            // $("#show-event-btn").append(s);
+
+            // console.log(snapshot.docs[ctr].data().name);
+
+
+            // stop until the 4th entry (0,1,2,3)
+            if (ctr == 3) break;
+        }
+        document.getElementById('donor_rejected').innerHTML = html_str;
+    })
+}
+displayRejectedDonors(db, eventsRef);
+
+
+
+//VOLUNTEERS
+//pending volunteers
+async function displayPendingVolunteer(db, eventsRef) {
+    const unsub = onSnapshot(eventsRef, (snapshot) => {
+
+        var html_str = "";
+
+        for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
+
+            html_str += 
+
+                `<tr>
+                    <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-secondary">` + //JAMES volunteer status 
+                        + `</span>
+                    </td>
+                    <td>
+                        <div class="d-flex px-2 py-1">
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm">` + //JAMES volunteer name
+                                 + `</h6>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">` + //JAMES contact number 
+                        + `</span>
+                    </td>
+                    <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">` + //JAMES volunteer occupation 
+                        + `</span>
+                    </td>
+                    <td class="d-flex justify-content-center">
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs">
+                            <h5><i class="bi bi-eye-fill"></i></h5>`+//JAMES function: view volunteer form
+                            `
+                        </a>
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs mx-3">
+                            <h5><i class="bi bi-check-circle text-success"></i></h5>`+//JAMES function: accept volunteer; send email since wala pa ta messaging feature
+                            `
+                        </a>
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" style="font-size: larger;">
+                            <h5><i class="bi bi-x-circle text-danger"></i></h5>`+//JAMES function: reject volunteer; open modal, input reason why rejected, send email
+                            `
+                        </a>
+                    </td>
+                </tr>
+            `;
+
+            // var s = document.createElement('script');
+            // s.type = "text/javascrip";
+            // s.src = "./btn.js";
+            // $("#show-event-btn").append(s);
+
+            // console.log(snapshot.docs[ctr].data().name);
+
+
+            // stop until the 4th entry (0,1,2,3)
+            if (ctr == 3) break;
+        }
+        document.getElementById('volunteer_pending').innerHTML = html_str;
+    })
+}
+displayPendingVolunteer(db, eventsRef);
+
+
+
+//accepted volunteers
+async function displayAcceptedVolunteer(db, eventsRef) {
+    const unsub = onSnapshot(eventsRef, (snapshot) => {
+
+        var html_str = "";
+
+        for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
+
+            html_str += 
+
+                `<tr>
+                    <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success">` + //JAMES volunteer status
+                         + `</span>
+                    </td>
+                    <td>
+                        <div class="d-flex px-2 py-1">
+                            <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">` + //JAMES volunteer name 
+                            + `</h6>
+                            </div>
+                        </div>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">` + //JAMES volunteer contact number 
+                            + `</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">` + //JAMES volunteer occupation +
+                             `</span>
+                        </td>
+                        <td class="text-center align-middle">
+                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs">
+                            <h5><i class="bi bi-eye-fill"></i></h5>`+//JAMES function: view volunteer form -->
+                            `
+                        </a>
+                    </td>
+                </tr>
+            `;
+
+            // var s = document.createElement('script');
+            // s.type = "text/javascrip";
+            // s.src = "./btn.js";
+            // $("#show-event-btn").append(s);
+
+            // console.log(snapshot.docs[ctr].data().name);
+
+
+            // stop until the 4th entry (0,1,2,3)
+            if (ctr == 3) break;
+        }
+        document.getElementById('volunteer_accepted').innerHTML = html_str;
+    })
+}
+displayAcceptedVolunteer(db, eventsRef);
+
+
+
+//Rejected volunteer
+async function displayRejectedVolunteer(db, eventsRef) {
+    const unsub = onSnapshot(eventsRef, (snapshot) => {
+
+        var html_str = "";
+
+        for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
+
+            html_str += 
+
+                `<tr>
+                    <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-danger">` + //JAMES volunteer status 
+                        + `</span>
+                    </td>
+                    <td>
+                        <div class="d-flex px-2 py-1">
+                            <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">` + //JAMES volunteer name 
+                            + `</h6>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="align-middle text-center">
+                        JAMES dynamic: volunteer contact number
+                        <span class="text-secondary text-xs font-weight-bold">` + //JAMES volunteer contact number 
+                        + `</span>
+                    </td>
+                    <td class="align-middle text-center">
+                        JAMES dynamic: volunteer occupation
+                        <span class="text-secondary text-xs font-weight-bold">` + //JAMES volunteer occupation
+                        + `</span>
+                    </td>
+                    <td class="d-flex justify-content-center">
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs-3 mx-3">
+                            <h5><i class="bi bi-eye-fill"></i></h5>`+//JAMES function: view volunteer form
+                            `
+                        </a>
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs">
+                            <h5><i class="bi bi-trash-fill"></i></h5>`+//JAMES function: delete rejected volunteer
+                            `
+                        </a>
+                    </td>
+                </tr>
+            `;
+
+            // var s = document.createElement('script');
+            // s.type = "text/javascrip";
+            // s.src = "./btn.js";
+            // $("#show-event-btn").append(s);
+
+            // console.log(snapshot.docs[ctr].data().name);
+
+
+            // stop until the 4th entry (0,1,2,3)
+            if (ctr == 3) break;
+        }
+        document.getElementById('volunteer_rejected').innerHTML = html_str;
+    })
+}
+displayRejectedVolunteer(db, eventsRef);
