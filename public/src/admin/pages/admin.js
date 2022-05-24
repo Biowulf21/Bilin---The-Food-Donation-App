@@ -32,14 +32,26 @@ const createEvent = async (user) => {
             const userID = auth.currentUser.uid;
             const eventInfo = {
                 orgID: userID,
-                name: 'Bilin Launch2',
+                name: 'San Ignacio Care for the Poor Supplemental Feeding',
+                desc: `The initiative directly responds to Thrust 2 of the Renewed Province Plan of Philippine Jesuit Society.
+
+                The chosen beneficiary community for this activity
+                is the informal and vulnerable settlers
+                in Ramonal Village in Brgy Nazareth, specifically the children.  
+                
+                Siegred Paigalan
+                09177103545`,
                 volunteerNumber: 0,
-                date: Timestamp.fromDate(new Date("December 10, 1815")),
+                date: Timestamp.fromDate(new Date("May 29, 2022")),
+                time:  '09:00:00',
                 lat: 41.40338,
                 long: 2.17403,
-                address1: 'Block 1 Lot 14',
-            address2: 'Southview Homes, Cagayan de Oro City',
-            imageURL: ''
+                address1: 'Ramonal Village, Nazareth, CDO',
+            address2: 'Xavier University - Ateneo de Cagayan, Corrales Ave., CDO',
+            duration: 3,
+            beneficiaries: 200,
+            volunteerGoal: 10,
+            imageURL: 'https://firebasestorage.googleapis.com/v0/b/bilin---the-food-donatio-a24c6.appspot.com/o/20220327_103614%20-%20Siegred%20Jade%20Roldan%20Lastimoso.jpg?alt=media&token=df3152dd-b6f0-42a8-9786-f8b042917278'
             }
             // create an event document
             const docRef = await addDoc(eventsRef, {

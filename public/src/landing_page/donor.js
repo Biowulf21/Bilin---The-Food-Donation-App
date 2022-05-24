@@ -18,17 +18,70 @@ const eventsRef  = collection(db, 'Events');
 
    
 
-// $(document).ready(function(){
 $('#event-modal').on('shown.bs.modal', function(){
-    const submitBtn = document.getElementById('donate_submit');
+    const donateBtn = document.getElementById('donate_submit');
+    const volunteerBTn = document.getElementById('volunteer_submit')
+
+    volunteerBTn.addEventListener('click', async ()=> {
+        // try{
+            onAuthStateChanged(auth, (user)=> {
+                if (!auth){
+                    throw new Error('You cannot volunteer if you are not logged in');
+                }
+
+            })
+
+            const title =  document.getElementById('volunteer_title');
+            const job = document.getElementById('volunteer_occupation');
+            const dob = document.getElementById('volunteer_bday');
+            const mail = document.getElementById('volunteer_email');
+            const addr = document.getElementById('volunteer_home');
+            const whyVolunteer = document.getElementById('volunteer_reason');
+            const volunteerHidden = document.getElementById('volunteer-hidden');
+
+            const data = {
+                volTitle: title.value,
+                occupation: job.value,
+                bday: dob.value,
+                email: mail.value,
+                address: addr.value,
+                reason: whyVolunteer.value
+            }
+
+            console.log(data);
+            console.log(volunteerHidden.value);
+        
+            //get Organizations id from Events collection
+            const orgRef = await getDoc(
+                doc(db, 'Events', volunteerHidden.value)
+            )
+            const orgID = orgRef.data().orgID;
+            console.log(orgID);
+                
+            //add donor's ID to specific event's volunteers
+            const docRef = await setDoc(
+                doc(db, "Users", orgID, 'Events', volunteerHidden.value, 'Volunteers', auth.currentUser.uid),{
+                    ...data
+                }
+                )
+        
+                console.log('Volunteer successful!');
+                alert('Volunteer successful!');
+        // }catch (error ){
+        //     alert(error.message)
+        // }
+
+    })
     
-    submitBtn.addEventListener('click', async ()=>  {
+    donateBtn.addEventListener('click', async ()=>  {
         try{
 
-        onAuthStateChanged(auth, async (user)=> {
+        onAuthStateChanged(auth, (user)=> {
             if (!auth){
                 throw new Error('You cannot donate if you are not logged in.');
             }
+            
+           
         })
 
                
@@ -99,6 +152,5 @@ $('#event-modal').on('shown.bs.modal', function(){
         console.log(docID.value);
     })
 
-    // })
             
    
