@@ -53,13 +53,12 @@ if (navigator.geolocation) {
     </script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZm4A62u1UahYWE9WomHs9yzQG8N-QrfY&callback=myMap"></script>
-        
     <!-- Pinned Event -->
     <section class="p-5 bg-color2">
         <div class="container">
             <div class="d-flex">
                 <a class="pin-img"><img src="../../assets/images/pin.svg"></a>
-                <h3 class="h3s" href="#"><b>Pinned Event</b></h3>
+                <h3 class="h3s"><b>Pinned Event</b></h3>
             </div>
             <div class="fill">
                 <img class="img-fluid" style="border-radius: 10px;" src="../../assets/images/pinnedevent.png">
@@ -220,7 +219,12 @@ if (navigator.geolocation) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
             </div>
             <div class="modal-body" style="overflow-y: auto; max-height: 600px;">
-                <p class="text-start text-uppercase mb-2" style="font-weight: 500;">Deliver your food donation</p>
+                <span class="text-start text-uppercase mb-2" style="font-weight: 500;">Deliver your food donation</span>
+                <span class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="You may deliver your food donation&#013from May 24 to 28, 2022 to&#013Xavier University - Ateneo de Cagayan">
+                    <a style="pointer-events: none;">
+                        <i class="bi bi-question-circle-fill"></i>
+                    </a>
+                </span>
                 <div class="row mb-2">
                     <div class="col">
                         <p class="mb-1">Full name</p>
@@ -305,7 +309,10 @@ if (navigator.geolocation) {
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
             <div class="modal-header">
-                <h5 class="modal-title" style="font-weight: bolder;">Volunteer for this event</h5>
+                <h5 class="modal-title" style="font-weight: bolder;">Volunteer for this event </h5>
+                <span class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="The feeding program is on May 29, 2022&#013at Ramonal Village, Nazareth, CDO">
+                        <i class="bi bi-question-circle-fill px-1"></i>
+                </span>
                 <input id="volunteer-hidden" type="hidden" >
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
             </div>
@@ -386,13 +393,12 @@ if (navigator.geolocation) {
         <div class="tab-content py-5" id="pills-tabContent">
             <div   class="tab-pane fade show active" id="pills-events" role="tabpanel" aria-labelledby="pills-events-tab">
                 <div id="events-tab" class="container text-center">
-                    <p>Events will be added on May 23, 2022.</p>
+                    <!-- Insert event card here -->
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-orgs" role="tabpanel" aria-labelledby="pills-orgs-tab">
                 <div class="container text-center">
-                    <p>Organizations will be added on May 23, 2022.
-                    </p>
+                    <!-- insert org card here -->
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-cps" role="tabpanel" aria-labelledby="pills-cps-tab">
