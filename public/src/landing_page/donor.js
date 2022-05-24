@@ -119,7 +119,8 @@ $('#event-modal').on('shown.bs.modal', function(){
         ispromotion: promotion,
         isexcess: excess,
         iserror: labelerror,
-        isdamaged: damaged
+        isdamaged: damaged,
+        isApprovedbByOrg: false
     }
 
     console.log(data);
