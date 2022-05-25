@@ -16,29 +16,40 @@ const auth = getAuth();
 const db = getFirestore();
 const eventsRef  = collection(db, 'Events');
 
+$(document).ready( function (){
 
+    $('#create-modal').on('shown.bs.modal', function(){
+
+
+        const title = document.getElementById('event_title');
+        const start = document.getElementById('event_start');
+        const end = document.getElementById('event_end');
+        const about = document.getElementById('event_about');
+        const fruit = document.getElementById('event_accept-fruit');
+        const meat = document.getElementById('event_accept-meat');
+        const seafood = document.getElementById('event_accept-seafood');
+        const processed = document.getElementById('event_accept-processed');
+        const cooked = document.getElementById('event_accept-cooked');
+        const bread = document.getElementById('event_accept-bread');
+        const canned = document.getElementById('event_accept-canned');
+        const instant = document.getElementById('event_accept-instant');
+        const dryGood = document.getElementById('event_accept-dry');
+        const other = document.getElementById('event_accept-other');
+        const numVolunteer = document.getElementById('event_volunteer');
+        const location = document.getElementById('event_location');
+        const upload = document.getElementById('event_upload');
+        const    submitBtn = document.getElementById('event_add-btn') 
+        // Event listeners
+        submitBtn.addEventListener('click', create);
+        const docID = document.getElementById("event-hidden");
+
+    })
+
+
+
+})
                 //items
-                const title = document.getElementById('event_title');
-                const start = document.getElementById('event_start');
-                const end = document.getElementById('event_end');
-                const about = document.getElementById('event_about');
-                const fruit = document.getElementById('event_accept-fruit');
-                const meat = document.getElementById('event_accept-meat');
-                const seafood = document.getElementById('event_accept-seafood');
-                const processed = document.getElementById('event_accept-processed');
-                const cooked = document.getElementById('event_accept-cooked');
-                const bread = document.getElementById('event_accept-bread');
-                const canned = document.getElementById('event_accept-canned');
-                const instant = document.getElementById('event_accept-instant');
-                const dryGood = document.getElementById('event_accept-dry');
-                const other = document.getElementById('event_accept-other');
-                const numVolunteer = document.getElementById('event_volunteer');
-                const location = document.getElementById('event_location');
-                const upload = document.getElementById('event_upload');
-               
-                // Event listeners
-                submitBtn.addEventListener('click', create);
-                const docID = document.getElementById("event-hidden");
+                
                 
                async function create(){
 

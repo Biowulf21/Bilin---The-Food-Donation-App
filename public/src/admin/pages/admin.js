@@ -14,7 +14,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
-const storage = getStorage(firebaseApp);
+// const storage = getStorage(firebaseApp);
 const eventsRef  = collection(db, 'Events');
 connectFirestoreEmulator(db, 'localhost', 8080);
 
@@ -154,36 +154,44 @@ async function getAllDonations(eventID){
 //BREADCRUMBS
 //event.html
 async function displayEventBreadcrumbs(db, eventsRef) {
-    const unsub = onSnapshot(eventsRef, (snapshot) => {
 
-        //JAMES di pa ni ga display hehe
+    $(document).ready(function(){
 
-        var html_str = "";
+        const unsub = onSnapshot(eventsRef, (snapshot) => {
 
-        for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
-
-            html_str +=`
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Dashboard</a></li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="dash_events.html">Events</a></li>
+            //JAMES di pa ni ga display hehe
+    
+            var html_str = "";
+    
+            for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
+    
+                console.log(snapshot.docs[ctr].data());
+    
+                html_str +=`
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Dashboard</a></li>
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="dash_events.html">Events</a></li>
+                        `+
+                        //JAMES dynamic: event title
+                        `
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">` + snapshot.docs[ctr].data().name + `</li>
+                    </ol>
                     `+
                     //JAMES dynamic: event title
                     `
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">` + snapshot.docs[ctr].data().name + `</li>
-                </ol>
-                `+
-                //JAMES dynamic: event title
-                `
-                <h6 class="font-weight-bolder mb-0">` + snapshot.docs[ctr].data().name + `</h6>
-            </nav>
+                    <h6 class="font-weight-bolder mb-0">` + snapshot.docs[ctr].data().name + `</h6>
+                </nav>
+    
+                `;
+    
+                if (ctr == 3) break;
+            }
+            document.getElementById('breadcrumb_event').innerHTML = html_str;
+        })
 
-            `;
-
-            if (ctr == 3) break;
-        }
-        document.getElementById('breadcrumb_event').innerHTML = html_str;
     })
+    
 }
 displayEventBreadcrumbs(db, eventsRef);
 
