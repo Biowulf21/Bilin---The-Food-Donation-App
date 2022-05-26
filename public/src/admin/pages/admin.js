@@ -994,4 +994,4 @@ async function displayRejectedVolunteer(db, eventsRef) {
     })
 }
 displayRejectedVolunteer(db, eventsRef);
-signOutUser()
+// signOutUser()
