@@ -110,26 +110,6 @@ const orgNum = document.getElementById('org-number');
 async function createOrgWithEmaillPass() {
     try {
         throw new Error("Cannot create admin account at this time.")
-        console.log('creatingUser')
-        const email = orgEmail.value;
-            const password =  orgEmail.value;
-            const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
-            console.log('User Created'); 
-            const user = auth.currentUser.uid
-            // create a user document that has the same UID as their authentication
-            const docRef = await setDoc(doc(db, "Users", user), {
-                id: auth.currentUser.uid,
-                name: orgName.value,
-                email: orgEmail.value,
-                number: orgNum.value,
-                accountType: 'organization'
-              });
-            console.log('User document created');
-            //adds a subcollection of Events under the organization user
-           const orgEventsCollection = addDoc(
-               collection(db, 'Users', docRef.id , 'Events'), {
-           });
-            console.log('Added Events Collection');
     } catch (err) {
         console.log(({
             'message': err.message,
@@ -190,7 +170,7 @@ async function signOutUser(){
         console.log('in signoutuser')
     }
 }
-// signOutUser()
+
     
     // createUser();
 
