@@ -42,6 +42,9 @@ getAllEvents(db, eventsRef);
 //          3. pagination
 
 async function displayAllEvents(db, eventsRef) {
+    try{
+
+    
     const unsub = onSnapshot(eventsRef, (snapshot) => {
 
         var html_str = "";
@@ -83,6 +86,9 @@ async function displayAllEvents(db, eventsRef) {
         }
         document.getElementById('events-tab').innerHTML = html_str;
     })
+}catch(error){
+        console.log(error.message);
+    }
 }
 displayAllEvents(db, eventsRef);
 

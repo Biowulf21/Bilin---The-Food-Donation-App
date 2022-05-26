@@ -20,16 +20,25 @@ const usersRef = collection(db, 'Users')
 const emaillogin = document.getElementById('login_page_email_input');
 const passwordlogin = document.getElementById('login_page_password_input')
 
-// $(document).ready(function(){
+//LOGIN
+$('#event-modal').on('shown.bs.modal', function(){
+    const loginBtn = document.getElementById('login-btn')
+    loginBtn.addEventListener('click', loginWithEmailPassword)
 
-//     $('#modal-login').on('shown.bs.modal', function(e){
-    
-        // const BtnLogin = document.getElementById('login-btn');
-        // BtnLogin.addEventListener('click', loginWithEmailPassword);
-        //     })
-        
-// })
 
+})
+
+//PARTNER SIGNUP
+$('#modal-partner').on('shown.bs.modal', function(){
+    const orgSignUpBtn = document.getElementById('partner-signup-btn');
+orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
+})
+
+$('#modal-donor').on('shown.bs.modal', function(){
+// DONOR SIGN UP
+const donorBtn = document.getElementById('donor-sign-up-btn');
+donorBtn.addEventListener('click', createDonorWithEmaillPass);
+})
     
 
 
@@ -63,8 +72,7 @@ $(function (){
 
 
 
-// const donorBtn = document.getElementById('donor-sign-up-btn');
-// donorBtn.addEventListener('click', createDonorWithEmaillPass);
+
 const donorName = document.getElementById('donor-full-name');
 const donorEmail = document.getElementById('donor-email');
 const donorNumber = document.getElementById('donor-number');
@@ -132,8 +140,7 @@ async function createOrgWithEmaillPass() {
         $('#modal-partner').modal('toggle');
     })
 }
-// const orgSignUpBtn = document.getElementById('partner-signup-btn');
-// orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
+
 
 function resetEmail(){
     const emailInput = document.getElementById('forgot-password-email');

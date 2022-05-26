@@ -105,7 +105,7 @@ $('#event-modal').on('shown.bs.modal', function(){
         onAuthStateChanged(auth, (user)=> {
 
             try{
-                if (!auth){
+                if (auth){
                     throw new Error('You cannot donate if you are not logged in.');
                 }
 
