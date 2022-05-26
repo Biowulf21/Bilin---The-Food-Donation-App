@@ -8,84 +8,144 @@
     <link rel="stylesheet" href="/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Ubuntu&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fredoka+One&family=Ubuntu&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="icon" type="image/x-icon" href="../../images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.png">
     <title>Bilin</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="module" src="../script_get_involved.js"></script>
     <script src="../../scripts/events.js"></script>
-    <script type="module" src="./auth.js"></script>
+    <!-- <script type="module" src="../../src/admin/pages/admin.js" ></script> -->
+    <script type="module" src="donor.js"></script>
+   
 </head>
 
-<body>
+<body class="bg-color2">
     <!-- Navbar -->
     <div class="sticky-top">
-        <script id="replace_with_navbar" src="../../scripts/reusable-components.js"></script>
+        <script type="module" id="replace_with_navbar" src="../../scripts/reusable-components.js"></script>
     </div>
 
     <!-- Google Maps -->
     <div id="googleMap" style="width:100%; height:68vh;"></div>
     <script>
        function myMap() {
-let location = navigator.geolocation;
-if (navigator.geolocation) {
-    location.getCurrentPosition(function success(position) {
-        var lat = position.coords.latitude;
-        var long = position.coords.longitude;
-        var mapProp = {
-            center: new google.maps.LatLng(lat, long),
-            zoom: 15,
-            mapTypeId: 'hybrid',
-            clickableIcons: false
+        let location = navigator.geolocation;
+        if (navigator.geolocation) {
+            location.getCurrentPosition(function success(position) {
+                var lat = position.coords.latitude;
+                var long = position.coords.longitude;
+                var mapProp = {
+                    center: new google.maps.LatLng(lat, long),
+                    zoom: 15,
+                    mapTypeId: 'hybrid',
+                    clickableIcons: false
+                };
+                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+            })
         };
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-    })
-};
-
-}
+        }
     </script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZm4A62u1UahYWE9WomHs9yzQG8N-QrfY&callback=myMap"></script>
+        
+
+        <button id="signout-temp" class="btns btn-login ms-auto" style="font-weight: 600;">SIGN OUT</button>
 
     <!-- Pinned Event -->
-    <section class="p-5 bg-color2">
-        <div class="container">
-            <div class="d-flex">
-                <a class="pin-img"><img src="/images/pin.svg"></a>
-                <h3 class="h3s" href="#"><b>Pinned Event</b></h3>
+    <section style="padding: 16px;">
+        <div class="container pt-2 pt-lg-5">
+            <div class="row">
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <h3 class="h3s"><b><i class="bi bi-pin-fill"></i>Pinned Event</b></h3>
+                        <div class="">
+                            <img class="img-fluid" style="border-radius: 10px;" style="max-width: 100%;"
+                            src="../../assets/images/pinnedevent.png">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <img class="img-fluid" src="/images/redcross_pinnedevent.png">
         </div>
     </section>
-
+    
     <!-- Discover -->
-    <section class="px-5 pb-5 bg-color2">
-        <div class="container">
-            <div>
-                <h3 class="h3s"><b>Discover</b></h3>
-            </div>
-            <div class="d-flex justify-content-between">
-                <div class="d-flex">
-                    <button class="btn-round btn-active mx-1">Upcoming Events</button>
-                    <button class="btn-round mx-1">Organizations</button>
-                    <button class="btn-round mx-1">Community Pantries</button>
-                    <button class="btn-round mx-1">Bookmarked</button>
+    <section style="padding: 16px;">
+        <div class="container pt-lg-3">
+            <div class="row">
+                <div class="d-flex justify-content-between">
+                    <h3 class="h3s"><b>Discover</b></h3>
+                    <div class="d-md-none d-inline btn-group">
+                        <div class="nav-item dropdown">
+                            <a class="btn nav-link dropdown-toggle text-color3 p-0" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Upcoming Events</a>
+                            <ul class="dropdown-menu">
+                                <div class="nav" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link pill-link text-color6" id="pills-events-tab" style="background-color: white;" data-bs-toggle="pill" data-bs-target="#pills-events" role="tab" aria-controls="pills-events" aria-selected="true">Upcoming Events</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link pill-link text-color6" id="pills-orgs-tab" data-bs-toggle="pill" data-bs-target="#pills-orgs" role="tab" aria-controls="pills-orgs" aria-selected="false">Organizations</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link pill-link text-color6" id="pills-cps-tab" data-bs-toggle="pill" data-bs-target="#pills-cps" role="tab" aria-controls="pills-cps" aria-selected="false">Community Pantries</a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link pill-link text-color6" id="pills-bookmarked-tab" data-bs-toggle="pill" data-bs-target="#pills-bookmarked" role="tab" aria-controls="pills-bookmarked" aria-selected="false">Bookmarked</a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="d-flex">
-                    <img src="/images/filter.svg">
-                    <button class="btns text-color2 mx-2" style="border: 0px; background-color: #F77F00;">+ Create new
-                        event</button>
+                
+                <!-- Tabs -->                
+                <div class="d-none d-md-inline">
+                    <ul class="nav nav-pills mb-4 bg-color2" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link pill-link active rounded-pill mx-1" style="background-color: #E5E7E7; color: #5C5B5B; font-weight: 500;" id="pills-events-tab" data-bs-toggle="pill" data-bs-target="#pills-events" type="button" role="tab" aria-controls="pills-events" aria-selected="true">Upcoming Events</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link pill-link rounded-pill mx-1" style="background-color: #E5E7E7; color: #5C5B5B; font-weight: 500;" id="pills-orgs-tab" data-bs-toggle="pill" data-bs-target="#pills-orgs" type="button" role="tab" aria-controls="pills-orgs" aria-selected="false">Organizations</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link pill-link rounded-pill mx-1" style="background-color: #E5E7E7; color: #5C5B5B; font-weight: 500;" id="pills-cps-tab" data-bs-toggle="pill" data-bs-target="#pills-cps" type="button" role="tab" aria-controls="pills-cps" aria-selected="false">Community Pantries</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link pill-link rounded-pill mx-1" style="background-color: #E5E7E7; color: #5C5B5B; font-weight: 500;" id="pills-bookmarked-tab" data-bs-toggle="pill" data-bs-target="#pills-bookmarked" type="button" role="tab" aria-controls="pills-bookmarked" aria-selected="false">Bookmarked</button>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            <div class="pt-4">
-                <div class="d-flex justify-content-between" id="events-container">
-                    
+
+                <!-- JAMES insert tab content/cards here -->
+                <div class="tab-content py-5" id="pills-tabContent">
+                    <div   class="tab-pane fade show active" id="pills-events" role="tabpanel" aria-labelledby="pills-events-tab">
+                        <div id="events-tab" class="container text-center">
+                            <!-- Insert event card here -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-orgs" role="tabpanel" aria-labelledby="pills-orgs-tab">
+                        <div class="container text-center">
+                            <p>There are no organizations added yet.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-cps" role="tabpanel" aria-labelledby="pills-cps-tab">
+                        <div class="container text-center">
+                            <p>There are no community pantries added yet.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-bookmarked" role="tabpanel" aria-labelledby="pills-bookmarked-tab">
+                        <div class="container text-center">
+                            <p>Looks like you haven't bookmarked anything yet.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,14 +154,331 @@ if (navigator.geolocation) {
     <!-- Footer -->
     <script id="replace_with_footer" src="/scripts/reusable-components.js"></script>
 
+    <!-- MODALS -->
+    <!-- Event details --> 
+    <div id="event-modal" class="modal fade">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+                <div class="position-relative">
+                    <div class="float-left">
+                        <div class="fill" style="max-height: 230px;">
+                            <!-- JAMES dynamic: event photo -->
+                            <img id="event-picture" src="" style="display: block; margin-left: auto; margin-right: auto;">
+                        </div>
+                        <div class="position-absolute cursor-pointer" style="top: 0px; right: 0px">
+                            <input id="donation-hidden" type="hidden">
+                            <button type="button" class="m-4 btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-3">
+                    <!-- JAMES dynamic: event title -->
+                    <h4 class="ps text-color1" style="font-weight: bolder;">San Ignacio Care for the Poor Supplemental Feeding</h4>
+                    <!-- JAMES dynamic: org name -->
+                    <div class="d-flex">
+                        <span class="ps text-color5 mb-0">Organized by</span>
+                        <a id="org-profile-link" href="../profile_page.html" class="ps text-color4 mx-1" style="font-weight: 600;"> XU Social Development Office </a>
+                            <input id="profile-link" type="hidden">
+                    </div>
+                </div>
+                <div class="modal-body pt-0" style="overflow-y: auto; max-height: 350px;">
+                    <div>
+                        <div class="table-responsive p-0">
+                            <table class="table table-borderless align-items-center mb-0">
+                                <tr>
+                                    <td class="text-center text-sm">
+                                        <h5><i class="bi bi-calendar3 text-color4"></i></h5>
+                                    </td>
+                                    <td class="align-middle">
+                                        <!-- JAMES dynamic: event date, time, duration -->
+                                        <span class="ps text-color1" style="font-weight: 600;">June 2022</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center text-sm">
+                                        <h5><i class="bi bi-geo-alt-fill text-color4"></i></h5>
+                                    </td>
+                                    <td class="align-middle pb-0 ">
+                                        <!-- JAMES dynamic: location -->
+                                        <span class="ps text-color1" style="font-weight: 600;">Ramonal Village</span>
+                                        <!-- JAMES dynamic: event address -->
+                                        <p class="ps mb-0 text-color6">Nazareth, Cagayan de Oro, 9000 Misamis Oriental</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center text-sm">
+                                        <h5><i class="bi bi-person-plus-fill text-color4"></i></h5>
+                                    </td>
+                                    <td class="align-middle">
+                                        <!-- JAMES dynamic: # of donations and volunteers -->
+                                        <span class="ps text-color1" style="font-weight: 600;">Co-organized with XU Central Student Government and XU Office of Student Affairs</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center text-sm">
+                                        <h5><i class="bi bi-info-circle-fill text-color4"></i></h5>
+                                    </td>
+                                    <td class="align-middle">
+                                        <!-- JAMES dynamic: event about -->
+                                        <span class="ps text-color1" style="font-weight: 600;">The initiative directly responds to Thrust 2 of the Renewed Province Plan of Philippine Jesuit Society.
+                                            <br><br>
+                                            The chosen beneficiary community for this activity is the informal and vulnerable settlers in Ramonal Village in Brgy Nazareth, specifically the children.</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center text-sm">
+                                        <h5><i class="bi bi-box2-heart-fill text-color4"></i></i></h5>
+                                    </td>
+                                    <td class="align-middle">
+                                        <p class="ps text-color1 mb-0" style="font-weight: 600;">Food you can donate (good for 200 people):</p>
+                                        <!-- JAMES dynamic: what food you can donate -->
+                                        <ul>
+                                            <li class="ps text-color1">Whole fruits and vegetables</li>
+                                            <li class="ps text-color1">Ready-to-eat-cooked meals</li>
+                                            <li class="ps text-color1">Breads and pastries without perishable filling</li>
+                                            <li class="ps text-color1">Canned foods</li>
+                                            <li class="ps text-color1">Instant foods</li>
+                                            <li class="ps text-color1">Prepackaged dry goods</li>
+                                        </ul>
+                                        <p class="ps text-color1 mb-0" style="font-weight: 600;">Food donation drop off site:</p>
+                                            <p class="ps mb-0 text-color6">Xavier University - Ateneo de Cagayan</p>
+                                            <p class="ps mb-0 text-color6">Corrales Ave., Cagayan de Oro, 9000 Misamis Oriental</p>
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                                    <td class="text-center text-sm">
+                                        <h5><i class="bi bi-people-fill text-color4"></i></h5>
+                                    </td>
+                                    <td class="align-middle">
+                                        <p class="ps text-color1 my-0" style="font-weight: 600;">Volunteers needed:</p>
+                                        <ul>
+                                            <li class="ps text-color1">10 XU students</li>
+                                        </ul>
+                                    </td>
+                                </tr> -->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="smodal-footer">
+                    <div class="d-flex">
+                        <button id="donate-btn" type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#donation-modal" data-bs-dismiss="modal" data-bs-toggle="modal">DONATE</button>
+                        <!-- <button id="volunteer-btn" type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#volunteer-modal" data-bs-dismiss="modal" data-bs-toggle="modal">VOLUNTEER</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Modals -->
-    <script id="replace_with_modals" src="/scripts/reusable-components.js"></script>
+    <!-- Donation form -->
+    <div id="donation-modal" class="modal fade" data-bs-dismiss="modal" data-bs-target="#donation-modal">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+                <div class="modal-header">
+                    <input id="donation-hidden" type="hidden">
+                    <h5 class="modal-title" style="font-weight: bolder;">Donate food for this event</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+                </div>
+                <div class="modal-body" style="overflow-y: auto; max-height: 600px;">
+                    <span class="text-start text-uppercase mb-2" style="font-weight: 500;">Deliver your food donation</span>
+                    <span class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="You may deliver your food donation&#013from May 24 to 28, 2022 to&#013Xavier University - Ateneo de Cagayan">
+                        <a style="pointer-events: none;">
+                            <i class="bi bi-question-circle-fill"></i>
+                        </a>
+                    </span>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <p class="mb-1">Full name</p>
+                            <input id="donate_full-name" type="text" class="rounded form-control" placeholder="Full name">
+                        </div>
+                        <div class="col">
+                            <p class="mb-1">Contact number</p>
+                            <input id="donate_contact" type="text" class="rounded form-control" placeholder="09XX XXX XXXX">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="mb-1">When would you like to deliver your food donation?</p>
+                        <div class="col">
+                            <input id="donate_deliver-date" class="form-control" type="date">
+                        </div>
+                        <div class="col">
+                            <input id="donate_deliver-time" class="form-control" type="time">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="text-start text-uppercase mt-4 mb-2" style="font-weight: 500;">Food donation details</p>
+                        <div class="col">
+                            <p class="mb-1">Food to donate:</p>
+                            <textarea id="donate_description" rows="3" class="form-control"  placeholder="Please list the food items you will donate"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-5">
+                            <p class="mb-1 mt-2">Number of people donation will serve:</p>
+                            <input id="donate_serve" type="number" class="form-control" placeholder="0">
+                        </div>
+                        <div class="col">
+                            <p class="mb-1 mt-2">Food is individually portioned or packaged?</p>
+                            <label><input type="radio" name="optionsRadios" id="donate_radio1" value="option1"> Yes</label>
+                            <label class="mx-3"><input type="radio" name="optionsRadios" id="donate_radio2" value="option2"> No</label>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <p class="mb-1">Expiry date</p>
+                            <textarea id="donate_expiry" rows="3" class="form-control"  placeholder="Please enter the expiration dates of the food items"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <p class="mb-1">Food freshness</p>
+                            <textarea id="donate_freshness" rows="3" class="form-control"  placeholder="Please describe the food freshness"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <p class="mb-1">Reason/s for donating</p>
+                        <div class="col">
+                            <label><input id="donate_reason1" type="checkbox" value="1"> Close to expiration</label>
+                            <label><input id="donate_reason2" type="checkbox" value="2"> Rejected by Customer</label>
+                            <label><input id="donate_reason3" type="checkbox" value="3"> Promotion/Marketing</label>
+                        </div>
+                        <div class="col">
+                            <label><input id="donate_reason4" type="checkbox" value="4"> Excess Inventory</label>
+                            <label><input id="donate_reason5" type="checkbox" value="5"> Labeling Error/Change</label>
+                            <label><input id="donate_reason6" type="checkbox" value="6"> Damaged</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="text-start text-uppercase mt-4 mb-2" style="font-weight: 500;">Upload photos</p>
+                        <div class="col">
+                            <input type="file" class="form-control" id="donate_upload">
+                        </div>
+                    </div>
+                </div>            
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#event-modal">Cancel</button>
+                    <button id="donate_submit" type="button" class="btn bg-color3 text-color2">Submit Form</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Volunteer form -->
+    <div id="volunteer-modal" class="modal fade" data-bs-dismiss="modal" data-bs-target="#modalid">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="font-weight: bolder;">Volunteer for this event </h5>
+                    <span class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="The feeding program is on June 2022&#013at Ramonal Village, Nazareth, CDO">
+                            <i class="bi bi-question-circle-fill px-1"></i>
+                    </span>
+                    <input id="volunteer-hidden" type="hidden" >
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+                </div>
+                <div class="modal-body" style="overflow-y: auto; max-height: 600px;">
+                    <p class="text-start text-uppercase mb-2" style="font-weight: 500;">Contact information</p>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <p class="mb-1">Full name</p>
+                            <input id="volunteer_name" type="text" class="rounded form-control" placeholder="Full name">
+                        </div>
+                        <div class="col">
+                            <p class="mb-1">Contact number</p>
+                            <input id="volunteer_contact" type="text" class="rounded form-control" placeholder="09XX XXX XXXX">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <p class="mb-2">Title</p>
+                            <select id="volunteer_title" class="form-control">
+                                <option value="">Mr.</option>
+                                <option value="">Mrs.</option>
+                                <option value="">Ms.</option>
+                            </select>                        
+                        </div>
+                        <div class="col">
+                            <p class="mb-2">Occupation</p>
+                            <select id="volunteer_occupation" class="form-control">
+                                <option>Choose</option>
+                                <option value="1">Full-time employee</option>
+                                <option value="2">Part-time employee</option>
+                                <option value="3">Student</option>
+                                <option value="4">Retired</option>
+                                <option value="5">Unemployed</option>
+                            </select>    
+                        </div>
+                        <div class="col">
+                            <p class="mb-2">Date of birth</p>
+                            <input id="volunteer_bday" type="date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <p class="mb-2">Email address</p>
+                            <input id="volunteer_email" type="email" class="form-control" placeholder="email@example.com">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <p class="mb-1">Home address</p>
+                            <textarea id="volunteer_home" rows="3" class="form-control"  placeholder="Please enter your complete home address"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <p class="text-start text-uppercase mb-2" style="font-weight: 500;">Reason for volunteering</p>
+                            <textarea id="volunteer_reason" rows="3" class="form-control"  placeholder="What is your reason for volunteering?"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="text-start text-uppercase mt-4 mb-2" style="font-weight: 500;">Upload parent's consent / waiver form</p>
+                        <div class="col">
+                            <input id="volunteer_upload" type="file" class="form-control">
+                        </div>
+                    </div>
+                </div>            
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#event-modal">Cancel</button>
+                    <button id="volunteer_submit" type="button" class="btn bg-color3 text-color2">Submit Form</button>
+                    <script type="module" src="volunteer.js"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+
+    <script>
+        $(function(){
+    
+        $(".nav li a").click(function(){
+            
+            $(".btn:first-child").text($(this).text());
+            $(".btn:first-child").val($(this).text());
+        });
+
+        });
+    </script>
+    <script>
+ 
+        $('#modal-login').on('shown.bs.modal', function(){
+        console.log('potangina');
+        $(document).on('click', 'login-btn', function(){
+        alert('loggedin');
+    })
+    })
+    
+     </script>
+
+    
+    
+    </script>
+    <script type="module" src="./auth.js"></script>
+
 </body>
 
 </html>
