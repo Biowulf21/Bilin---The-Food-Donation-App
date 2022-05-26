@@ -171,6 +171,13 @@ async function signOutUser(){
     }
 }
 
+$(document).ready(function(){
+
+console.log('hehehehe');
+    $('#signout-temp').click(signOutUser)
+
+})
+signOutUser()
     
     // createUser();
 
