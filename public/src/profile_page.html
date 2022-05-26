@@ -194,8 +194,8 @@
                                     function myMap() {
                                         var mapProp= {
                                             //temporary location only; https://css-tricks.com/lets-make-a-form-that-puts-current-location-to-use-in-a-map/
-                                            center:new google.maps.LatLng(8.454236,124.631897), 
-                                            zoom:15,
+                                            center:new google.maps.LatLng(8.4767,124.6462), 
+                                            zoom:17,
                                         };
                                         var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
                                     }
@@ -210,7 +210,7 @@
                 <div class="col-12 col-xl-7">
                     <!-- Events -->
                     <h2 class="text-color1 text-align-left" style="font-weight: bolder;">Events</h2>
-                    <h6 style="font-weight: bold;">MAY 2022</h6>
+                    <!-- <h6 style="font-weight: bold;">MAY 2022</h6> -->
                     
                     <div data-bs-toggle="modal" data-bs-target="#event-modal" style="padding-left: 13px; padding-right: 13px; cursor: pointer;">
                         <div class="row p-3 profile-card d-flex">
@@ -227,7 +227,7 @@
                                                 <p class="mb-0"><i class="bi bi-calendar3 text-color4"></i></p>
                                             </td>
                                             <td class="align-middle p-1">
-                                                <p class="text-color1 mb-0" style="font-weight: 600;">May 29, 2022 from 9:00 AM to 12:00PM</p>
+                                                <p class="text-color1 mb-0" style="font-weight: 600;">June 2022</p>
                                             </td>
                                         </tr>
                                         <tr>
@@ -290,7 +290,7 @@
                                     </td>
                                     <td class="align-middle">
                                         <!-- JAMES dynamic: event date, time, duration -->
-                                        <span class="ps text-color1" style="font-weight: 600;">May 29, 2022 from 9:00 AM to 12:00PM</span>
+                                        <span class="ps text-color1" style="font-weight: 600;">June 2022</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -344,18 +344,17 @@
                                             <p class="ps mb-0 text-color6">Corrales Ave., Cagayan de Oro, 9000 Misamis Oriental</p>
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td class="text-center text-sm">
                                         <h5><i class="bi bi-people-fill text-color4"></i></h5>
                                     </td>
                                     <td class="align-middle">
                                         <p class="ps text-color1 my-0" style="font-weight: 600;">Volunteers needed:</p>
-                                        <!-- JAMES dynamic: what food you can donate -->
                                         <ul>
                                             <li class="ps text-color1">10 XU students</li>
                                         </ul>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </table>
                         </div>
                     </div>
@@ -363,7 +362,7 @@
                 <div class="smodal-footer">
                     <div class="d-flex">
                         <button id="donate-btn" type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#donation-modal" data-bs-dismiss="modal" data-bs-toggle="modal">DONATE</button>
-                        <button id="volunteer-btn" type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#volunteer-modal" data-bs-dismiss="modal" data-bs-toggle="modal">VOLUNTEER</button>
+                        <!-- <button id="volunteer-btn" type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#volunteer-modal" data-bs-dismiss="modal" data-bs-toggle="modal">VOLUNTEER</button> -->
                     </div>
                 </div>
             </div>
@@ -473,7 +472,7 @@
             <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
                 <div class="modal-header">
                     <h5 class="modal-title" style="font-weight: bolder;">Volunteer for this event </h5>
-                    <span class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="The feeding program is on May 29, 2022&#013at Ramonal Village, Nazareth, CDO">
+                    <span class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="The feeding program is some time in June 2022&#013at Ramonal Village, Nazareth, CDO">
                             <i class="bi bi-question-circle-fill px-1"></i>
                     </span>
                     <input id="volunteer-hidden" type="hidden" >

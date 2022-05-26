@@ -58,9 +58,14 @@
     <section style="padding: 16px;">
         <div class="container pt-2 pt-lg-5">
             <div class="row">
-                <h3 class="h3s"><b><i class="bi bi-pin-fill"></i>Pinned Event</b></h3>
-                <div class="fill">
-                    <img class="img-fluid" style="border-radius: 10px;" src="../../assets/images/pinnedevent.png">
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <h3 class="h3s"><b><i class="bi bi-pin-fill"></i>Pinned Event</b></h3>
+                        <div class="">
+                            <img class="img-fluid" style="border-radius: 10px;" style="max-width: 100%;"
+                            src="../../assets/images/pinnedevent.png">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,7 +128,8 @@
                     </div>
                     <div class="tab-pane fade" id="pills-orgs" role="tabpanel" aria-labelledby="pills-orgs-tab">
                         <div class="container text-center">
-                            <!-- insert org card here -->
+                            <p>There are no organizations added yet.
+                            </p>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-cps" role="tabpanel" aria-labelledby="pills-cps-tab">
@@ -183,7 +189,7 @@
                                     </td>
                                     <td class="align-middle">
                                         <!-- JAMES dynamic: event date, time, duration -->
-                                        <span class="ps text-color1" style="font-weight: 600;">May 29, 2022 from 9:00 AM to 12:00PM</span>
+                                        <span class="ps text-color1" style="font-weight: 600;">June 2022</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -237,18 +243,17 @@
                                             <p class="ps mb-0 text-color6">Corrales Ave., Cagayan de Oro, 9000 Misamis Oriental</p>
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td class="text-center text-sm">
                                         <h5><i class="bi bi-people-fill text-color4"></i></h5>
                                     </td>
                                     <td class="align-middle">
                                         <p class="ps text-color1 my-0" style="font-weight: 600;">Volunteers needed:</p>
-                                        <!-- JAMES dynamic: what food you can donate -->
                                         <ul>
                                             <li class="ps text-color1">10 XU students</li>
                                         </ul>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </table>
                         </div>
                     </div>
@@ -256,7 +261,7 @@
                 <div class="smodal-footer">
                     <div class="d-flex">
                         <button id="donate-btn" type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#donation-modal" data-bs-dismiss="modal" data-bs-toggle="modal">DONATE</button>
-                        <button id="volunteer-btn" type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#volunteer-modal" data-bs-dismiss="modal" data-bs-toggle="modal">VOLUNTEER</button>
+                        <!-- <button id="volunteer-btn" type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#volunteer-modal" data-bs-dismiss="modal" data-bs-toggle="modal">VOLUNTEER</button> -->
                     </div>
                 </div>
             </div>
@@ -362,7 +367,7 @@
             <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
                 <div class="modal-header">
                     <h5 class="modal-title" style="font-weight: bolder;">Volunteer for this event </h5>
-                    <span class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="The feeding program is on May 29, 2022&#013at Ramonal Village, Nazareth, CDO">
+                    <span class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="The feeding program is on June 2022&#013at Ramonal Village, Nazareth, CDO">
                             <i class="bi bi-question-circle-fill px-1"></i>
                     </span>
                     <input id="volunteer-hidden" type="hidden" >
