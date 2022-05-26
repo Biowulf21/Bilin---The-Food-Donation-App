@@ -51,7 +51,7 @@ async function displayAllEvents(db, eventsRef) {
             const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
             var date = new Date(snapshot.docs[ctr].data().date.seconds * 1000);
-            var dateString = date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear();
+            var dateString =  monthNames[date.getMonth()] + " " + date.getFullYear();
             var timeString = date.getHours() + ":" + date.getMinutes();
 
             html_str += `
@@ -61,7 +61,7 @@ async function displayAllEvents(db, eventsRef) {
                             <img src="`+ snapshot.docs[ctr].data().imageURL+`" style="display: block; margin-left: auto; margin-right: auto;">
                         </div>
                         <div class="card-body text-start">
-                            <h6 class="card-subtitle mb-2 text-muted">` + dateString + ', ' + timeString + `</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">` + dateString +  `</h6>
                             <h5 class="card-title">` + snapshot.docs[ctr].data().name + `</h5>
                             <input value=` + snapshot.docs[ctr].id +` id="hidden-input" type="hidden"   data-bs-dismiss="modal"  data-bs-target="#event-modal" data-bs-toggle="modal">
                             <p class="card-text">` + snapshot.docs[ctr].data().address1 + `<br>` + snapshot.docs[ctr].data().address2 + `</p>
