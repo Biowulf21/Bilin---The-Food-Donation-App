@@ -1,6 +1,6 @@
 import { initializeApp  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, setDoc, doc} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+import { getFirestore, collection, addDoc,} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
 
 const firebaseConfig = {
@@ -17,31 +17,21 @@ const auth = getAuth();
 const db = getFirestore();
 const usersRef = collection(db, 'Users')
 
+const BtnLogin = document.getElementById('login-btn');
 const emaillogin = document.getElementById('login_page_email_input');
 const passwordlogin = document.getElementById('login_page_password_input')
-
-// $(document).ready(function(){
-
-//     $('#modal-login').on('shown.bs.modal', function(e){
-    
-        // const BtnLogin = document.getElementById('login-btn');
-        // BtnLogin.addEventListener('click', loginWithEmailPassword);
-        //     })
-        
-// })
-
-    
+BtnLogin.addEventListener('click', loginWithEmailPassword);
 
 
 
 // Login
 async function loginWithEmailPassword() {
     try {
-        const email = emaillogin.value;
-        const password = passwordlogin.value;
-        onAuthStateChanged(auth, async (user)=> {
+    const email = emaillogin.value;
+    const password = passwordlogin.value;
+    onAuthStateChanged(auth, async (user)=> {
         try{
-            if (!user){
+        if (!user){
             const userCredentials = await signInWithEmailAndPassword(auth, email, password);
             console.log('User Logged in');
         } else {
@@ -50,21 +40,20 @@ async function loginWithEmailPassword() {
     } catch (err){
         alert(err.message);
     }
-});
+    });
 
-// console.log(userCredentials.user);
-} catch (err) {
-    alert(err.message);
-}
-$(function (){
-    $('#modal-login').modal('toggle');
+        // console.log(userCredentials.user);
+    } catch (err) {
+        alert(err.message);
+    }
+    $(function (){
+        $('#modal-login').modal('toggle');
     });
 }
 
 
-
-// const donorBtn = document.getElementById('donor-sign-up-btn');
-// donorBtn.addEventListener('click', createDonorWithEmaillPass);
+const donorBtn = document.getElementById('donor-sign-up-btn');
+donorBtn.addEventListener('click', createDonorWithEmaillPass);
 const donorName = document.getElementById('donor-full-name');
 const donorEmail = document.getElementById('donor-email');
 const donorNumber = document.getElementById('donor-number');
@@ -91,19 +80,6 @@ async function createDonorWithEmaillPass() {
                 accountType: 'donor'
             })
             console.log('User document created');
-
-            const bookmarks = addDoc(
-                collection(db, 'Users', docRef.id , 'Bookmarks'), {
-            });
-
-            console.log('bookmarks created');
-
-            const donations = addDoc(
-                collection(db, 'Users', docRef.id , 'Donations'), {
-            });
-            console.log('donations collection created');
-
-            
     } catch (err) {
         console.log(({
             'message': err.message,
@@ -120,7 +96,25 @@ const orgEmail = document.getElementById('org-email');
 const orgNum = document.getElementById('org-number');
 async function createOrgWithEmaillPass() {
     try {
-        throw new Error("Cannot create admin account at this time.")
+        console.log('creatingUser')
+        const email = orgEmail.value;
+            const password = 'testpass';
+            const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+            console.log('User Created');    
+            const docRef = await addDoc(usersRef, {
+                id: auth.currentUser.uid,
+                name: orgName.value,
+                email: orgEmail.value,
+                number: orgNum.value,
+                accountType: 'organization'
+            })
+            console.log('User document created');
+            //adds a subcollection of Events under the organization user
+           const orgEventsCollection = addDoc(
+               collection(db, 'Users', docRef.id , 'Events'), {
+            eventName: 'test'
+           });
+            console.log('Added Events Collection');
     } catch (err) {
         console.log(({
             'message': err.message,
@@ -132,8 +126,8 @@ async function createOrgWithEmaillPass() {
         $('#modal-partner').modal('toggle');
     })
 }
-// const orgSignUpBtn = document.getElementById('partner-signup-btn');
-// orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
+const orgSignUpBtn = document.getElementById('partner-signup-btn');
+orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
 
 function resetEmail(){
     const emailInput = document.getElementById('forgot-password-email');
@@ -150,8 +144,8 @@ function resetEmail(){
     });
 }
 
-// const forgotPasswordLink = document.getElementById('send-reset-email-btn');
-// forgotPasswordLink.addEventListener('click', resetEmail)
+const forgotPasswordLink = document.getElementById('send-reset-email-btn');
+forgotPasswordLink.addEventListener('click', resetEmail)
 
 
 // const loginBTN = document.getElementById()
@@ -159,46 +153,6 @@ var loginBtn = document.getElementById('login-btn');
 
 
 // loginWithEmailPassword();
-async function createUser(){
-    const email = 'email@email21.com';
-    const password = 'testpass';
-    createUserWithEmailAndPassword(auth, email, password) 
-}
-
-async function donate(){
-    const bookmarks = addDoc(
-        collection(db, 'Users', docRef.id , 'Bookmarks'), {
-    });
-
-}
-
-async function signOutUser(){
-    try{
-        const signedOut =await signOut(auth)
-        console.log('logged out');
-    } catch(error){
-        console.log(error.message);
-        console.log('in signoutuser')
-    }
-}
-
-$('#modal-login').on('shown.bs.modal', function () {
-
-    $(document).on('click', 'login-btn', function(){
-        alert('loggedin');
-    })
-  })
-
-//   const btn = document.getElementById("login-btn");
-//   btn.addEventListener('click', function(){
-//       alert('potangina')
-//   })
-
-
-// })
-// signOutUser()
-    
-    // createUser();
 
 
 
