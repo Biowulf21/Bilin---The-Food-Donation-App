@@ -17,21 +17,31 @@ const auth = getAuth();
 const db = getFirestore();
 const usersRef = collection(db, 'Users')
 
-const BtnLogin = document.getElementById('login-btn');
 const emaillogin = document.getElementById('login_page_email_input');
 const passwordlogin = document.getElementById('login_page_password_input')
-BtnLogin.addEventListener('click', loginWithEmailPassword);
+
+// $(document).ready(function(){
+
+//     $('#modal-login').on('shown.bs.modal', function(e){
+    
+        // const BtnLogin = document.getElementById('login-btn');
+        // BtnLogin.addEventListener('click', loginWithEmailPassword);
+        //     })
+        
+// })
+
+    
 
 
 
 // Login
 async function loginWithEmailPassword() {
     try {
-    const email = emaillogin.value;
-    const password = passwordlogin.value;
-    onAuthStateChanged(auth, async (user)=> {
+        const email = emaillogin.value;
+        const password = passwordlogin.value;
+        onAuthStateChanged(auth, async (user)=> {
         try{
-        if (!user){
+            if (!user){
             const userCredentials = await signInWithEmailAndPassword(auth, email, password);
             console.log('User Logged in');
         } else {
@@ -40,20 +50,21 @@ async function loginWithEmailPassword() {
     } catch (err){
         alert(err.message);
     }
-    });
+});
 
-        // console.log(userCredentials.user);
-    } catch (err) {
-        alert(err.message);
-    }
-    $(function (){
-        $('#modal-login').modal('toggle');
+// console.log(userCredentials.user);
+} catch (err) {
+    alert(err.message);
+}
+$(function (){
+    $('#modal-login').modal('toggle');
     });
 }
 
 
-const donorBtn = document.getElementById('donor-sign-up-btn');
-donorBtn.addEventListener('click', createDonorWithEmaillPass);
+
+// const donorBtn = document.getElementById('donor-sign-up-btn');
+// donorBtn.addEventListener('click', createDonorWithEmaillPass);
 const donorName = document.getElementById('donor-full-name');
 const donorEmail = document.getElementById('donor-email');
 const donorNumber = document.getElementById('donor-number');
@@ -121,8 +132,8 @@ async function createOrgWithEmaillPass() {
         $('#modal-partner').modal('toggle');
     })
 }
-const orgSignUpBtn = document.getElementById('partner-signup-btn');
-orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
+// const orgSignUpBtn = document.getElementById('partner-signup-btn');
+// orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
 
 function resetEmail(){
     const emailInput = document.getElementById('forgot-password-email');
@@ -139,8 +150,8 @@ function resetEmail(){
     });
 }
 
-const forgotPasswordLink = document.getElementById('send-reset-email-btn');
-forgotPasswordLink.addEventListener('click', resetEmail)
+// const forgotPasswordLink = document.getElementById('send-reset-email-btn');
+// forgotPasswordLink.addEventListener('click', resetEmail)
 
 
 // const loginBTN = document.getElementById()
@@ -171,13 +182,21 @@ async function signOutUser(){
     }
 }
 
-$(document).ready(function(){
+$('#modal-login').on('shown.bs.modal', function () {
 
-console.log('hehehehe');
-    $('#signout-temp').click(signOutUser)
+    $(document).on('click', 'login-btn', function(){
+        alert('loggedin');
+    })
+  })
 
-})
-signOutUser()
+//   const btn = document.getElementById("login-btn");
+//   btn.addEventListener('click', function(){
+//       alert('potangina')
+//   })
+
+
+// })
+// signOutUser()
     
     // createUser();
 

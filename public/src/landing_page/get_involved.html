@@ -15,7 +15,6 @@
     <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.png">
     <title>Bilin</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="module" src="./auth.js"></script>
     <script type="module" src="../script_get_involved.js"></script>
     <script src="../../scripts/events.js"></script>
     <!-- <script type="module" src="../../src/admin/pages/admin.js" ></script> -->
@@ -464,20 +463,22 @@
 
         });
     </script>
+    <script>
+ 
+        $('#modal-login').on('shown.bs.modal', function(){
+        console.log('potangina');
+        $(document).on('click', 'login-btn', function(){
+        alert('loggedin');
+    })
+    })
+    
+     </script>
 
-    <!-- $(document).ready ( function () {
-        $(document).on ("click", "#show-event-btn", function () {
-            console.log('oten1');
-            $('#donation-hidden').val($('#hidden-input').val())
-            
-
-
-
-            // $('#show-event-btn').on('click', function(){
-            //     console.log($('#hidden_input').val())
-            // }) -->
+    
     
     </script>
+    <script type="module" src="./auth.js"></script>
+
 </body>
 
 </html>

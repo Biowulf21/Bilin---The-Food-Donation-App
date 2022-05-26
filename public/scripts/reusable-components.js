@@ -13,6 +13,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth();
 
+
 //Nav bar
 onAuthStateChanged(auth, async(user)=>{
     

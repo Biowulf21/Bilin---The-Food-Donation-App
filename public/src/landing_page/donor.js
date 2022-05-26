@@ -37,6 +37,7 @@ $('#event-modal').on('shown.bs.modal', function(){
 
     volunteerBTn.addEventListener('click', async ()=> {
         try{
+
             onAuthStateChanged(auth, (user)=> {
                 if (!auth){
                     throw new Error('You cannot volunteer if you are not logged in');
@@ -102,13 +103,18 @@ $('#event-modal').on('shown.bs.modal', function(){
         try{
 
         onAuthStateChanged(auth, (user)=> {
-            if (!auth){
-                throw new Error('You cannot donate if you are not logged in.');
+
+            try{
+                if (!auth){
+                    throw new Error('You cannot donate if you are not logged in.');
+                }
+
+            } catch (error){
+                alert(error.message)
             }
             
            
         })
-
                
        const date = document.getElementById('donate_deliver-date')
        const time = document.getElementById('donate_deliver-time');
@@ -169,6 +175,8 @@ $('#event-modal').on('shown.bs.modal', function(){
 }
 
     });
+
+    
 
     })
 
