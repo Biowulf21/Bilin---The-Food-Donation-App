@@ -21,7 +21,7 @@ const emaillogin = document.getElementById('login_page_email_input');
 const passwordlogin = document.getElementById('login_page_password_input')
 
 //LOGIN
-$('#event-modal').on('shown.bs.modal', function(){
+$('#modal-login').on('shown.bs.modal', function(){
     const loginBtn = document.getElementById('login-btn')
     loginBtn.addEventListener('click', loginWithEmailPassword)
 
@@ -29,12 +29,12 @@ $('#event-modal').on('shown.bs.modal', function(){
 })
 
 //PARTNER SIGNUP
-$('#modal-partner').on('shown.bs.modal', function(){
+$('#modal-login').on('shown.bs.modal', function(){
     const orgSignUpBtn = document.getElementById('partner-signup-btn');
 orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
 })
 
-$('#modal-donor').on('shown.bs.modal', function(){
+$('#modal-login').on('shown.bs.modal', function(){
 // DONOR SIGN UP
 const donorBtn = document.getElementById('donor-sign-up-btn');
 donorBtn.addEventListener('click', createDonorWithEmaillPass);
