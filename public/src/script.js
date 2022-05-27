@@ -15,7 +15,9 @@ const firebaseApp = initializeApp({
 
 const db = getFirestore(firebaseApp);
 const eventsRef = collection(db, 'Events')
-connectFirestoreEmulator(db, 'localhost', 8080);
+// connectFirestoreEmulator(db, 'localhost', 8080);
+// connectAuthEmulator(auth, "http://localhost:9099");
+
 
 // will automatically scan for any added events and get its data
 function getAllEvents(db, eventsRef) {

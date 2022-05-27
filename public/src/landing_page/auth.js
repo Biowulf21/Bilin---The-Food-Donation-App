@@ -1,5 +1,5 @@
 import { initializeApp  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+import { connectAuthEmulator, getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, setDoc, doc} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
 
@@ -16,25 +16,29 @@ initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 const usersRef = collection(db, 'Users')
+// connectAuthEmulator(auth, "http://localhost:9099");
 
 const emaillogin = document.getElementById('login_page_email_input');
 const passwordlogin = document.getElementById('login_page_password_input')
 
 //LOGIN
-$('#event-modal').on('shown.bs.modal', function(){
-    const loginBtn = document.getElementById('login-btn')
-    loginBtn.addEventListener('click', loginWithEmailPassword)
-
-
+$('#modal-login').on('shown.bs.modal', function(){
+        $('#login-btn-large').on('click', loginWithEmailPassword)
+    
 })
+
+// const loginBTN = document.getElementById('login-btn')
+// loginBTN.addEventListener('click', loginWithEmailPassword)
+
 
 //PARTNER SIGNUP
-$('#modal-partner').on('shown.bs.modal', function(){
+$('#modal-login').on('shown.bs.modal', function(){
     const orgSignUpBtn = document.getElementById('partner-signup-btn');
-orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
+    orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
+    // $('#')
 })
 
-$('#modal-donor').on('shown.bs.modal', function(){
+$('#modal-login').on('shown.bs.modal', function(){
 // DONOR SIGN UP
 const donorBtn = document.getElementById('donor-sign-up-btn');
 donorBtn.addEventListener('click', createDonorWithEmaillPass);
@@ -53,6 +57,7 @@ async function loginWithEmailPassword() {
             if (!user){
             const userCredentials = await signInWithEmailAndPassword(auth, email, password);
             console.log('User Logged in');
+            location.reload(true);
         } else {
             throw new Error('Already Logged in');
         }
@@ -65,9 +70,7 @@ async function loginWithEmailPassword() {
 } catch (err) {
     alert(err.message);
 }
-$(function (){
-    $('#modal-login').modal('toggle');
-    });
+location.reload(true); 
 }
 
 
@@ -86,7 +89,7 @@ async function createDonorWithEmaillPass() {
             const password = donorPassword.value
 
             if (password !== donorConfirmPassword.value) {
-                console.log('passwords do not match!');
+               alert('passwords do not match!');
                 return;
             }
             const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
@@ -110,13 +113,12 @@ async function createDonorWithEmaillPass() {
                 collection(db, 'Users', docRef.id , 'Donations'), {
             });
             console.log('donations collection created');
+            alert('You have created an account!')
+            location.reload(true);
 
             
     } catch (err) {
-        console.log(({
-            'message': err.message,
-            'code': err.code
-        }));
+        alert(err.message);
     }
     $(function (){
         $('#modal-donor').modal('toggle');
@@ -130,10 +132,8 @@ async function createOrgWithEmaillPass() {
     try {
         throw new Error("Cannot create admin account at this time.")
     } catch (err) {
-        console.log(({
-            'message': err.message,
-            'code': err.code
-        }));
+        
+        alert(err.message)
     }
 
     $(function (){
@@ -183,9 +183,11 @@ async function signOutUser(){
     try{
         const signedOut =await signOut(auth)
         console.log('logged out');
+        location.reload(true);
     } catch(error){
         console.log(error.message);
         console.log('in signoutuser')
+        
     }
 }
 

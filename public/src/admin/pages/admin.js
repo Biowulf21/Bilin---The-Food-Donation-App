@@ -16,7 +16,9 @@ const auth = getAuth();
 const db = getFirestore();
 // const storage = getStorage(firebaseApp);
 const eventsRef  = collection(db, 'Events');
-connectFirestoreEmulator(db, 'localhost', 8080);
+// connectFirestoreEmulator(db, 'localhost', 8080);
+// connectAuthEmulator(auth, "http://localhost:9099");
+
 
 
 
