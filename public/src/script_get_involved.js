@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getFirestore, doc, getDoc, getDocs, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
-// import { getAuth } from "firebase/auth";
+import { getFirestore, doc, getDoc, getDocs, collection, onSnapshot, connectFirestoreEmulator } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import { getStorage, ref, connectStorageEmulator } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-storage.js";
+
 
 
 const firebaseApp = initializeApp({
@@ -15,6 +16,10 @@ const firebaseApp = initializeApp({
 
 const db = getFirestore(firebaseApp);
 const eventsRef = collection(db, 'Events')
+const storage = getStorage(firebaseApp);
+// connectStorageEmulator(storage, "localhost", 9199);
+// FirebaseAuth.getInstance().useEmulator('10.0.2.2', 9099);
+// connectFirestoreEmulator(db, 'localhost', 8080);
 
 let events = [];
 
@@ -25,7 +30,7 @@ function getAllEvents(db, eventsRef) {
         snapshot.docs.forEach((doc) => {
             events.push({ ...doc.data(), id: doc.id });
         })
-        // console.log(events);
+        // return events
     })
 }
 getAllEvents(db, eventsRef);
@@ -38,47 +43,53 @@ getAllEvents(db, eventsRef);
 //          3. pagination
 
 async function displayAllEvents(db, eventsRef) {
+    try{
+
+    
     const unsub = onSnapshot(eventsRef, (snapshot) => {
 
         var html_str = "";
 
         for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
 
-            html_str += '<div class=\"card\" style=\"width: 16rem;\" id=\"event-entry\">';
-            html_str += '<svg class=\"bd-placeholder-img card-img-top\" width=\"100%\" height=\"180\"';
-            html_str += 'xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Placeholder: Image cap\"';
-            html_str += 'preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\">';
-
-            html_str += '<title>Placeholder</title>';
-            html_str += '<rect width=\"100%\" height=\"100%\" fill=\"#868e96\"></rect>';
-            html_str += '<text x=\"43%\" y=\"50%\" fill=\"#dee2e6\" dy=\".3em\">Image</text>';
-            html_str += '</svg>';
-
-            html_str += '<div class=\"card-body\">';
             const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
             var date = new Date(snapshot.docs[ctr].data().date.seconds * 1000);
-            var dateString = date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear();
+            var dateString =  monthNames[date.getMonth()] + " " + date.getFullYear();
             var timeString = date.getHours() + ":" + date.getMinutes();
 
-            html_str += '<h6 class=\"card-subtitle mb-2 text-muted\">' + dateString + ', ' + timeString + ' </h6>';
-            html_str += '<h5 class=\"card-title\">' + snapshot.docs[ctr].data().name + '</h5>';
-            html_str += '<p class=\"card-text\">' + snapshot.docs[ctr].data().address1 + '<br>' + snapshot.docs[ctr].data().address2 + '</p>';
-            html_str += '<button id=\"show-event-btn"\ class=\"btns as bg-color3 text-color2 \ data-bs-dismiss=\"modal"\  data-bs-target=\"#event-modal"\ data-bs-toggle=\"modal"\>VIEW';
-            html_str += 'DETAILS</button>';
-            html_str += '</div>';
-            html_str += '</div>';
+            html_str += `
 
-            // console.log(snapshot.docs[ctr].data().name);
+                    <div class="card bg-color1" style="width: 20rem;" id="event-entry">
+                        <div class="fill" style="max-height: 200px;">
+                            <img src="`+ snapshot.docs[ctr].data().imageURL+`" style="display: block; margin-left: auto; margin-right: auto;">
+                        </div>
+                        <div class="card-body text-start">
+                            <h6 class="card-subtitle mb-2 text-muted">` + dateString +  `</h6>
+                            <h5 class="card-title">` + snapshot.docs[ctr].data().name + `</h5>
+                            <input value=` + snapshot.docs[ctr].id +` id="hidden-input" type="hidden"   data-bs-dismiss="modal"  data-bs-target="#event-modal" data-bs-toggle="modal">
+                            <p class="card-text">` + snapshot.docs[ctr].data().address1 + `<br>` + snapshot.docs[ctr].data().address2 + `</p>
+                            <div class="container">
+                                <div class="row">
+                                    <button id="show-event-btn" class="btn bg-color3 text-color2"  data-bs-target="#event-modal" data-bs-toggle="modal" onclick=""> VIEW DETAILS</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                `;
 
-
+            
             // stop until the 4th entry (0,1,2,3)
             if (ctr == 3) break;
+            $('#event-picture').attr('src', snapshot.docs[ctr].data().imageURL);
+            console.log(snapshot.docs[ctr].data().imageURL);
         }
-
-        // add to events-container
-        document.getElementById('events-container').innerHTML = html_str;
+        document.getElementById('events-tab').innerHTML = html_str;
     })
+}catch(error){
+        console.log(error.message);
+    }
 }
 displayAllEvents(db, eventsRef);
 
@@ -89,8 +100,8 @@ displayAllEvents(db, eventsRef);
 
 // setTimeout(function(){
 
-//     // const viewDetailsBtn = document.getElementById('show-event-btn');
-//     // viewDetailsBtn.addEventListener('click', showDetails);
+    // const viewDetailsBtn = document.getElementById('show-event-btn');
+    // viewDetailsBtn.addEventListener('click', showDetails);
 //     showDetails();
 
 // }, 1000); 

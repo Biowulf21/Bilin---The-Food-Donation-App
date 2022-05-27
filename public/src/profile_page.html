@@ -8,118 +8,239 @@
     <link rel="stylesheet" href="/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Ubuntu&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fredoka+One&family=Ubuntu&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="icon" type="image/x-icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.png">
     <title>Bilin</title>
     <script type="module" src="./landing_page/auth.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
-<body>
+<body class="bg-color2">
     <!-- Navbar -->
-    <div class="sticky-top">
-        <script id="replace_with_navbar" src="/scripts/reusable-components.js"></script>
+    <div class="sticky-top navbars">
+        <script type="module" id="replace_with_navbar" src="/scripts/reusable-components.js"></script>
     </div>
 
-    
-    <!-- Header -->
-    <section style="max-height: fit-content; border: 1.5px solid #C4C4C4;">
-        <div>
-            <div class="fill" style="max-height: 465px;">
-                <img src="https://via.placeholder.com/820x312" style="display: block; margin-left: auto; margin-right: auto;">
-            </div>
-
-            <div class="px-5 container">
-                <div class="px-3 row">
-                    <div class="d-flex">
-                        <div class="p-2" style="margin-top: -90px;">
-                            <img src="https://via.placeholder.com/170x170" style="height: 170px; width: 170px; border-radius: 50%; border: 8px solid white;">
-                        </div>
-                        <div class="p-2" style="width: 100%;;">
-                            <div class="d-flex justify-content-between">
-                                <div class="h1 text-color1" style="font-weight: bolder;">Organization Name</div>
-                                <button class="btns p bg-color3 text-color2">MESSAGE</button>
-                            </div>
-                            <div>
-                                <button class="btns p">Events</button>
-                                <button class="btns p">Posts</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+    <div>
+        <!-- <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('../assets/images/sd_cover.png'); background-position-y: 50%;">
+          <span class="mask bg-gradient-primary opacity-6"></span>
+        </div> -->
+        <div class="fill page-header" style="max-height: 325px;">
+            <img class="img-fluid" style="min-width: 100%;" src="../../assets/images/sd_cover.png">
         </div>
-    </section>
+        <div class="cards card-bodys blur shadow-blur mx-4 mt-n5 p-3 overflow-hidden">
+          <div class="row gx-4">
+            <div class="col-auto">
+              <div class="avatar avatar-xl position-relative">
+                <img src="../assets/images/logo_xu.png" alt="profile_image" class="border-radius-lg shadow-sm" style="background-color: white;">
+              </div>
+            </div>
+            <div class="col-auto my-auto">
+              <div class="h-100">
+                <h5 class="mb-1">
+                  XU Social Development Office
+                </h5>
+                <!-- <p class="mb-0 font-weight-bold text-sm">
+                  CEO / Co-Founder
+                </p> -->
+              </div>
+            </div>
+            <!-- <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                <div class="nav-wrapper position-relative end-0">
+                    <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
+                        <li class="nav-item">
+                        <a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">
+                            <svg class="text-dark" width="16px" height="16px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g transform="translate(-2319.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                <g transform="translate(1716.000000, 291.000000)">
+                                    <g transform="translate(603.000000, 0.000000)">
+                                    <path class="color-background" d="M22.7597136,19.3090182 L38.8987031,11.2395234 C39.3926816,10.9925342 39.592906,10.3918611 39.3459167,9.89788265 C39.249157,9.70436312 39.0922432,9.5474453 38.8987261,9.45068056 L20.2741875,0.1378125 L20.2741875,0.1378125 C19.905375,-0.04725 19.469625,-0.04725 19.0995,0.1378125 L3.1011696,8.13815822 C2.60720568,8.38517662 2.40701679,8.98586148 2.6540352,9.4798254 C2.75080129,9.67332903 2.90771305,9.83023153 3.10122239,9.9269862 L21.8652864,19.3090182 C22.1468139,19.4497819 22.4781861,19.4497819 22.7597136,19.3090182 Z">
+                                    </path>
+                                    <path class="color-background" d="M23.625,22.429159 L23.625,39.8805372 C23.625,40.4328219 24.0727153,40.8805372 24.625,40.8805372 C24.7802551,40.8805372 24.9333778,40.8443874 25.0722402,40.7749511 L41.2741875,32.673375 L41.2741875,32.673375 C41.719125,32.4515625 42,31.9974375 42,31.5 L42,14.241659 C42,13.6893742 41.5522847,13.241659 41,13.241659 C40.8447549,13.241659 40.6916418,13.2778041 40.5527864,13.3472318 L24.1777864,21.5347318 C23.8390024,21.7041238 23.625,22.0503869 23.625,22.429159 Z" opacity="0.7"></path>
+                                    <path class="color-background" d="M20.4472136,21.5347318 L1.4472136,12.0347318 C0.953235098,11.7877425 0.352562058,11.9879669 0.105572809,12.4819454 C0.0361450918,12.6208008 6.47121774e-16,12.7739139 0,12.929159 L0,30.1875 L0,30.1875 C0,30.6849375 0.280875,31.1390625 0.7258125,31.3621875 L19.5528096,40.7750766 C20.0467945,41.0220531 20.6474623,40.8218132 20.8944388,40.3278283 C20.963859,40.1889789 21,40.0358742 21,39.8806379 L21,22.429159 C21,22.0503869 20.7859976,21.7041238 20.4472136,21.5347318 Z" opacity="0.7"></path>
+                                    </g>
+                                </g>
+                                </g>
+                            </g>
+                            </svg>
+                            <span class="ms-1">App</span>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
+                            <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>document</title>
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                <g transform="translate(1716.000000, 291.000000)">
+                                    <g transform="translate(154.000000, 300.000000)">
+                                    <path class="color-background" d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z" opacity="0.603585379"></path>
+                                    <path class="color-background" d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z">
+                                    </path>
+                                    </g>
+                                </g>
+                                </g>
+                            </g>
+                            </svg>
+                            <span class="ms-1">Messages</span>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
+                            <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>settings</title>
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                <g transform="translate(1716.000000, 291.000000)">
+                                    <g transform="translate(304.000000, 151.000000)">
+                                    <polygon class="color-background" opacity="0.596981957" points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667">
+                                    </polygon>
+                                    <path class="color-background" d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z" opacity="0.596981957"></path>
+                                    <path class="color-background" d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z">
+                                    </path>
+                                    </g>
+                                </g>
+                                </g>
+                            </g>
+                            </svg>
+                            <span class="ms-1">Settings</span>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+            </div>
+        </div>
+    </div>
 
-    <!-- Content -->
-    <section class="p-5 bg-color2">
-        <div class="px-5 container">
-            <div class="px-3 row">
+    <section class="bg-color2">
+        <div class="container py-5">
+            <div class="row">
                 <!-- Org info -->
-                <div class="col-4">
+                <div class="col-0 col-xl-1"></div>
+                <div class="col-12 col-xl-3">
                     <!-- About -->
                     <div class="aside">
-                        <div class="profile-card" style="padding: 20px;">
-                            <p class="ps text-color1" style="font-size: 20px; font-weight: bold;">About</p>
-                            <p class="ps text-color1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt augue at lacus ultrices consequat. In non nunc sit amet nisi venenatis faucibus eget sed nibh.</p>
-                            <div>
-                                <p class="ps" style="color: #5C5B5B; font-weight: 600;"><i class="bi bi-geo-alt-fill text-color4" style="font-size: 20px;"> </i>Address</p>
-                                <p class="ps" style="color: #5C5B5B; font-weight: 600;"><i class="bi bi-telephone-fill text-color4" style="font-size: 20px;"> </i>Contact number</p>
-                                <p class="ps" style="color: #5C5B5B; font-weight: 600;"><i class="bi bi-envelope-fill text-color4" style="font-size: 20px;"> </i>Email address</p>
-                                <p class="ps" style="color: #5C5B5B; font-weight: 600;"><i class="bi bi-link-45deg text-color4" style="font-size: 20px;;"> </i>Website link</p>
+                        <div class="cards h-100" style="border: 1.5px solid #C4C4C4;">
+                            <div class="cards-header pb-0 p-3">
+                                <div class="row">
+                                    <div class="col-md-8 d-flex align-items-center">
+                                        <h6 class="mb-0 ps text-color1" style="font-weight: 600;">About</h6>
+                                    </div>
+                                    <!-- <div class="col-md-4 text-end">
+                                        <a href="javascript:;">
+                                            <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                                        </a>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="cards-body p-3">
+                                <p class="text-sm">
+                                    Social engagement is a mark of a Jesuit institution. At Xavier University, this is embodied in the cluster for Social Development (SD).
+                                </p>
+                                <hr class="horizontal gray-light my-4">
+                                <div class="d-md-flex d-xl-block">
+                                    <div>
+                                        <table class="table table-borderless align-items-center mb-0">
+                                            <tr>
+                                                <td class="text-center text-sm">
+                                                    <h5><i class="bi bi-geo-alt-fill text-color4"></i></h5>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <span class="ps text-color1" style="font-weight: 600;">Xavier University - Ateneo de Cagayan</span>
+                                                    <p class="ps mb-0 text-color6">Corrales Ave., Cagayan de Oro, 9000 Misamis Oriental</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-sm">
+                                                    <h5><i class="bi bi-telephone-fill text-color4"></i></h5>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <span class="ps text-color1" style="font-weight: 600;">0927 127 6848</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-sm">
+                                                    <h5><i class="bi bi-envelope-fill text-color4"></i></h5>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <span class="ps text-color1" style="font-weight: 600;">vpsocdev@xu.edu.ph</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-sm">
+                                                    <h5><i class="bi bi-globe2 text-color4"></i></h5>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <a href="https://www.xu.edu.ph/social-development" target="_blank" rel="noopener noreferrer" class="ps text-color1" style="font-weight: 600;"><span>https://www.xu.edu.ph/social-development</span></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
                         <!-- Google maps -->
-                        <div class="py-3">
-                            <div class="profile-card" id="googleMap" style="width:100%; height: 200px;"></div>
-                            <script>
-                                function myMap() {
-                                    var mapProp= {
-                                        //temporary location only; https://css-tricks.com/lets-make-a-form-that-puts-current-location-to-use-in-a-map/
-                                        center:new google.maps.LatLng(8.454236,124.631897), 
-                                        zoom:15,
-                                    };
-                                    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-                                }
-                            </script>
-                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZm4A62u1UahYWE9WomHs9yzQG8N-QrfY&callback=myMap"></script>
-
+                        <div class="pb-2">
+                            <div class="py-3">
+                                <div class="profile-card" id="googleMap" style="width:100%; height: 200px;"></div>
+                                <script>
+                                    function myMap() {
+                                        var mapProp= {
+                                            //temporary location only; https://css-tricks.com/lets-make-a-form-that-puts-current-location-to-use-in-a-map/
+                                            center:new google.maps.LatLng(8.4767,124.6462), 
+                                            zoom:17,
+                                        };
+                                        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                                    }
+                                </script>
+                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZm4A62u1UahYWE9WomHs9yzQG8N-QrfY&callback=myMap"></script>
+    
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="px-4 col">
+                <div class="col-12 col-xl-7">
                     <!-- Events -->
                     <h2 class="text-color1 text-align-left" style="font-weight: bolder;">Events</h2>
-                    <h6 style="font-weight: bold;">MONTH</h6>
+                    <!-- <h6 style="font-weight: bold;">MAY 2022</h6> -->
                     
-                    <div style="padding-left: 13px;">
+                    <div data-bs-toggle="modal" data-bs-target="#event-modal" style="padding-left: 13px; padding-right: 13px; cursor: pointer;">
                         <div class="row p-3 profile-card d-flex">
-                            <div class="col fill profile-card" style="height: 140px; max-width: 200px;">
-                                <img src="https://via.placeholder.com/200x140" style="display: block; margin-left: auto; margin-right: auto;">
+                            <div class="col fill profile-card d-none d-md-flex" style="min-height: 140px; max-width: 200px;">
+                                <img src="../assets/images/sd_may29.jpg" style="min-width: 200px;">
                             </div>
     
                             <div class="col px-3 d-flex flex-column justify-content-between">
-                                <h4 style="font-weight: bold; color: #5C5B5B;">Event name</h4>
-                                <div class="d-flex">
-                                    <div class="col" style="display: table;">
-                                        <span class="px-1 vertical-align"><img src="/images/donate-icon.svg" class="vertical-align"></span>
-                                        <span class="vertical-align">000 donated</span>
-                                    </div>
-                                    <div class="col" style="display: table;">
-                                        <span class="px-1 vertical-align"><img src="/images/volunteer-icon.svg" class="vertical-align"></span>
-                                        <span class="vertical-align">000 volunteered</span>
-                                    </div>
+                                <h4 style="font-weight: bold; color: #5C5B5B;">San Ignacio Care for the Poor Supplemental Feeding</h4>
+                                <div class="table-responsive p-0">
+                                    <table class="table table-borderless align-items-center mb-0">
+                                        <tr>
+                                            <td class="text-center text-sm p-1">
+                                                <p class="mb-0"><i class="bi bi-calendar3 text-color4"></i></p>
+                                            </td>
+                                            <td class="align-middle p-1">
+                                                <p class="text-color1 mb-0" style="font-weight: 600;">June 2022</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-sm p-1">
+                                                <p class="mb-0"><i class="bi bi-geo-alt-fill text-color4 mb-0"></i></p>
+                                            </td>
+                                            <td class="align-middle p-1">
+                                                <p class="text-color1 mb-0" style="font-weight: 600;">Ramonal Village</p>
+                                                <p class="text-color6 mb-0">Nazareth, Cagayan de Oro, 9000 Misamis Oriental</p>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
-                                <p>Address line 1<br/>Address line 2</p>
                             </div>
                         </div>
                     </div>
@@ -130,6 +251,303 @@
 
     <!-- Footer -->
     <script id="replace_with_footer" src="/scripts/reusable-components.js"></script>
+
+
+    <!-- MODALS -->
+    <!-- Event details --> 
+    <div id="event-modal" class="modal fade">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+                <div class="position-relative">
+                    <div class="float-left">
+                        <div class="fill" style="max-height: 230px;">
+                            <!-- JAMES dynamic: event photo -->
+                            <img id="event-picture" src="" style="display: block; margin-left: auto; margin-right: auto;">
+                        </div>
+                        <div class="position-absolute cursor-pointer" style="top: 0px; right: 0px">
+                            <input id="donation-hidden" type="hidden">
+                            <button type="button" class="m-4 btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-3">
+                    <!-- JAMES dynamic: event title -->
+                    <h4 class="ps text-color1" style="font-weight: bolder;">San Ignacio Care for the Poor Supplemental Feeding</h4>
+                    <!-- JAMES dynamic: org name -->
+                    <div class="d-flex">
+                        <span class="ps text-color5 mb-0">Organized by</span>
+                        <a id="org-profile-link" href="../src/profile_page.html" class="ps text-color4 mx-1" style="font-weight: 600;"> XU Social Development Office </a>
+                            <input id="profile-link" type="hidden">
+                    </div>
+                </div>
+                <div class="modal-body pt-0" style="overflow-y: auto; max-height: 350px;">
+                    <div>
+                        <div class="table-responsive p-0">
+                            <table class="table table-borderless align-items-center mb-0">
+                                <tr>
+                                    <td class="text-center text-sm">
+                                        <h5><i class="bi bi-calendar3 text-color4"></i></h5>
+                                    </td>
+                                    <td class="align-middle">
+                                        <!-- JAMES dynamic: event date, time, duration -->
+                                        <span class="ps text-color1" style="font-weight: 600;">June 2022</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center text-sm">
+                                        <h5><i class="bi bi-geo-alt-fill text-color4"></i></h5>
+                                    </td>
+                                    <td class="align-middle pb-0 ">
+                                        <!-- JAMES dynamic: location -->
+                                        <span class="ps text-color1" style="font-weight: 600;">Ramonal Village</span>
+                                        <!-- JAMES dynamic: event address -->
+                                        <p class="ps mb-0 text-color6">Nazareth, Cagayan de Oro, 9000 Misamis Oriental</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center text-sm">
+                                        <h5><i class="bi bi-person-plus-fill text-color4"></i></h5>
+                                    </td>
+                                    <td class="align-middle">
+                                        <!-- JAMES dynamic: # of donations and volunteers -->
+                                        <span class="ps text-color1" style="font-weight: 600;">Co-organized with XU Central Student Government and XU Office of Student Affairs</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center text-sm">
+                                        <h5><i class="bi bi-info-circle-fill text-color4"></i></h5>
+                                    </td>
+                                    <td class="align-middle">
+                                        <!-- JAMES dynamic: event about -->
+                                        <span class="ps text-color1" style="font-weight: 600;">The initiative directly responds to Thrust 2 of the Renewed Province Plan of Philippine Jesuit Society.
+                                            <br><br>
+                                            The chosen beneficiary community for this activity is the informal and vulnerable settlers in Ramonal Village in Brgy Nazareth, specifically the children.</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center text-sm">
+                                        <h5><i class="bi bi-box2-heart-fill text-color4"></i></i></h5>
+                                    </td>
+                                    <td class="align-middle">
+                                        <p class="ps text-color1 mb-0" style="font-weight: 600;">Food you can donate (good for 200 people):</p>
+                                        <!-- JAMES dynamic: what food you can donate -->
+                                        <ul>
+                                            <li class="ps text-color1">Whole fruits and vegetables</li>
+                                            <li class="ps text-color1">Ready-to-eat-cooked meals</li>
+                                            <li class="ps text-color1">Breads and pastries without perishable filling</li>
+                                            <li class="ps text-color1">Canned foods</li>
+                                            <li class="ps text-color1">Instant foods</li>
+                                            <li class="ps text-color1">Prepackaged dry goods</li>
+                                        </ul>
+                                        <p class="ps text-color1 mb-0" style="font-weight: 600;">Food donation drop off site:</p>
+                                            <p class="ps mb-0 text-color6">Xavier University - Ateneo de Cagayan</p>
+                                            <p class="ps mb-0 text-color6">Corrales Ave., Cagayan de Oro, 9000 Misamis Oriental</p>
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                                    <td class="text-center text-sm">
+                                        <h5><i class="bi bi-people-fill text-color4"></i></h5>
+                                    </td>
+                                    <td class="align-middle">
+                                        <p class="ps text-color1 my-0" style="font-weight: 600;">Volunteers needed:</p>
+                                        <ul>
+                                            <li class="ps text-color1">10 XU students</li>
+                                        </ul>
+                                    </td>
+                                </tr> -->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="smodal-footer">
+                    <div class="d-flex">
+                        <button id="donate-btn" type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#donation-modal" data-bs-dismiss="modal" data-bs-toggle="modal">DONATE</button>
+                        <!-- <button id="volunteer-btn" type="button" class="border-0 mx-1 py-2 btns bg-color3 text-color2" style="width: 100%; font-weight: 400;" data-bs-target="#volunteer-modal" data-bs-dismiss="modal" data-bs-toggle="modal">VOLUNTEER</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Donation form -->
+    <div id="donation-modal" class="modal fade" data-bs-dismiss="modal" data-bs-target="#donation-modal">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+                <div class="modal-header">
+                    <input id="donation-hidden" type="hidden">
+                    <h5 class="modal-title" style="font-weight: bolder;">Donate food for this event</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+                </div>
+                <div class="modal-body" style="overflow-y: auto; max-height: 600px;">
+                    <span class="text-start text-uppercase mb-2" style="font-weight: 500;">Deliver your food donation</span>
+                    <span class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="You may deliver your food donation&#013from May 24 to 28, 2022 to&#013Xavier University - Ateneo de Cagayan">
+                        <a style="pointer-events: none;">
+                            <i class="bi bi-question-circle-fill"></i>
+                        </a>
+                    </span>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <p class="mb-1">Full name</p>
+                            <input id="donate_full-name" type="text" class="rounded form-control" placeholder="Full name">
+                        </div>
+                        <div class="col">
+                            <p class="mb-1">Contact number</p>
+                            <input id="donate_contact" type="text" class="rounded form-control" placeholder="09XX XXX XXXX">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="mb-1">When would you like to deliver your food donation?</p>
+                        <div class="col">
+                            <input id="donate_deliver-date" class="form-control" type="date">
+                        </div>
+                        <div class="col">
+                            <input id="donate_deliver-time" class="form-control" type="time">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="text-start text-uppercase mt-4 mb-2" style="font-weight: 500;">Food donation details</p>
+                        <div class="col">
+                            <p class="mb-1">Food to donate:</p>
+                            <textarea id="donate_description" rows="3" class="form-control"  placeholder="Please list the food items you will donate"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-5">
+                            <p class="mb-1 mt-2">Number of people donation will serve:</p>
+                            <input id="donate_serve" type="number" class="form-control" placeholder="0">
+                        </div>
+                        <div class="col">
+                            <p class="mb-1 mt-2">Food is individually portioned or packaged?</p>
+                            <label><input type="radio" name="optionsRadios" id="donate_radio1" value="option1"> Yes</label>
+                            <label class="mx-3"><input type="radio" name="optionsRadios" id="donate_radio2" value="option2"> No</label>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <p class="mb-1">Expiry date</p>
+                            <textarea id="donate_expiry" rows="3" class="form-control"  placeholder="Please enter the expiration dates of the food items"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <p class="mb-1">Food freshness</p>
+                            <textarea id="donate_freshness" rows="3" class="form-control"  placeholder="Please describe the food freshness"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <p class="mb-1">Reason/s for donating</p>
+                        <div class="col">
+                            <label><input id="donate_reason1" type="checkbox" value="1"> Close to expiration</label>
+                            <label><input id="donate_reason2" type="checkbox" value="2"> Rejected by Customer</label>
+                            <label><input id="donate_reason3" type="checkbox" value="3"> Promotion/Marketing</label>
+                        </div>
+                        <div class="col">
+                            <label><input id="donate_reason4" type="checkbox" value="4"> Excess Inventory</label>
+                            <label><input id="donate_reason5" type="checkbox" value="5"> Labeling Error/Change</label>
+                            <label><input id="donate_reason6" type="checkbox" value="6"> Damaged</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="text-start text-uppercase mt-4 mb-2" style="font-weight: 500;">Upload photos</p>
+                        <div class="col">
+                            <input type="file" class="form-control" id="donate_upload">
+                        </div>
+                    </div>
+                </div>            
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#event-modal">Cancel</button>
+                    <button id="donate_submit" type="button" class="btn bg-color3 text-color2">Submit Form</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Volunteer form -->
+    <div id="volunteer-modal" class="modal fade" data-bs-dismiss="modal" data-bs-target="#modalid">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="font-weight: bolder;">Volunteer for this event </h5>
+                    <span class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="The feeding program is some time in June 2022&#013at Ramonal Village, Nazareth, CDO">
+                            <i class="bi bi-question-circle-fill px-1"></i>
+                    </span>
+                    <input id="volunteer-hidden" type="hidden" >
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+                </div>
+                <div class="modal-body" style="overflow-y: auto; max-height: 600px;">
+                    <p class="text-start text-uppercase mb-2" style="font-weight: 500;">Contact information</p>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <p class="mb-1">Full name</p>
+                            <input id="volunteer_name" type="text" class="rounded form-control" placeholder="Full name">
+                        </div>
+                        <div class="col">
+                            <p class="mb-1">Contact number</p>
+                            <input id="volunteer_contact" type="text" class="rounded form-control" placeholder="09XX XXX XXXX">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <p class="mb-2">Title</p>
+                            <select id="volunteer_title" class="form-control">
+                                <option value="">Mr.</option>
+                                <option value="">Mrs.</option>
+                                <option value="">Ms.</option>
+                            </select>                        
+                        </div>
+                        <div class="col">
+                            <p class="mb-2">Occupation</p>
+                            <select id="volunteer_occupation" class="form-control">
+                                <option>Choose</option>
+                                <option value="1">Full-time employee</option>
+                                <option value="2">Part-time employee</option>
+                                <option value="3">Student</option>
+                                <option value="4">Retired</option>
+                                <option value="5">Unemployed</option>
+                            </select>    
+                        </div>
+                        <div class="col">
+                            <p class="mb-2">Date of birth</p>
+                            <input id="volunteer_bday" type="date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <p class="mb-2">Email address</p>
+                            <input id="volunteer_email" type="email" class="form-control" placeholder="email@example.com">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <p class="mb-1">Home address</p>
+                            <textarea id="volunteer_home" rows="3" class="form-control"  placeholder="Please enter your complete home address"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <p class="text-start text-uppercase mb-2" style="font-weight: 500;">Reason for volunteering</p>
+                            <textarea id="volunteer_reason" rows="3" class="form-control"  placeholder="What is your reason for volunteering?"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="text-start text-uppercase mt-4 mb-2" style="font-weight: 500;">Upload parent's consent / waiver form</p>
+                        <div class="col">
+                            <input id="volunteer_upload" type="file" class="form-control">
+                        </div>
+                    </div>
+                </div>            
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#event-modal">Cancel</button>
+                    <button id="volunteer_submit" type="button" class="btn bg-color3 text-color2">Submit Form</button>
+                    <script type="module" src="volunteer.js"></script>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
