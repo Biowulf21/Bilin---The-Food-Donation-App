@@ -22,16 +22,19 @@ const passwordlogin = document.getElementById('login_page_password_input')
 
 //LOGIN
 $('#modal-login').on('shown.bs.modal', function(){
-    const loginBtn = document.getElementById('login-btn')
-    loginBtn.addEventListener('click', loginWithEmailPassword)
-
-
+        $('#login-btn-large').on('click', loginWithEmailPassword)
+    
 })
+
+// const loginBTN = document.getElementById('login-btn')
+// loginBTN.addEventListener('click', loginWithEmailPassword)
+
 
 //PARTNER SIGNUP
 $('#modal-login').on('shown.bs.modal', function(){
     const orgSignUpBtn = document.getElementById('partner-signup-btn');
-orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
+    orgSignUpBtn.addEventListener('click', createOrgWithEmaillPass)
+    // $('#')
 })
 
 $('#modal-login').on('shown.bs.modal', function(){
@@ -86,7 +89,7 @@ async function createDonorWithEmaillPass() {
             const password = donorPassword.value
 
             if (password !== donorConfirmPassword.value) {
-                console.log('passwords do not match!');
+               alert('passwords do not match!');
                 return;
             }
             const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
@@ -113,10 +116,7 @@ async function createDonorWithEmaillPass() {
 
             
     } catch (err) {
-        console.log(({
-            'message': err.message,
-            'code': err.code
-        }));
+        alert(err.message);
     }
     $(function (){
         $('#modal-donor').modal('toggle');
@@ -130,10 +130,8 @@ async function createOrgWithEmaillPass() {
     try {
         throw new Error("Cannot create admin account at this time.")
     } catch (err) {
-        console.log(({
-            'message': err.message,
-            'code': err.code
-        }));
+        
+        alert(err.message)
     }
 
     $(function (){
