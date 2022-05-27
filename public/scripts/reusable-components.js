@@ -36,7 +36,6 @@ onAuthStateChanged(auth, async(user)=>{
 
 
 
-
 //Footer
 fetch('/../assets/reusable-components/footer.html')
     .then(res => res.text())
@@ -46,26 +45,14 @@ fetch('/../assets/reusable-components/footer.html')
         newelem.innerHTML = text;
         oldelem.parentNode.replaceChild(newelem, oldelem);
     })
+    
 
 
-
-// //Get involved modals
-// fetch('/../assets/reusable-components/modals.html')
-// .then(res => res.text())
-// .then(text => {
-//     let oldelem = document.querySelector("script#replace_with_modals");
-//     let newelem = document.createElement("div");
-//     newelem.innerHTML = text;
-//     oldelem.parentNodereplaceChild(newelem, oldelem);
-// })
-
-
-
-//TEST
-fetch('../../assets/reusable-components/test.html')
+//modals
+fetch('../../assets/reusable-components/modals.html')
 .then(res => res.text())
 .then(text => {
-    let oldelem = document.querySelector("script#replace_with_test");
+    let oldelem = document.querySelector("script#replace_with_modals");
     let newelem = document.createElement("div");
     newelem.innerHTML = text;
     oldelem.parentElement.replaceChild(newelem, oldelem);

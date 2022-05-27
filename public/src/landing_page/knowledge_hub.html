@@ -15,11 +15,17 @@
     <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.png">
 
     <title>Bilin</title>
-    <script type="module" src="./auth.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="module" src="./auth.js"></script>
 </head>
 
 <body>
+
+    <!-- Modals -->
+    <div class="reusable-component">
+      <script type="module" id="replace_with_modals" src="../../scripts/reusable-components.js"></script>    
+    </div>
+    
     <!-- Navbar -->
     <div class="sticky-top">
         <script type="module" id="replace_with_navbar" src="/scripts/reusable-components.js"></script>
@@ -96,185 +102,6 @@
 
     <!-- Footer -->
     <script id="replace_with_footer" src="/scripts/reusable-components.js"></script>
-
-    <div id='modal-login' class="modal fade">
-
-        <!-- Login large screen -->
-        <div class="d-none d-lg-block">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div  class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
-                    <div class="d-flex">
-                        <div class="p-5 ps bg-color3" style="width: 55%; display: table;">
-                            <div class="vertical-align">
-                                <h3 class="text-color2" style="font-weight: bold;">Welcome to Bilin</h3>
-                                <hr class="rounded" style="width: 20%; height: 4px; color: white;">
-                                <p class="py-3 text-color2" style="font-size: 15px;">Bilin is a platform that makes the donation process easier, allowing forward-thinking people and businesses to connect with non-profit organizations and community pantires</p>
-                                <div class="row">
-                                    <div class="col-auto">
-                                        <button id='signup-as-partner' class="px-3 py-2 bg-color3 text-color2 rounded-pill" style="border: solid #FDFDFD; font-size: 15px;" data-bs-dismiss="modal"  data-bs-target="#modal-partner" data-bs-toggle="modal">Sign Up as Partner</button>
-                                    </div>
-                                    <div class="col-auto">
-                                        <button id='signup-as-donor' class="px-3 py-2 bg-color3 text-color2 rounded-pill" style="border: solid #FDFDFD; font-size: 15px;" data-bs-dismiss="modal"  data-bs-target="#modal-donor" data-bs-toggle="modal">Sign Up as Donor</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="bg-color2 text-center" style="width: 45%;">
-                            <button type="button" class="m-4 btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
-                            <div class="p-5">
-                                <div class="py-3">
-                                    <h3 style="color: #6A6A6A">Log In</h3>
-                                    <div class="my-5 col">
-                                        <input id ='login_page_email_input' type="email" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Email address">
-                                        <input id='login_page_password_input' type="password" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Password">
-                                        <div class="pt-3 fill">
-                                            <button id='login-btn-large' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" >LOG IN</button>
-    
-                                        </div>
-                                    </div>
-                                    <a id='login-page-forgot-password' href="" class="ps text-color4" style="font-weight: 500; text-decoration: none;" data-bs-target="#forgot-password" data-bs-toggle="modal">Forgot password?</a>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <!-- Login small to medium screen -->
-        <div class="d-lg-none d-block">
-            <div class="modal-dialog modal-md modal-dialog-centered">
-                <div  class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
-                    <div class="modal-header bg-color3" style="border-bottom: 0 none;">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div>
-                        <div class="px-5 pb-5 ps bg-color3" style="height: 40%; display: table;">
-                            <div class="vertical-align">
-                                <h3 class="text-color2" style="font-weight: bold;">Welcome to Bilin</h3>
-                                <hr class="rounded" style="width: 20%; height: 4px; color: white;">
-                                <p class="py-3 text-color2" style="font-size: 15px;">Bilin is a platform that makes the donation process easier, allowing forward-thinking people and businesses to connect with non-profit organizations and community pantires</p>
-                                <div class="row">
-                                    <div class="col-auto">
-                                        <button id='signup-as-partner' class="px-3 py-2 bg-color3 text-color2 rounded-pill" style="border: solid #FDFDFD; font-size: 15px;" data-bs-dismiss="modal"  data-bs-target="#modal-partner" data-bs-toggle="modal">Sign Up as Partner</button>
-                                    </div>
-                                    <div class="col-auto">
-                                        <button id='signup-as-donor' class="px-3 py-2 bg-color3 text-color2 rounded-pill" style="border: solid #FDFDFD; font-size: 15px;" data-bs-dismiss="modal"  data-bs-target="#modal-donor" data-bs-toggle="modal">Sign Up as Donor</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="bg-color2 text-center" style="height: 40%;">
-                            <div class="p-5">
-                                    <h3 style="color: #6A6A6A">Log In</h3>
-                                    <div class="my-5 col">
-                                        <input id ='login_page_email_input' type="email" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Email address">
-                                        <input id='login_page_password_input' type="password" class="px-3 py-2 my-3 form-control rounded-pill" placeholder="Password">
-                                        <div class="pt-3 fill">
-                                            <button id='login-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" >LOG IN</button>
-                                        </div>
-                                    </div>
-                                    <a id='login-page-forgot-password' href="" class="ps text-color4" style="font-weight: 500; text-decoration: none;" data-bs-target="#forgot-password" data-bs-toggle="modal">Forgot password?</a>
-                                    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Sign Up as Donor -->
-<div id="modal-donor" class="modal fade">
-    <!-- large screen -->
-    <div class="d-none d-lg-block modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
-            <div class="d-flex">
-
-                <div class="p-5 ps bg-color3" style="width: 55%; display: table;">
-                    <div class="vertical-align">
-                        <h3 class="text-color2" style="font-weight: bold;">What you can do as a donor</h3>
-                        <hr class="rounded" style="width: 20%; height: 4px; color: white;">
-                        <p class="py-3 text-color2" style="font-size: 15px;">Find NGOs and community pantries near you and donate your surplus food. You may also volunteer on events organizaed by NGOs like feeding programs.</p>
-                    </div>
-                </div>
-
-                <div class="bg-color2 text-center" style="width: 45%;">
-                    <button type="button" class="m-4 btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
-                    <div class="p-5">
-                        <h3 style="color: #6A6A6A">Sign Up as Donor</h3>
-
-                        <div class="mt-5 col">
-                            <input id='donor-full-name' type="text" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Full name">                                
-                            <input id='donor-email' type="email" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Email address">
-                            <input id='donor-number' type="tel" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Contact number">
-                            <input id='donor-password' type="password" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Password">
-                            <input id='donor-confirm-password' type="password" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Confirm password">
-
-                            <label class="pt-3">
-                                <input id='donor-agree-tos' type="checkbox">
-                                Agree to <a href="/src/terms_and_conditions.html">Terms & Conditions</a>
-                            </label>
-                        </div>
-                        
-                        <div class="py-4 fill">
-                            <button id='donor-sign-up-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">SIGN UP</button>
-
-                        </div>
-                        
-                        <p>Already have an account? <a id='donor-has-account' class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" data-bs-target="#modal-login" data-bs-toggle="modal"">Log in</a></p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- small to medium screen -->
-    <div class="d-lg-none d-block modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
-            <div class="modal-header bg-color3" style="border-bottom: 0 none;">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="p-5 ps bg-color3" style="height: 40%; display: table;">
-                <div class="vertical-align">
-                    <h3 class="text-color2" style="font-weight: bold;">What you can do as a donor</h3>
-                    <hr class="rounded" style="width: 20%; height: 4px; color: white;">
-                    <p class="py-3 text-color2" style="font-size: 15px;">Find NGOs and community pantries near you and donate your surplus food. You may also volunteer on events organizaed by NGOs like feeding programs.</p>
-                </div>
-            </div>
-
-            <div class="bg-color2 text-center" style="height: 40%;">
-                <div class="p-5">
-                    <h3 style="color: #6A6A6A">Sign Up as Donor</h3>
-
-                    <div class="mt-5 col">
-                        <input id='donor-full-name' type="text" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Full name">                                
-                        <input id='donor-email' type="email" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Email address">
-                        <input id='donor-number' type="tel" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Contact number">
-                        <input id='donor-password' type="password" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Password">
-                        <input id='small-donor-confirm-password' type="password" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Confirm password">
-
-                        <label class="pt-3">
-                            <input id='donor-agree-tos' type="checkbox">
-                            Agree to <a href="/src/terms_and_conditions.html">Terms & Conditions</a>
-                        </label>
-                    </div>
-                    
-                    <div class="py-4 fill">
-                        <button id='donor-sign-up-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;">SIGN UP</button>
-                        <script type="module" src="../../src/landing_page/auth.js"></script>
-
-                    </div>
-                    
-                    <p>Already have an account? <a id='donor-has-account' class="ps text-color4" style="font-weight: 500; text-decoration: none; cursor: pointer;" data-bs-dismiss="modal" data-bs-target="#modal-login" data-bs-toggle="modal"">Log in</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
