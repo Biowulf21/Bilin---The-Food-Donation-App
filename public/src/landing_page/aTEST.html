@@ -27,61 +27,17 @@
         <script type="module" id="replace_with_navbar" src="../../scripts/reusable-components.js"></script>
     </div>
 
-    <!-- MODAL AS RESUABLE COMPONENT
-        1. button in modal cant call function
-    -->
-    <div class="container p-5">
-        <p>buttons in reusable component</p>
+    <!-- MODAL AS RESUABLE COMPONENT -->
+    <div class="reusable-component container p-5">
+        <p>test button inside modal as reusable component</p>
         <script type="module" id="replace_with_test" src="../../scripts/reusable-components.js"></script>    
     </div>
 
-    <reusable-component></reusable-component>
-
-    <!-- MODAL IN THIS HTML PAGE -->
-    <div class="container p-5 pt-0">
-        <p>modal in this html page</p>
-        <button id="open-modal" class="btns btn-login ms-auto" data-bs-toggle="modal" data-bs-target="#htmlModal" style="font-weight: 600;">OPEN MODAL</button>
-    </div>
-  
-    <div class="modal fade" id="htmlModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
-
-                <div class="bg-color2 text-center">
-                    <button type="button" class="m-4 btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
-                    <div class="p-5">
-                        <input id='org-email' type="email" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Email address">
-                        <div class="py-4 fill">
-                            <button id='test-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" onclick=''>SIGN UP</button>
-                            <script type="module" src="../../src/landing_page/auth.js"></script>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>   
-        </div>
-    </div>   
-
     <script>
-        $('.container').on('click','.add_field_button',function(){
+        $('.reusable-component').on('click','.test-btn',function(){
             console.log(this.id , this.innerHTML);
         });
-
-
-
-
     </script>
-
-    <!-- <script>
-        $('#htmlModal').on('shown.bs.modal', function (event) {
-            $("test-btn1").trigger("click");  
-        });
-    
-        $("#test-btn").on("click",function(){
-            alert("button inside modal clicked");
-        })
-    </script> -->
 
     <!-- Footer -->
     <script id="replace_with_footer" src="/scripts/reusable-components.js"></script>
