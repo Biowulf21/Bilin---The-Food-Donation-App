@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fredoka+One&family=Ubuntu&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.png">
+    <title>Bilin</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="module" src="../script_get_involved.js"></script>
+    <script src="../../scripts/events.js"></script>
+    <!-- <script type="module" src="../../src/admin/pages/admin.js" ></script> -->
+    <script type="module" src="donor.js"></script>
+   </head>
+
+<body class="bg-color2">
+    <!-- Navbar -->
+    <div class="sticky-top">
+        <script type="module" id="replace_with_navbar" src="../../scripts/reusable-components.js"></script>
+    </div>
+
+    <!-- MODAL AS RESUABLE COMPONENT
+        1. button in modal cant call function
+    -->
+    <div class="container p-5">
+        <p>buttons in reusable component</p>
+        <script type="module" id="replace_with_test" src="../../scripts/reusable-components.js"></script>    
+    </div>
+
+    <reusable-component></reusable-component>
+
+    <!-- MODAL IN THIS HTML PAGE -->
+    <div class="container p-5 pt-0">
+        <p>modal in this html page</p>
+        <button id="open-modal" class="btns btn-login ms-auto" data-bs-toggle="modal" data-bs-target="#htmlModal" style="font-weight: 600;">OPEN MODAL</button>
+    </div>
+  
+    <div class="modal fade" id="htmlModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+
+                <div class="bg-color2 text-center">
+                    <button type="button" class="m-4 btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+                    <div class="p-5">
+                        <input id='org-email' type="email" class="px-3 py-2 my-2 form-control rounded-pill" placeholder="Email address">
+                        <div class="py-4 fill">
+                            <button id='test-btn' class="col py-2 bg-color3 text-color2 rounded-pill" style="font-weight: 500; border: solid #87B547;" onclick=''>SIGN UP</button>
+                            <script type="module" src="../../src/landing_page/auth.js"></script>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>   
+        </div>
+    </div>   
+
+    <script>
+        $('.container').on('click','.add_field_button',function(){
+            console.log(this.id , this.innerHTML);
+        });
+
+
+
+
+    </script>
+
+    <!-- <script>
+        $('#htmlModal').on('shown.bs.modal', function (event) {
+            $("test-btn1").trigger("click");  
+        });
+    
+        $("#test-btn").on("click",function(){
+            alert("button inside modal clicked");
+        })
+    </script> -->
+
+    <!-- Footer -->
+    <script id="replace_with_footer" src="/scripts/reusable-components.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

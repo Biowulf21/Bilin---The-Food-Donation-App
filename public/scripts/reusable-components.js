@@ -50,24 +50,24 @@ fetch('/../assets/reusable-components/footer.html')
 
 
 
-//Get involved modals
-fetch('/../assets/reusable-components/modals.html')
+// //Get involved modals
+// fetch('/../assets/reusable-components/modals.html')
+// .then(res => res.text())
+// .then(text => {
+//     let oldelem = document.querySelector("script#replace_with_modals");
+//     let newelem = document.createElement("div");
+//     newelem.innerHTML = text;
+//     oldelem.parentNodereplaceChild(newelem, oldelem);
+// })
+
+
+
+//TEST
+fetch('../../assets/reusable-components/test.html')
 .then(res => res.text())
 .then(text => {
-    let oldelem = document.querySelector("script#replace_with_modals");
+    let oldelem = document.querySelector("script#replace_with_test");
     let newelem = document.createElement("div");
     newelem.innerHTML = text;
-    oldelem.parentNode.replaceChild(newelem, oldelem);
-})
-
-
-
-//Dashboard - sidenav
-fetch('/../src/admin/pages/sidenav.html')
-.then(res => res.text())
-.then(text => {
-    let oldelem = document.querySelector("script#replace_with_sidenav");
-    let newelem = document.createElement("div");
-    newelem.innerHTML = text;
-    oldelem.parentNode.replaceChild(newelem, oldelem);
+    oldelem.parentElement.replaceChild(newelem, oldelem);
 })
