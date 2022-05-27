@@ -179,7 +179,26 @@ async function donate(){
 
 }
 
-async function signOutUser(){
+// async function signOutUser(){
+//     try{
+//         const signedOut =await signOut(auth)
+//         console.log('logged out');
+//         location.reload(true);
+//     } catch(error){
+//         console.log(error.message);
+//         console.log('in signoutuser')
+//     }
+// }
+
+
+// $(document).read(function(){
+//         $('#signout-btn').on('click', function(){
+//             console.log(this.id , this.innerHTML);        }
+//         );
+//     }
+// )
+
+$('.sticky-top').on('click','.signout-btn', '.signout-btn-large', async function signOutUser(){
     try{
         const signedOut =await signOut(auth)
         console.log('logged out');
@@ -187,9 +206,9 @@ async function signOutUser(){
     } catch(error){
         console.log(error.message);
         console.log('in signoutuser')
-        
     }
-}
+});
+
 
 $('#modal-login').on('shown.bs.modal', function () {
 
