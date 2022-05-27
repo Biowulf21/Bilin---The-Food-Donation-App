@@ -1,5 +1,5 @@
 import { initializeApp  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+import { connectAuthEmulator, getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, setDoc, doc} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
 
@@ -16,6 +16,7 @@ initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 const usersRef = collection(db, 'Users')
+// connectAuthEmulator(auth, "http://localhost:9099");
 
 const emaillogin = document.getElementById('login_page_email_input');
 const passwordlogin = document.getElementById('login_page_password_input')
@@ -56,6 +57,7 @@ async function loginWithEmailPassword() {
             if (!user){
             const userCredentials = await signInWithEmailAndPassword(auth, email, password);
             console.log('User Logged in');
+            location.reload(true);
         } else {
             throw new Error('Already Logged in');
         }
@@ -68,9 +70,7 @@ async function loginWithEmailPassword() {
 } catch (err) {
     alert(err.message);
 }
-$(function (){
-    $('#modal-login').modal('toggle');
-    });
+location.reload(true); 
 }
 
 
@@ -113,6 +113,8 @@ async function createDonorWithEmaillPass() {
                 collection(db, 'Users', docRef.id , 'Donations'), {
             });
             console.log('donations collection created');
+            alert('You have created an account!')
+            location.reload(true);
 
             
     } catch (err) {
@@ -181,9 +183,11 @@ async function signOutUser(){
     try{
         const signedOut =await signOut(auth)
         console.log('logged out');
+        location.reload(true);
     } catch(error){
         console.log(error.message);
         console.log('in signoutuser')
+        
     }
 }
 

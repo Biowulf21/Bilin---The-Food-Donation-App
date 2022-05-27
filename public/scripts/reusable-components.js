@@ -16,7 +16,6 @@ const auth = getAuth();
 
 //Nav bar
 onAuthStateChanged(auth, async(user)=>{
-    
     user ?
     fetch('/../assets/reusable-components/nav-loggedin.html')
         .then(res => res.text())

@@ -17,8 +17,9 @@ const firebaseApp = initializeApp({
 const db = getFirestore(firebaseApp);
 const eventsRef = collection(db, 'Events')
 const storage = getStorage(firebaseApp);
-connectStorageEmulator(storage, "localhost", 9199);
-connectFirestoreEmulator(db, 'localhost', 8080);
+// connectStorageEmulator(storage, "localhost", 9199);
+// FirebaseAuth.getInstance().useEmulator('10.0.2.2', 9099);
+// connectFirestoreEmulator(db, 'localhost', 8080);
 
 let events = [];
 
