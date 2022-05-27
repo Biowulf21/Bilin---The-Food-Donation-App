@@ -70,7 +70,6 @@ async function loginWithEmailPassword() {
 } catch (err) {
     alert(err.message);
 }
-location.reload(true); 
 }
 
 
