@@ -18,14 +18,14 @@ const db = getFirestore();
 const usersRef = collection(db, 'Users')
 // connectAuthEmulator(auth, "http://localhost:9099");
 
-const emaillogin = document.getElementById('login_page_email_input');
-const passwordlogin = document.getElementById('login_page_password_input')
 
 // LOGIN
 $('.reusable-component').on('click', '.login-btn, .login-btn-large', async function loginWithEmailPassword() {
+    const emaillogin = document.getElementById('login_page_email_input').value;
+    const passwordlogin = document.getElementById('login_page_password_input').value;
     try {
-        const email = emaillogin.value;
-        const password = passwordlogin.value;
+        const email = emaillogin;
+        const password = passwordlogin;
         onAuthStateChanged(auth, async (user)=> {
             try{
                 if (!user){
@@ -46,10 +46,10 @@ $('.reusable-component').on('click', '.login-btn, .login-btn-large', async funct
 });
 
 // PARTNER SIGNUP
-const orgName = document.getElementById('org-name');
-const orgEmail = document.getElementById('org-email');
-const orgNum = document.getElementById('org-number');
 $('.reusable-component').on('click', '.partner-signup-btn, .partner-signup-btn-large', async function createOrgWithEmaillPass() {
+    const orgName = document.getElementById('org-name').value;
+    const orgEmail = document.getElementById('org-email').value;
+    const orgNum = document.getElementById('org-number').value;
     try {
         throw new Error("Cannot create admin account at this time.")
     } catch (err) {
@@ -61,18 +61,18 @@ $('.reusable-component').on('click', '.partner-signup-btn, .partner-signup-btn-l
 });
 
 // DONOR SIGN UP
-const donorName = document.getElementById('donor-full-name');
-const donorEmail = document.getElementById('donor-email');
-const donorNumber = document.getElementById('donor-number');
-const donorPassword = document.getElementById('donor-password');
-const donorConfirmPassword = document.getElementById('donor-confirm-password');
 $('.reusable-component').on('click', '.donor-signup-btn, .donor-signup-btn-large', async function createDonorWithEmaillPass() {
+    const donorName = document.getElementById('donor-full-name').value;
+    const donorEmail = document.getElementById('donor-email').value;
+    const donorNumber = document.getElementById('donor-number').value;
+    const donorPassword = document.getElementById('donor-password').value;
+    const donorConfirmPassword = document.getElementById('donor-confirm-password').value;
     try {
         console.log('creatingUser')
-            const email = donorEmail.value;
-            const password = donorPassword.value
+            const email = donorEmail;
+            const password = donorPassword;
 
-            if (password !== donorConfirmPassword.value) {
+            if (password !== donorConfirmPassword) {
                alert('passwords do not match!');
                 return;
             }
@@ -80,9 +80,9 @@ $('.reusable-component').on('click', '.donor-signup-btn, .donor-signup-btn-large
             console.log('User Created');    
             const docRef = await addDoc(usersRef, {
                 id: auth.currentUser.uid,
-                name: donorName.value,
-                email: donorEmail.value,
-                number: donorNumber.value,
+                name: donorName,
+                email: donorEmail,
+                number: donorNumber,
                 accountType: 'donor'
             })
             console.log('User document created');
@@ -111,8 +111,8 @@ $('.reusable-component').on('click', '.donor-signup-btn, .donor-signup-btn-large
 
 // FORGOT PASSWORD
 $('.reusable-component').on('click', '.reset-btn, .reset-btn-large', function resetEmail() {
-    const emailInput = document.getElementById('forgot-password-email');
-    const email = emailInput.value;
+    const emailInput = document.getElementById('forgot-password-email').value;
+    const email = emailInput;
     if (email === null){
         throw new Error('Email Field is Empty');
     }
