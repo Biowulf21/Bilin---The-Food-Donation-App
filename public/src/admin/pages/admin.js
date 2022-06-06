@@ -275,6 +275,7 @@ async function displayOpenEvents(db, eventsRef) {
         "Users",
         auth.currentUser.uid,
         "Events",
+        // document id for event has to be hardcoded for now
         "aLdTosvIQKmHgG1LCwNk",
         "Donations"
       ),
