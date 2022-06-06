@@ -34,11 +34,15 @@ const usersRef = collection(db, "Users");
 connectFirestoreEmulator(db, "localhost", 8080);
 connectAuthEmulator(auth, "http://localhost:9099");
 
-
 // LOGIN
-$(".reusable-component").on("click", ".login-btn, .login-btn-large", async function loginWithEmailPassword() {
+$(".reusable-component").on(
+  "click",
+  ".login-btn, .login-btn-large",
+  async function loginWithEmailPassword() {
     const emaillogin = document.getElementById("login_page_email_input").value;
-    const passwordlogin = document.getElementById("login_page_password_input").value;
+    const passwordlogin = document.getElementById(
+      "login_page_password_input"
+    ).value;
     console.log(emaillogin, passwordlogin);
     try {
       const email = emaillogin;
@@ -68,42 +72,58 @@ $(".reusable-component").on("click", ".login-btn, .login-btn-large", async funct
           alert(err.message);
         }
       });
-  
+
       // console.log(userCredentials.user);
     } catch (err) {
       alert(err.message);
     }
-});
+  }
+);
 
 // PARTNER SIGNUP
-$(".reusable-component").on("click", ".partner-signup-btn, .partner-signup-btn-large", async function createOrgWithEmaillPass() {
+$(".reusable-component").on(
+  "click",
+  ".partner-signup-btn, .partner-signup-btn-large",
+  async function createOrgWithEmaillPass() {
     const orgName = document.getElementById("org-name").value;
     const orgEmail = document.getElementById("org-email").value;
     const orgNum = document.getElementById("org-number").value;
     console.log(orgName, orgEmail, orgNum);
     try {
-        throw new Error("Cannot create admin account at this time.")
+      throw new Error("Cannot create admin account at this time.");
     } catch (err) {
-        alert(err.message);
+      alert(err.message);
     }
     // $(function (){
     //     $("#modal-partner").modal("toggle");
     // })
-});
+  }
+);
 
 // DONOR SIGN UP
-$(".reusable-component").on("click", ".donor-signup-btn, .donor-signup-btn-large", async function createDonorWithEmaillPass() {
+$(".reusable-component").on(
+  "click",
+  ".donor-signup-btn, .donor-signup-btn-large",
+  async function createDonorWithEmaillPass() {
     const donorName = document.getElementById("donor-full-name").value;
     const donorEmail = document.getElementById("donor-email").value;
     const donorNumber = document.getElementById("donor-number").value;
     const donorPassword = document.getElementById("donor-password").value;
-    const donorConfirmPassword = document.getElementById("donor-confirm-password").value;
-    console.log(donorName, donorEmail, donorNumber, donorPassword, donorConfirmPassword);
+    const donorConfirmPassword = document.getElementById(
+      "donor-confirm-password"
+    ).value;
+    console.log(
+      donorName,
+      donorEmail,
+      donorNumber,
+      donorPassword,
+      donorConfirmPassword
+    );
     try {
       console.log("creatingUser");
       const email = donorEmail;
       const password = donorPassword;
-  
+
       if (password !== donorConfirmPassword) {
         alert("Passwords do not match!");
         return;
@@ -122,14 +142,14 @@ $(".reusable-component").on("click", ".donor-signup-btn, .donor-signup-btn-large
         accountType: "donor",
       });
       console.log("User document created");
-  
+
       const bookmarks = addDoc(
         collection(db, "Users", auth.currentUser.uid, "Bookmarks"),
         {}
       );
-  
+
       console.log("bookmarks created");
-  
+
       const donations = addDoc(
         collection(db, "Users", docRef.id, "Donations"),
         {}
@@ -143,10 +163,14 @@ $(".reusable-component").on("click", ".donor-signup-btn, .donor-signup-btn-large
     // $(function () {
     //   $("#modal-donor").modal("toggle");
     // });
-});
+  }
+);
 
 // FORGOT PASSWORD
-$(".reusable-component").on("click", ".reset-btn, .reset-btn-large", function resetEmail() {
+$(".reusable-component").on(
+  "click",
+  ".reset-btn, .reset-btn-large",
+  function resetEmail() {
     const emailInput = document.getElementById("forgot-password-email").value;
     const email = emailInput;
     console.log(email);
@@ -160,11 +184,11 @@ $(".reusable-component").on("click", ".reset-btn, .reset-btn-large", function re
       .catch((error) => {
         alert(error.message);
       });
-});
+  }
+);
 
 // const forgotPasswordLink = document.getElementById("send-reset-email-btn");
 // forgotPasswordLink.addEventListener("click", resetEmail)
-
 
 // const loginBTN = document.getElementById()
 var loginBtn = document.getElementById("login-btn");
