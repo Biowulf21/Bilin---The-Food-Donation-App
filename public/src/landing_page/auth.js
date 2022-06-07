@@ -31,8 +31,8 @@ initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 const usersRef = collection(db, "Users");
-connectFirestoreEmulator(db, "localhost", 8080);
-connectAuthEmulator(auth, "http://localhost:9099");
+// connectFirestoreEmulator(db, "localhost", 8080);
+// connectAuthEmulator(auth, "http://localhost:9099");
 
 // LOGIN
 $(".reusable-component").on(
