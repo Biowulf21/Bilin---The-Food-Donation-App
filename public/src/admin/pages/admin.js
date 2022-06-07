@@ -13,6 +13,8 @@ import {
   onSnapshot,
   setDoc,
   getDoc,
+  query,
+  where,
   doc,
   getDocs,
   connectFirestoreEmulator,
@@ -102,9 +104,10 @@ const createEvent = async (user) => {
     }
   });
 };
-
 const createEventBtn = document.getElementById("event_add-btn");
-createEventBtn.addEventListener("click", createEvent);
+if (createEventBtn !== null) {
+  createEventBtn.addEventListener("click", createEvent);
+}
 
 // Login
 async function loginWithEmailPassword(email, password) {
@@ -276,7 +279,7 @@ async function displayOpenEvents(db, eventsRef) {
         auth.currentUser.uid,
         "Events",
         // document id for event has to be hardcoded for now
-        "aLdTosvIQKmHgG1LCwNk",
+        "v1YPfRdvtGr1iQQrazdu",
         "Donations"
       ),
       (snapshot) => {
@@ -584,36 +587,35 @@ displayVolunteerInfo(db, eventsRef);
 //DONATIONS
 // Pending donors
 async function displayPendingDonors(db, eventsRef) {
-  const unsub = onSnapshot(eventsRef, (snapshot) => {
+  const donationsRef = collection(
+    db,
+    "Users",
+    auth.currentUser.uid,
+    "Events",
+    "v1YPfRdvtGr1iQQrazdua",
+    "Donations"
+  );
+
+  const unsub = onSnapshot(donationsRef, (snapshot) => {
     var html_str = "";
 
     for (let ctr = 0; ctr < snapshot.docs.length; ctr++) {
-      const monthNames = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ];
+      console.log(snapshot.docs[ctr].id);
+      const donationUser = snapshot.docs[ctr].id;
+      var userName = "";
+      var userNumber = "";
+      const getUserDoc = async (id) => {
+        const q = query(collection(db, "Users"), where("id", "==", id));
 
-      var date = new Date(snapshot.docs[ctr].data().date.seconds * 1000);
-      var dateString =
-        date.getDate() +
-        " " +
-        monthNames[date.getMonth()] +
-        " " +
-        date.getFullYear();
-      var timeString = date.getHours() + ":" + date.getMinutes();
-
-      html_str +=
-        `<tr>
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          userName = doc.data().name;
+          userNumber = doc.data().number;
+          console.log(userName);
+          console.log(userNumber);
+          html_str +=
+            `<tr>
                     <td class="align-middle text-center text-sm">
                     <!-- JAMES event status -->
                     <span class="badge badge-sm bg-gradient-secondary">Pending</span>
@@ -622,49 +624,58 @@ async function displayPendingDonors(db, eventsRef) {
                     <div class="d-flex px-2 py-1">
                         <div class="d-flex flex-column justify-content-center">
                     ` +
-        //JAMES dynamic: donor name
-        `
-                        <h6 class="mb-0 text-sm">Donor name</h6>
+            //JAMES dynamic: donor name
+            `
+                        <h6 class="mb-0 text-sm">` +
+            userName +
+            `</h6>
                         </div>
                     </div>
                     </td>
                     <td class="align-middle text-center">
                     ` +
-        //JAMES dynamic: donor contact number
-        `
-                    <span class="text-secondary text-xs font-weight-bold">0917 XXX XXXX</span>
+            //JAMES dynamic: donor contact number
+            `
+                    <span class="text-secondary text-xs font-weight-bold">` +
+            userNumber +
+            `</span>
                     </td>
                     <td class="align-middle text-center">
                     <span>
                         <p class="text-secondary text-xs font-weight-bold mb-0">` +
-        dateString +
-        `</p>
+            snapshot.docs[ctr].data().pickupDate +
+            `</p>
                         <p class="text-secondary text-xs font-weight-bold mb-0">` +
-        timeString +
-        `</p>
+            snapshot.docs[ctr].data().pickupTime +
+            `</p>
                     </span>
                     </td>
                     <td class="d-flex justify-content-center">
                     ` +
-        //JAMES function: view donation form details; open modal?
-        `
+            //JAMES function: view donation form details; open modal?
+            `
                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs">
                         <h5><i class="bi bi-eye-fill"></i></h5>
                     </a>
                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs mx-3">
                         ` +
-        //JAMES function: accept donation; send email to donor
-        `
+            //JAMES function: accept donation; send email to donor
+            `
                         <h5><i class="bi bi-check-circle text-success"></i></h5>
                     </a>
                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs" style="font-size: larger;">
                         ` + //JAMES function: reject donation; open modal (modal nasad hehe) input reason of rejection; send email
-        `
+            `
                         <h5><i class="bi bi-x-circle text-danger"></i></h5>
                     </a>
                     </td>
                 </tr>
             `;
+          document.getElementById("donor_pending").innerHTML = html_str;
+        });
+      };
+
+      const user = getUserDoc(donationUser);
 
       // var s = document.createElement('script');
       // s.type = "text/javascrip";
@@ -672,11 +683,7 @@ async function displayPendingDonors(db, eventsRef) {
       // $("#show-event-btn").append(s);
 
       // console.log(snapshot.docs[ctr].data().name);
-
-      // stop until the 4th entry (0,1,2,3)
-      if (ctr == 3) break;
     }
-    document.getElementById("donor_pending").innerHTML = html_str;
   });
 }
 displayPendingDonors(db, eventsRef);
