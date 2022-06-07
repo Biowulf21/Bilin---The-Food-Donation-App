@@ -37,20 +37,41 @@
     <!-- Google Maps -->
     <div id="googleMap" style="width:100%; height:68vh;"></div>
     <script>
+        var myStyles =[
+    {
+        featureType: "poi",
+        elementType: "labels",
+        stylers: [
+              { visibility: "off" }
+        ]
+    }
+];
        function myMap() {
         let location = navigator.geolocation;
         if (navigator.geolocation) {
             location.getCurrentPosition(function success(position) {
                 var lat = position.coords.latitude;
                 var long = position.coords.longitude;
-                var mapProp = {
+                // var mapProp = {
+                const myLatLng = {lat:8.476666, lng:124.646635}
+                    
+                    
+                // };
+                var map = new google.maps.Map(document.getElementById("googleMap"), {
                     center: new google.maps.LatLng(lat, long),
                     zoom: 15,
                     mapTypeId: 'hybrid',
-                    clickableIcons: false
-                };
-                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-
+                    clickableIcons: false,
+                    styles: myStyles
+                }
+                
+                );
+                new google.maps.Marker({
+    position: new google.maps.LatLng(lat, long),
+    map,
+    title: "Hello World!",
+  });
+               
             })
         };
 
